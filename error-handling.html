@@ -192,13 +192,13 @@
 &quot;Tae a Moose&quot;, Robert Burns</p>
 </blockquote>
 
-<p>Al unas veces, las cosas simplemente salen mal. Es importante tener un plan para cuando lo inevitable suceda. Rust posee un soporte rico para el manejo de errores que podrían (seamos honestos: ocurrirán) ocurrir en tus programas.</p>
+<p>Algunas veces, las cosas simplemente salen mal. Es importante tener un plan para cuando lo inevitable suceda. Rust posee un soporte rico para el manejo de errores que podrían (seamos honestos: ocurrirán) ocurrir en tus programas.</p>
 
-<p>Existen dos tipos de errores que pueden ocurrir en tus programas: fallas, y pánicos. Hablaremos de las diferencias entre estos dos, y luego discutiremos como como manejar cada uno. Después discutiremos como transformar fallas en pánicos.</p>
+<p>Existen dos tipos de errores que pueden ocurrir en tus programas: fallas y pánicos. Hablaremos de las diferencias entre los dos, y luego discutiremos como manejar cada uno. Después discutiremos como promover fallas a pánicos.</p>
 
 <h1 id="falla-vs.-pánico" class='section-header'><a
                            href="#falla-vs.-pánico">Falla vs. Pánico</a></h1>
-<p>Rust usa dos términos para diferenciar entre las dos formas de error: falla, y pánico. Una <em>falla</em> es un error del cual nos podemos recuperar de alguna forma. Un <em>pánico</em> es un error irrecuperable.</p>
+<p>Rust usa dos términos para diferenciar entre las dos formas de error: falla, y pánico. Una <em>falla</em> es un error del cual nos podemos recuperar de alguna manera. Un <em>pánico</em> es un error irrecuperable.</p>
 
 <p>Que queremos decir con &quot;recuperar&quot;? Bueno, en la mayoría de los casos, la posibilidad de un error es esperada. Por ejemplo, considera la función <code>parse</code>:</p>
 <span class='rusttest'>fn main() {
@@ -208,7 +208,7 @@
 <span class='string'>&quot;5&quot;</span>.<span class='ident'>parse</span>();
 </pre>
 
-<p>Este método convierte una cadena de caracteres en otro tipo. Pero debido a que es una cadena de caracteres, no se puede estar seguro de que la conversion efectivamente tenga éxito. Por ejemplo, a que debería ser convertido esto?:</p>
+<p>Este método convierte una cadena de caracteres a otro tipo. Pero debido a que es una cadena de caracteres, no se puede estar seguro de que la conversion efectivamente tenga éxito. Por ejemplo, a que debería ser convertido esto?:</p>
 <span class='rusttest'>fn main() {
     &quot;hola5mundo&quot;.parse();
     
@@ -216,7 +216,7 @@
 <span class='string'>&quot;hola5mundo&quot;</span>.<span class='ident'>parse</span>();
 </pre>
 
-<p>Esto no funcionara. Sabemos que esta función solo tendrá éxito para algunas entradas. Es un comportamiento esperado. Llamamos a este error una <em>falla</em>.</p>
+<p>Lo anterior no funciona. Sabemos que el método <code>parse()</code> solo tendrá éxito para algunas entradas. Es un comportamiento esperado. Es por ello que llamamos a este error una <em>falla</em>.</p>
 
 <p>Por otro lado, algunas veces, hay errores que son inesperados, o de los cuales no nos podemos recuperar. Un ejemplo clásico es un <code>assert!</code>:</p>
 <span class='rusttest'>fn main() {
@@ -228,12 +228,14 @@
 </pre>
 
 <p>Usamos <code>assert!</code> para declarar que algo es cierto (true). Si la declaración no es verdad, entonces algo esta muy mal. Suficientemente mal como para no poder continuar la ejecución en el estado actual. Otro ejemplo es el uso de la macro <code>unreachable!()</code>:</p>
-<span class='rusttest'>enum Evento {
+<span class='rusttest'>use Evento::NuevoLanzamiento;
+
+enum Evento {
     NuevoLanzamiento,
 }
 
 fn probabilidad(_: &amp;Evento) -&gt; f64 {
-    // la implementacióncion real seria mas compleja, por supuesto
+    // la implementación real seria mas compleja, por supuesto
     0.95
 }
 
@@ -249,15 +251,17 @@ fn probabilidad_descriptiva(evento: Evento) -&gt; &amp;&#39;static str {
 }
 
 fn main() {
-    std::io::println(probabilidad_descriptiva(NuevoLanzamiento));
+     println!(&quot;{}&quot;, probabilidad_descriptiva(NuevoLanzamiento));
 }
 </span><pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>Evento</span>::<span class='ident'>NuevoLanzamiento</span>;
+
 <span class='kw'>enum</span> <span class='ident'>Evento</span> {
     <span class='ident'>NuevoLanzamiento</span>,
 }
 
 <span class='kw'>fn</span> <span class='ident'>probabilidad</span>(_: <span class='kw-2'>&amp;</span><span class='ident'>Evento</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span> {
-    <span class='comment'>// la implementacióncion real seria mas compleja, por supuesto</span>
+    <span class='comment'>// la implementación real seria mas compleja, por supuesto</span>
     <span class='number'>0.95</span>
 }
 
@@ -273,7 +277,7 @@ fn main() {
 }
 
 <span class='kw'>fn</span> <span class='ident'>main</span>() {
-    <span class='ident'>std</span>::<span class='ident'>io</span>::<span class='ident'>println</span>(<span class='ident'>probabilidad_descriptiva</span>(<span class='ident'>NuevoLanzamiento</span>));
+     <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>probabilidad_descriptiva</span>(<span class='ident'>NuevoLanzamiento</span>));
 }
 </pre>
 
@@ -289,13 +293,13 @@ enum Evento {
     NuevoLanzamiento,
 }
 
-fn probability(_: &amp;Event) -&gt; f64 {
+fn probabilidad(_: &amp;Evento) -&gt; f64 {
     // la implementación real seria mas compleja, por supuesto
     0.95
 }
 
 fn probabilidad_descriptiva(evento: Evento) -&gt; &amp;&#39;static str {
-    match probabilidad_descriptiva(&amp;evento) {
+    match probabilidad(&amp;evento) {
         1.00 =&gt; &quot;cierto&quot;,
         0.00 =&gt; &quot;imposible&quot;,
         0.00 ... 0.25 =&gt; &quot;muy poco probable&quot;,
@@ -316,13 +320,13 @@ fn main() {
     <span class='ident'>NuevoLanzamiento</span>,
 }
 
-<span class='kw'>fn</span> <span class='ident'>probability</span>(_: <span class='kw-2'>&amp;</span><span class='ident'>Event</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span> {
+<span class='kw'>fn</span> <span class='ident'>probabilidad</span>(_: <span class='kw-2'>&amp;</span><span class='ident'>Evento</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span> {
     <span class='comment'>// la implementación real seria mas compleja, por supuesto</span>
     <span class='number'>0.95</span>
 }
 
 <span class='kw'>fn</span> <span class='ident'>probabilidad_descriptiva</span>(<span class='ident'>evento</span>: <span class='ident'>Evento</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span> {
-    <span class='kw'>match</span> <span class='ident'>probabilidad_descriptiva</span>(<span class='kw-2'>&amp;</span><span class='ident'>evento</span>) {
+    <span class='kw'>match</span> <span class='ident'>probabilidad</span>(<span class='kw-2'>&amp;</span><span class='ident'>evento</span>) {
         <span class='number'>1.00</span> <span class='op'>=&gt;</span> <span class='string'>&quot;cierto&quot;</span>,
         <span class='number'>0.00</span> <span class='op'>=&gt;</span> <span class='string'>&quot;imposible&quot;</span>,
         <span class='number'>0.00</span> ... <span class='number'>0.25</span> <span class='op'>=&gt;</span> <span class='string'>&quot;muy poco probable&quot;</span>,
@@ -338,11 +342,11 @@ fn main() {
 }
 </pre>
 
-<p>Nunca deberíamos alcanzar nunca el caso <code>_</code>, debido a esto hacemos uso de la macro para indicarlo. <code>unreachable!()</code> produce un tipo diferente de error que <code>Result</code>. Rust llama a ese tipo de errores <em>pánicos</em>.</p>
+<p>Nunca deberíamos alcanzar el caso <code>_</code>, debido a esto hacemos uso de la macro para indicarlo. <code>unreachable!()</code> produce un tipo diferente de error que <code>Result</code>. Rust llama a ese tipo de errores <em>pánicos</em>.</p>
 
 <h1 id="manejando-errores-con-option-y-result" class='section-header'><a
                            href="#manejando-errores-con-option-y-result">Manejando errores con <code>Option</code> y <code>Result</code></a></h1>
-<p>La manera mas simple de indicar que una función puede fallar es usando el tipo <code>Option&lt;T&gt;</code>. Por ejemplo, el método find en las cadenas de caracteres intenta localizar un patron en la cadena, retorna un <code>Option</code>:</p>
+<p>La manera mas simple de indicar que una función puede fallar es usando el tipo <code>Option&lt;T&gt;</code>. Por ejemplo, el método find en las cadenas de caracteres intenta localizar un patrón en la cadena, retorna un <code>Option</code>:</p>
 <span class='rusttest'>fn main() {
     let s = &quot;foo&quot;;
     
@@ -356,7 +360,7 @@ fn main() {
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>s</span>.<span class='ident'>find</span>(<span class='string'>&#39;z&#39;</span>), <span class='prelude-val'>None</span>);
 </pre>
 
-<p>Esto es apropiado para casos simples, pero no nos da mucha información en el caso de una falla. Que tal si quisiéramos saber el <em>porque</em> la función fallo? Para ello, podemos usar el tipo <code>Result&lt;T, E&gt;</code>. Que luce así:</p>
+<p>Esto es apropiado para casos simples, pero no nos da mucha información en el caso de una falla. Que tal si quisiéramos saber el <em>porque</em> la función falló? Para ello, podemos usar el tipo <code>Result&lt;T, E&gt;</code>. Que luce así:</p>
 <span class='rusttest'>fn main() {
     enum Result&lt;T, E&gt; {
        Ok(T),
@@ -370,38 +374,38 @@ fn main() {
 }
 </pre>
 
-<p>Esta enum es proporcionada por Rust, es por ello que no necesitas definirla si deseas hacer uso de ella en tu código. La variante <code>Ok(T)</code> representa éxito, y la variante <code>Err(E)</code> representa una falla. Retornar un <code>Result</code> en lugar de un <code>Option</code> es recomendable para la mayoría de los casos no triviales:</p>
+<p>Esta enum es proporcionada por Rust, es por ello que no necesitas definirla si deseas hacer uso de ella. La variante <code>Ok(T)</code> representa éxito, y la variante <code>Err(E)</code> representa una falla. Retornar un <code>Result</code> en lugar de un <code>Option</code> es recomendable para la mayoría de los casos no triviales:</p>
 
 <p>He aquí un ejemplo del uso de <code>Result</code>:</p>
-<span class='rusttest'>fn main() {
-    #[derive(Debug)]
-    enum Version { Version1, Version2 }
-    
-    #[derive(Debug)]
-    enum ErrorParseo { LongitudCabeceraInvalida, VersionInvalida }
-    
-    fn parsear_version(cabecera: &amp;[u8]) -&gt; Result&lt;Version, ErrorParseo&gt; {
-        if cabecera.len() &lt; 1 {
-            return Err(ErrorParseo::LongitudCabeceraInvalida);
-        }
-        match cabecera[0] {
-            1 =&gt; Ok(Version::Version1),
-            2 =&gt; Ok(Version::Version2),
-            _ =&gt; Err(ErrorParseo::LongitudCabeceraInvalida)
-        }
+<span class='rusttest'>#[derive(Debug)]
+enum Version { Version1, Version2 }
+
+#[derive(Debug)]
+enum ErrorParseo { LongitudCabeceraInvalida, VersionInvalida }
+
+fn parsear_version(cabecera: &amp;[u8]) -&gt; Result&lt;Version, ErrorParseo&gt; {
+    if cabecera.len() &lt; 1 {
+        return Err(ErrorParseo::LongitudCabeceraInvalida);
     }
-    
+    match cabecera[0] {
+        1 =&gt; Ok(Version::Version1),
+        2 =&gt; Ok(Version::Version2),
+        _ =&gt; Err(ErrorParseo::LongitudCabeceraInvalida)
+    }
+}
+
+fn main() {
     let version = parsear_version(&amp;[1, 2, 3, 4]);
     match version {
-        Ok(v) =&gt; {
-            println!(&quot;trabajando con la version: {:?}&quot;, v);
-        }
-        Err(e) =&gt; {
-            println!(&quot;error parseando cebecera: {:?}&quot;, e);
-        }
+    Ok(v) =&gt; {
+      println!(&quot;trabajando con la version: {:?}&quot;, v);
     }
-    
-}</span><pre class='rust rust-example-rendered'>
+    Err(e) =&gt; {
+      println!(&quot;error parseando cebecera: {:?}&quot;, e);
+    }
+    }
+}
+</span><pre class='rust rust-example-rendered'>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>enum</span> <span class='ident'>Version</span> { <span class='ident'>Version1</span>, <span class='ident'>Version2</span> }
 
@@ -419,13 +423,15 @@ fn main() {
     }
 }
 
-<span class='kw'>let</span> <span class='ident'>version</span> <span class='op'>=</span> <span class='ident'>parsear_version</span>(<span class='kw-2'>&amp;</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>, <span class='number'>4</span>]);
-<span class='kw'>match</span> <span class='ident'>version</span> {
+<span class='kw'>fn</span> <span class='ident'>main</span>() {
+    <span class='kw'>let</span> <span class='ident'>version</span> <span class='op'>=</span> <span class='ident'>parsear_version</span>(<span class='kw-2'>&amp;</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>, <span class='number'>4</span>]);
+    <span class='kw'>match</span> <span class='ident'>version</span> {
     <span class='prelude-val'>Ok</span>(<span class='ident'>v</span>) <span class='op'>=&gt;</span> {
-        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;trabajando con la version: {:?}&quot;</span>, <span class='ident'>v</span>);
+      <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;trabajando con la version: {:?}&quot;</span>, <span class='ident'>v</span>);
     }
     <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> {
-        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;error parseando cebecera: {:?}&quot;</span>, <span class='ident'>e</span>);
+      <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;error parseando cebecera: {:?}&quot;</span>, <span class='ident'>e</span>);
+    }
     }
 }
 </pre>
@@ -436,7 +442,7 @@ fn main() {
 
 <h1 id="errores-no-recuperables-con-panic!" class='section-header'><a
                            href="#errores-no-recuperables-con-panic!">Errores no recuperables con <code>panic!</code></a></h1>
-<p>En el caso de un error inesperado del cual no se pueda recuperara, la macro <code>panic!</code> induce un pánico. Dicho pánico terminara abruptamente el hilo actual de ejecución, y proporcionará un error:</p>
+<p>En el caso de un error inesperado del cual no se pueda recuperar, la macro <code>panic!</code> se utiliza para inducir un pánico. Dicho pánico terminara abruptamente el hilo actual de ejecución proporcionando un mensaje de error:</p>
 <span class='rusttest'>fn main() {
     panic!(&quot;boom&quot;);
     
@@ -455,7 +461,7 @@ fn main() {
 
 <h1 id="promoviendo-fallas-a-pánicos" class='section-header'><a
                            href="#promoviendo-fallas-a-pánicos">Promoviendo fallas a pánicos</a></h1>
-<p>En ciertas circunstancias, aun sabiendo que una función puede fallar, podríamos querer tratar la falla como un pánico. Por ejemplo, <code>io::stdin().read_line(&amp;mut buffer)</code> retorna un <code>Result&lt;usize&gt;</code>, cuando hay un error leyendo la linea. Esto nos permite manejar y posiblemente recuperar en caso de error.</p>
+<p>En ciertas circunstancias, aun sabiendo que una función puede fallar, podríamos querer tratar la falla como un pánico. Por ejemplo, <code>io::stdin().read_line(&amp;mut buffer)</code> retorna un <code>Result&lt;usize&gt;</code>, cuando hay un error leyendo la linea. Esto nos permite manejar y posiblemente recuperarnos en caso de error.</p>
 
 <p>Si no queremos manejar el error, y en su lugar simplemente abortar el programa, podemos usar el método <code>unwrap()</code>:</p>
 <span class='rusttest'>fn main() {
@@ -465,20 +471,20 @@ fn main() {
 <span class='ident'>io</span>::<span class='ident'>stdin</span>().<span class='ident'>read_line</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>buffer</span>).<span class='ident'>unwrap</span>();
 </pre>
 
-<p><code>unwrap()</code> hara un pánico (<code>panic!</code>) si el <code>Result</code> es <code>Err</code>. Esto básicamente dice &quot;Dame el valor, y si algo sale mal, simplemente aborta la ejecución&quot;. Esto es menos confiable que hacer match en el error y tratar de recuperarnos, pero al mismo tiempo es significativamente mas corto. Algunas veces, la terminación abrupta es apropiada.</p>
+<p><code>unwrap()</code> hará un pánico (<code>panic!</code>) si el <code>Result</code> es <code>Err</code>. Esto básicamente dice &quot;Dame el valor, y si algo sale mal, simplemente aborta la ejecución&quot;. Esto es menos confiable que hacer match en el error y tratar de recuperarnos, pero al mismo tiempo es significativamente mas corto. Algunas veces, la terminación abrupta es apropiada.</p>
 
 <p>Hay una manera que de hacer lo anterior que es un poco mejor que <code>unwrap()</code>:</p>
 <span class='rusttest'>fn main() {
     let mut bufer = String::new();
     let bytes_leidos = io::stdin().read_line(&amp;mut bufer)
-                                    .ok()
-                                    .expect(&quot;Fallo al leer linea&quot;);
+                          .ok()
+                          .expect(&quot;Fallo al leer linea&quot;);
     
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>bufer</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
 <span class='kw'>let</span> <span class='ident'>bytes_leidos</span> <span class='op'>=</span> <span class='ident'>io</span>::<span class='ident'>stdin</span>().<span class='ident'>read_line</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>bufer</span>)
-                                .<span class='ident'>ok</span>()
-                                .<span class='ident'>expect</span>(<span class='string'>&quot;Fallo al leer linea&quot;</span>);
+                      .<span class='ident'>ok</span>()
+                      .<span class='ident'>expect</span>(<span class='string'>&quot;Fallo al leer linea&quot;</span>);
 </pre>
 
 <p><code>ok()</code> convierte el <code>Result</code> en un <code>Option</code>, y <code>expect()</code> hace lo mismo que <code>unwrap()</code>, pero recibe un mensaje como argumento. Este mensaje es pasado a el <code>panic!</code> subyacente, proporcionando un mejor mensaje de error.</p>
@@ -487,7 +493,7 @@ fn main() {
                            href="#usando-try!">Usando <code>try!</code></a></h1>
 <p>Cuando escribimos código que llama a muchas funciones que retornan el tipo <code>Result</code>, el manejo de errores se puede tornar tedioso. La macro <code>try!</code> esconde algo de el código repetitivo correspondiente a la propagación de errores en la pila de llamadas.</p>
 
-<p>Este reemplaza:</p>
+<p><code>try!</code> reemplaza:</p>
 <span class='rusttest'>fn main() {
     use std::fs::File;
     use std::io;
@@ -543,7 +549,7 @@ fn main() {
 }
 </pre>
 
-<p>Con esto:</p>
+<p>Con:</p>
 <span class='rusttest'>fn main() {
     use std::fs::File;
     use std::io;
@@ -556,11 +562,11 @@ fn main() {
     }
     
     fn escribir_info(info: &amp;Info) -&gt; io::Result&lt;()&gt; {
-        let mut file = File::create(&quot;mis_mejores_amigos.txt&quot;).unwrap();
+        let mut archivo = File::create(&quot;mis_mejores_amigos.txt&quot;).unwrap();
     
-        try!(writeln!(&amp;mut archivo, &quot;nombre: {}&quot;, info.name));
-        try!(writeln!(&amp;mut archivo, &quot;edad: {}&quot;, info.age));
-        try!(writeln!(&amp;mut archivo, &quot;grado: {}&quot;, info.rating));
+        try!(writeln!(&amp;mut archivo, &quot;nombre: {}&quot;, info.nombre));
+        try!(writeln!(&amp;mut archivo, &quot;edad: {}&quot;, info.edad));
+        try!(writeln!(&amp;mut archivo, &quot;grado: {}&quot;, info.grado));
     
         return Ok(());
     }
@@ -577,11 +583,11 @@ fn main() {
 }
 
 <span class='kw'>fn</span> <span class='ident'>escribir_info</span>(<span class='ident'>info</span>: <span class='kw-2'>&amp;</span><span class='ident'>Info</span>) <span class='op'>-&gt;</span> <span class='ident'>io</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
-    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>file</span> <span class='op'>=</span> <span class='ident'>File</span>::<span class='ident'>create</span>(<span class='string'>&quot;mis_mejores_amigos.txt&quot;</span>).<span class='ident'>unwrap</span>();
+    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>archivo</span> <span class='op'>=</span> <span class='ident'>File</span>::<span class='ident'>create</span>(<span class='string'>&quot;mis_mejores_amigos.txt&quot;</span>).<span class='ident'>unwrap</span>();
 
-    <span class='macro'>try</span><span class='macro'>!</span>(<span class='macro'>writeln</span><span class='macro'>!</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>archivo</span>, <span class='string'>&quot;nombre: {}&quot;</span>, <span class='ident'>info</span>.<span class='ident'>name</span>));
-    <span class='macro'>try</span><span class='macro'>!</span>(<span class='macro'>writeln</span><span class='macro'>!</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>archivo</span>, <span class='string'>&quot;edad: {}&quot;</span>, <span class='ident'>info</span>.<span class='ident'>age</span>));
-    <span class='macro'>try</span><span class='macro'>!</span>(<span class='macro'>writeln</span><span class='macro'>!</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>archivo</span>, <span class='string'>&quot;grado: {}&quot;</span>, <span class='ident'>info</span>.<span class='ident'>rating</span>));
+    <span class='macro'>try</span><span class='macro'>!</span>(<span class='macro'>writeln</span><span class='macro'>!</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>archivo</span>, <span class='string'>&quot;nombre: {}&quot;</span>, <span class='ident'>info</span>.<span class='ident'>nombre</span>));
+    <span class='macro'>try</span><span class='macro'>!</span>(<span class='macro'>writeln</span><span class='macro'>!</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>archivo</span>, <span class='string'>&quot;edad: {}&quot;</span>, <span class='ident'>info</span>.<span class='ident'>edad</span>));
+    <span class='macro'>try</span><span class='macro'>!</span>(<span class='macro'>writeln</span><span class='macro'>!</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>archivo</span>, <span class='string'>&quot;grado: {}&quot;</span>, <span class='ident'>info</span>.<span class='ident'>grado</span>));
 
     <span class='kw'>return</span> <span class='prelude-val'>Ok</span>(());
 }
