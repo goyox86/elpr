@@ -205,16 +205,14 @@
     &quot;5&quot;.parse();
     
 }</span><pre class='rust rust-example-rendered'>
-<span class='string'>&quot;5&quot;</span>.<span class='ident'>parse</span>();
-</pre>
+<span class='string'>&quot;5&quot;</span>.<span class='ident'>parse</span>();</pre>
 
 <p>Este método convierte una cadena de caracteres a otro tipo. Pero debido a que es una cadena de caracteres, no se puede estar seguro de que la conversion efectivamente tenga éxito. Por ejemplo, a que debería ser convertido esto?:</p>
 <span class='rusttest'>fn main() {
     &quot;hola5mundo&quot;.parse();
     
 }</span><pre class='rust rust-example-rendered'>
-<span class='string'>&quot;hola5mundo&quot;</span>.<span class='ident'>parse</span>();
-</pre>
+<span class='string'>&quot;hola5mundo&quot;</span>.<span class='ident'>parse</span>();</pre>
 
 <p>Lo anterior no funciona. Sabemos que el método <code>parse()</code> solo tendrá éxito para algunas entradas. Es un comportamiento esperado. Es por ello que llamamos a este error una <em>falla</em>.</p>
 
@@ -224,8 +222,7 @@
     assert!(x == 5);
     
 }</span><pre class='rust rust-example-rendered'>
-<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>x</span> <span class='op'>==</span> <span class='number'>5</span>);
-</pre>
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>x</span> <span class='op'>==</span> <span class='number'>5</span>);</pre>
 
 <p>Usamos <code>assert!</code> para declarar que algo es cierto (true). Si la declaración no es verdad, entonces algo esta muy mal. Suficientemente mal como para no poder continuar la ejecución en el estado actual. Otro ejemplo es el uso de la macro <code>unreachable!()</code>:</p>
 <span class='rusttest'>use Evento::NuevoLanzamiento;
@@ -278,8 +275,7 @@ fn main() {
 
 <span class='kw'>fn</span> <span class='ident'>main</span>() {
      <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>probabilidad_descriptiva</span>(<span class='ident'>NuevoLanzamiento</span>));
-}
-</pre>
+}</pre>
 
 <p>Lo anterior resultara en un error:</p>
 
@@ -339,8 +335,7 @@ fn main() {
 
 <span class='kw'>fn</span> <span class='ident'>main</span>() {
     <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>probabilidad_descriptiva</span>(<span class='ident'>NuevoLanzamiento</span>));
-}
-</pre>
+}</pre>
 
 <p>Nunca deberíamos alcanzar el caso <code>_</code>, debido a esto hacemos uso de la macro para indicarlo. <code>unreachable!()</code> produce un tipo diferente de error que <code>Result</code>. Rust llama a ese tipo de errores <em>pánicos</em>.</p>
 
@@ -357,8 +352,7 @@ fn main() {
 <span class='kw'>let</span> <span class='ident'>s</span> <span class='op'>=</span> <span class='string'>&quot;foo&quot;</span>;
 
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>s</span>.<span class='ident'>find</span>(<span class='string'>&#39;f&#39;</span>), <span class='prelude-val'>Some</span>(<span class='number'>0</span>));
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>s</span>.<span class='ident'>find</span>(<span class='string'>&#39;z&#39;</span>), <span class='prelude-val'>None</span>);
-</pre>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>s</span>.<span class='ident'>find</span>(<span class='string'>&#39;z&#39;</span>), <span class='prelude-val'>None</span>);</pre>
 
 <p>Esto es apropiado para casos simples, pero no nos da mucha información en el caso de una falla. Que tal si quisiéramos saber el <em>porque</em> la función falló? Para ello, podemos usar el tipo <code>Result&lt;T, E&gt;</code>. Que luce así:</p>
 <span class='rusttest'>fn main() {
@@ -371,8 +365,7 @@ fn main() {
 <span class='kw'>enum</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>E</span><span class='op'>&gt;</span> {
    <span class='prelude-val'>Ok</span>(<span class='ident'>T</span>),
    <span class='prelude-val'>Err</span>(<span class='ident'>E</span>)
-}
-</pre>
+}</pre>
 
 <p>Esta enum es proporcionada por Rust, es por ello que no necesitas definirla si deseas hacer uso de ella. La variante <code>Ok(T)</code> representa éxito, y la variante <code>Err(E)</code> representa una falla. Retornar un <code>Result</code> en lugar de un <code>Option</code> es recomendable para la mayoría de los casos no triviales:</p>
 
@@ -433,8 +426,7 @@ fn main() {
       <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;error parseando cebecera: {:?}&quot;</span>, <span class='ident'>e</span>);
     }
     }
-}
-</pre>
+}</pre>
 
 <p>Esta función hace uso de un enum, <code>ErrorParseo</code>, para enumerar los errores que pueden ocurrir.</p>
 
@@ -447,8 +439,7 @@ fn main() {
     panic!(&quot;boom&quot;);
     
 }</span><pre class='rust rust-example-rendered'>
-<span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;boom&quot;</span>);
-</pre>
+<span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;boom&quot;</span>);</pre>
 
 <p>resulta en</p>
 
@@ -468,8 +459,7 @@ fn main() {
     io::stdin().read_line(&amp;mut buffer).unwrap();
     
 }</span><pre class='rust rust-example-rendered'>
-<span class='ident'>io</span>::<span class='ident'>stdin</span>().<span class='ident'>read_line</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>buffer</span>).<span class='ident'>unwrap</span>();
-</pre>
+<span class='ident'>io</span>::<span class='ident'>stdin</span>().<span class='ident'>read_line</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>buffer</span>).<span class='ident'>unwrap</span>();</pre>
 
 <p><code>unwrap()</code> hará un pánico (<code>panic!</code>) si el <code>Result</code> es <code>Err</code>. Esto básicamente dice &quot;Dame el valor, y si algo sale mal, simplemente aborta la ejecución&quot;. Esto es menos confiable que hacer match en el error y tratar de recuperarnos, pero al mismo tiempo es significativamente mas corto. Algunas veces, la terminación abrupta es apropiada.</p>
 
@@ -484,8 +474,7 @@ fn main() {
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>bufer</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
 <span class='kw'>let</span> <span class='ident'>bytes_leidos</span> <span class='op'>=</span> <span class='ident'>io</span>::<span class='ident'>stdin</span>().<span class='ident'>read_line</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>bufer</span>)
                       .<span class='ident'>ok</span>()
-                      .<span class='ident'>expect</span>(<span class='string'>&quot;Fallo al leer linea&quot;</span>);
-</pre>
+                      .<span class='ident'>expect</span>(<span class='string'>&quot;Fallo al leer linea&quot;</span>);</pre>
 
 <p><code>ok()</code> convierte el <code>Result</code> en un <code>Option</code>, y <code>expect()</code> hace lo mismo que <code>unwrap()</code>, pero recibe un mensaje como argumento. Este mensaje es pasado a el <code>panic!</code> subyacente, proporcionando un mejor mensaje de error.</p>
 
@@ -546,8 +535,7 @@ fn main() {
     }
 
     <span class='kw'>return</span> <span class='prelude-val'>Ok</span>(());
-}
-</pre>
+}</pre>
 
 <p>Con:</p>
 <span class='rusttest'>fn main() {
@@ -590,8 +578,7 @@ fn main() {
     <span class='macro'>try</span><span class='macro'>!</span>(<span class='macro'>writeln</span><span class='macro'>!</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>archivo</span>, <span class='string'>&quot;grado: {}&quot;</span>, <span class='ident'>info</span>.<span class='ident'>grado</span>));
 
     <span class='kw'>return</span> <span class='prelude-val'>Ok</span>(());
-}
-</pre>
+}</pre>
 
 <p>Envolver una expresión con <code>try!</code> resultara en el valor (<code>Ok</code>) exitoso desenvuelto, a menos que el resultado sea <code>Err</code>, caso en el cual <code>Err</code> es retornado de manera temprana por la función que envuelve al try.</p>
 
@@ -603,66 +590,7 @@ fn main() {
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
     
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById("toggle-nav").onclick = toggleNav;
-  function toggleNav() {
-    var toc = document.getElementById("toc");
-    var pagewrapper = document.getElementById("page-wrapper");
-    toggleClass(toc, "mobile-hidden");
-    toggleClass(pagewrapper, "mobile-hidden");
-  };
-
-  function toggleClass(el, className) {
-     // from http://youmightnotneedjquery.com/
-     if (el.classList) {
-       el.classList.toggle(className);
-     } else {
-       var classes = el.className.split(' ');
-       var existingIndex = classes.indexOf(className);
-
-       if (existingIndex >= 0) {
-         classes.splice(existingIndex, 1);
-       } else {
-         classes.push(className);
-       }
-
-       el.className = classes.join(' ');
-     }
-  }
-
-  // The below code is used to add prev and next navigation links to the bottom
-  // of each of the sections.
-  // It works by extracting the current page based on the url and iterates over
-  // the menu links until it finds the menu item for the current page. We then
-  // create a copy of the preceding and following menu links and add the
-  // correct css class and insert them into the bottom of the page.
-  var toc = document.getElementById('toc').getElementsByTagName('a');
-  var href = document.location.pathname.split('/').pop();
-  if (href === 'index.html' || href === '') {
-    href = 'README.html';
-  }
-
-  for (var i = 0; i < toc.length; i++) {
-    if (toc[i].attributes['href'].value.split('/').pop() === href) {
-      var nav = document.createElement('p');
-      if (i > 0) {
-        var prevNode = toc[i-1].cloneNode(true);
-        prevNode.className = 'left';
-        nav.appendChild(prevNode);
-      }
-      if (i < toc.length - 1) {
-        var nextNode = toc[i+1].cloneNode(true);
-        nextNode.className = 'right';
-        nav.appendChild(nextNode);
-      }
-      document.getElementById('page').appendChild(nav);
-      break;
-    }
-  }
-
-});
-</script>
+<script type="text/javascript" src="rust-book.js"></script>
 <script type="text/javascript" src="playpen.js"></script>
 </div></div>
 
