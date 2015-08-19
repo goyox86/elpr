@@ -187,7 +187,101 @@
 
 
     <h1 class="title">if</h1>
+    <p>El enfoque de Rust con relación a <code>if</code> no es particularmente complejo, pero es mas similar a el <code>if</code> que encontraras en lenguajes con tipificado dinámico que al de los lenguajes de sistemas tradicionales. Hablemos un poco acerca de este, para estar seguros de que entiendas todos los matices.</p>
+
+<p><code>if</code> es una forma especifica de a un concepto mas general, el ‘branch’ (rama). El nombre proviene de una rama en un árbol: es un punto de decisión, en el cual dependiendo de una opción, multiples caminos pueden ser tomados.</p>
+
+<p>En el caso de <code>if</code>, hay una sola elección que conduce a dos caminos:</p>
+<span class='rusttest'>fn main() {
+    let x = 5;
     
+    if x == 5 {
+        println!(&quot;x es cinco!&quot;);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+
+<span class='kw'>if</span> <span class='ident'>x</span> <span class='op'>==</span> <span class='number'>5</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;x es cinco!&quot;</span>);
+}</pre>
+
+<p>De haber cambiado el valor de <code>x</code> a algo diferente, esta linea no hubiese sido impresa. Para ser mas especifico, si la expresión después del <code>if</code> es evaluada a <code>true</code>, entonces el bloque de código es ejecutado. Si es <code>false</code>, dicho bloque no se invoca.</p>
+
+<p>Si deseas que algo ocurra en el caso de <code>false</code>, debes hacer uso de un <code>else</code>:</p>
+<span class='rusttest'>fn main() {
+    let x = 5;
+    
+    if x == 5 {
+        println!(&quot;x es cinco!&quot;);
+    } else {
+        println!(&quot;x no es cinco :(&quot;);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+
+<span class='kw'>if</span> <span class='ident'>x</span> <span class='op'>==</span> <span class='number'>5</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;x es cinco!&quot;</span>);
+} <span class='kw'>else</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;x no es cinco :(&quot;</span>);
+}</pre>
+
+<p>De haber mas de un caso, usa un <code>else if</code>:</p>
+<span class='rusttest'>fn main() {
+    let x = 5;
+    
+    if x == 5 {
+        println!(&quot;x es cinco!&quot;);
+    } else if x == 6 {
+        println!(&quot;x es seis!&quot;);
+    } else {
+        println!(&quot;x no es ni cinco ni seis :(&quot;);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+
+<span class='kw'>if</span> <span class='ident'>x</span> <span class='op'>==</span> <span class='number'>5</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;x es cinco!&quot;</span>);
+} <span class='kw'>else</span> <span class='kw'>if</span> <span class='ident'>x</span> <span class='op'>==</span> <span class='number'>6</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;x es seis!&quot;</span>);
+} <span class='kw'>else</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;x no es ni cinco ni seis :(&quot;</span>);
+}</pre>
+
+<p>Todo esto es bien estándar. Sin embargo, también puedes hacer esto:</p>
+<span class='rusttest'>fn main() {
+    let x = 5;
+    
+    let y = if x == 5 {
+        10
+    } else {
+        15
+    }; // y: i32
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+
+<span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ident'>x</span> <span class='op'>==</span> <span class='number'>5</span> {
+    <span class='number'>10</span>
+} <span class='kw'>else</span> {
+    <span class='number'>15</span>
+}; <span class='comment'>// y: i32</span></pre>
+
+<p>Lo cual podemos (y probablemente deberiamos) escribir así:</p>
+<span class='rusttest'>fn main() {
+    let x = 5;
+    
+    let y = if x == 5 { 10 } else { 15 }; // y: i32
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+
+<span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ident'>x</span> <span class='op'>==</span> <span class='number'>5</span> { <span class='number'>10</span> } <span class='kw'>else</span> { <span class='number'>15</span> }; <span class='comment'>// y: i32</span></pre>
+
+<p>Esto funciona porque <code>if</code> es una expresión. El valor de la expresión es el valor de la ultima expresión en el bloque que haya sido seleccionado. Un <code>if</code> sin un <code>else</code> siempre resulta en <code>()</code> como valor.</p>
+
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
