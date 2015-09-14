@@ -199,7 +199,7 @@
                            href="#meta">Meta</a></h1>
 <p>Antes de entrar en detalle, dos notas importantes acerca del sistema de pertenencia.</p>
 
-<p>Rust tiene foco en seguridad y velocidad. Rust logra esos objetivos a travez de muchas ‘abstracciones de cero costo’, lo que significa que en Rust, las abstracciones cuestan tan poco como sea posible para hacerlas funcionar. El sistema de pertenencia es un ejemplo primordial de una abstracción de cero costo. Todo el análisis del que estaremos hablando en la presente guía es _llevado a cabo en tiempo de compilación. No pagas ningún costo en tiempo de ejecución por ninguna de estas facilidades.</p>
+<p>Rust tiene foco en seguridad y velocidad. Rust logra esos objetivos a travez de muchas ‘abstracciones de cero costo’, lo que significa que en Rust, las abstracciones cuestan tan poco como sea posible para hacerlas funcionar. El sistema de pertenencia es un ejemplo primordial de una abstracción de cero costo. Todo el análisis del que estaremos hablando en la presente guía es <em>llevado a cabo en tiempo de compilación</em>. No pagas ningún costo en tiempo de ejecución por ninguna de estas facilidades.</p>
 
 <p>Sin embargo, este sistema tiene cierto costo: la curva de aprendizaje. Muchos usuarios nuevos Rust experimentan algo que nosotros denominamos ‘pelear con el comprobador de préstamo’ (‘fighting with the borrow checker’), situación en la cual el compilador de Rust se rehusa a compilar un programa el cual el autor piensa valido. Esto ocurre con frecuencia debido a que el modelo mental del programador acerca de como funciona la pertenencia no concuerda con las reglas actuales implementadas en Rust. Probablemente tu experimentes cosas similares al comienzo. Sin embargo, hay buenas noticias: otros desarrolladores Rust experimentados  reportan que una vez que trabajan con las reglas del sistema de pertenencia por un periodo de tiempo, pelean cada vez menos con el comprobador de préstamo.</p>
 
@@ -400,7 +400,7 @@ println!(&quot;{}&quot;, a);
     let v1 = vec![1, 2, 3];
     let v2 = vec![1, 2, 3];
     
-    let (v1, v2, answer) = foo(v1, v2);
+    let (v1, v2, respuesta) = foo(v1, v2);
     
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>fn</span> <span class='ident'>foo</span>(<span class='ident'>v1</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>, <span class='ident'>v2</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> (<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>, <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>, <span class='ident'>i32</span>) {
@@ -413,7 +413,7 @@ println!(&quot;{}&quot;, a);
 <span class='kw'>let</span> <span class='ident'>v1</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>];
 <span class='kw'>let</span> <span class='ident'>v2</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>];
 
-<span class='kw'>let</span> (<span class='ident'>v1</span>, <span class='ident'>v2</span>, <span class='ident'>answer</span>) <span class='op'>=</span> <span class='ident'>foo</span>(<span class='ident'>v1</span>, <span class='ident'>v2</span>);</pre>
+<span class='kw'>let</span> (<span class='ident'>v1</span>, <span class='ident'>v2</span>, <span class='ident'>respuesta</span>) <span class='op'>=</span> <span class='ident'>foo</span>(<span class='ident'>v1</span>, <span class='ident'>v2</span>);</pre>
 
 <p>Ugh! El tipo de retorno, la linea de retorno, y el llamado a la función se vuelven mucho mas complicados.</p>
 

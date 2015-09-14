@@ -185,7 +185,401 @@
 
 
     <h1 class="title">Referencias y Préstamo</h1>
+    <p>Esta guía es una de las tres presentando el sistema de pertenencia de Rust. Esta es una de las características mas únicas y atractivas de Rust, con la que los desarrolladores Rust deben estar bien familiarizados. La pertenencia es como Rust logra su objetivo mayor, seguridad en el manejo de memoria. Existen unos pocos conceptos distintos, cada uno con su propio capitulo:</p>
+
+<ul>
+<li><a href="ownership.html">pertenencia</a>, el concepto principal</li>
+<li>prestamo, el que lees ahora</li>
+<li><a href="lifetimes.html">tiempos de vida</a>, un concepto avanzado del préstamo</li>
+</ul>
+
+<p>Estos tres capítulos están relacionados, y en orden. Necesitaras leer los tres para entender completamente el sistema de pertenencia.</p>
+
+<h1 id="meta" class='section-header'><a
+                           href="#meta">Meta</a></h1>
+<p>Antes de entrar en detalle, dos notas importantes acerca del sistema de pertenencia.</p>
+
+<p>Rust tiene foco en seguridad y velocidad. Rust logra esos objetivos a travez de muchas ‘abstracciones de cero costo’, lo que significa que en Rust, las abstracciones cuestan tan poco como sea posible para hacerlas funcionar. El sistema de pertenencia es un ejemplo primordial de una abstracción de cero costo. Todo el análisis del que estaremos hablando en la presente guía es <em>llevado a cabo en tiempo de compilación</em>. No pagas ningún costo en tiempo de ejecución por ninguna de estas facilidades.</p>
+
+<p>Sin embargo, este sistema tiene cierto costo: la curva de aprendizaje. Muchos usuarios nuevos Rust experimentan algo que nosotros denominamos ‘pelear con el comprobador de préstamo’ (‘fighting with the borrow checker’), situación en la cual el compilador de Rust se rehusa a compilar un programa el cual el autor piensa valido. Esto ocurre con frecuencia debido a que el modelo mental del programador acerca de como funciona la pertenencia no concuerda con las reglas actuales implementadas en Rust. Probablemente tu experimentes cosas similares al comienzo. Sin embargo, hay buenas noticias: otros desarrolladores Rust experimentados reportan que una vez que trabajan con las reglas del sistema de pertenencia por un periodo de tiempo, pelean cada vez menos con el comprobador de préstamo.</p>
+
+<p>Con eso en mente, aprendamos acerca de el préstamo.</p>
+
+<h1 id="préstamo" class='section-header'><a
+                           href="#préstamo">Préstamo</a></h1>
+<p>Al final de la sección de <a href="ownership.html">pertenencia</a>, teníamos una función fea que lucia así:</p>
+<span class='rusttest'>fn main() {
+    fn foo(v1: Vec&lt;i32&gt;, v2: Vec&lt;i32&gt;) -&gt; (Vec&lt;i32&gt;, Vec&lt;i32&gt;, i32) {
+        // hacer algo con v1 y v2
     
+        // devolviendo pertenencia, así como el resultado de nuestra función
+        (v1, v2, 42)
+    }
+    
+    let v1 = vec![1, 2, 3];
+    let v2 = vec![1, 2, 3];
+    
+    let (v1, v2, respuesta) = foo(v1, v2);
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>fn</span> <span class='ident'>foo</span>(<span class='ident'>v1</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>, <span class='ident'>v2</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> (<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>, <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>, <span class='ident'>i32</span>) {
+    <span class='comment'>// hacer algo con v1 y v2</span>
+
+    <span class='comment'>// devolviendo pertenencia, así como el resultado de nuestra función</span>
+    (<span class='ident'>v1</span>, <span class='ident'>v2</span>, <span class='number'>42</span>)
+}
+
+<span class='kw'>let</span> <span class='ident'>v1</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>];
+<span class='kw'>let</span> <span class='ident'>v2</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>];
+
+<span class='kw'>let</span> (<span class='ident'>v1</span>, <span class='ident'>v2</span>, <span class='ident'>respuesta</span>) <span class='op'>=</span> <span class='ident'>foo</span>(<span class='ident'>v1</span>, <span class='ident'>v2</span>);</pre>
+
+<p>Lo anterior, sin embargo, no es Rust idiomatico, debido a que no se beneficia de las ventajas del préstamo. He aqui el primer paso:</p>
+<span class='rusttest'>fn main() {
+    fn foo(v1: &amp;Vec&lt;i32&gt;, v2: &amp;Vec&lt;i32&gt;) -&gt; i32 {
+        // hacer algo con v1 y v2
+    
+        // retornando la respuesta
+        42
+    }
+    
+    let v1 = vec![1, 2, 3];
+    let v2 = vec![1, 2, 3];
+    
+    let respuesta = foo(&amp;v1, &amp;v2);
+    
+    // podemos usar a v1 y v2 aqui
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>fn</span> <span class='ident'>foo</span>(<span class='ident'>v1</span>: <span class='kw-2'>&amp;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>, <span class='ident'>v2</span>: <span class='kw-2'>&amp;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>i32</span> {
+    <span class='comment'>// hacer algo con v1 y v2</span>
+
+    <span class='comment'>// retornando la respuesta</span>
+    <span class='number'>42</span>
+}
+
+<span class='kw'>let</span> <span class='ident'>v1</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>];
+<span class='kw'>let</span> <span class='ident'>v2</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>];
+
+<span class='kw'>let</span> <span class='ident'>respuesta</span> <span class='op'>=</span> <span class='ident'>foo</span>(<span class='kw-2'>&amp;</span><span class='ident'>v1</span>, <span class='kw-2'>&amp;</span><span class='ident'>v2</span>);
+
+<span class='comment'>// podemos usar a v1 y v2 aqui</span></pre>
+
+<p>En lugar de tomar <code>Vec&lt;i32&gt;</code>s como argumentos, tomamos una referencia: <code>&amp;Vec&lt;i32&gt;</code>. Y en lugar de pasar <code>v1</code> y <code>v2</code> directamente, pasamos <code>&amp;v1</code> y <code>&amp;v2</code>. Llamamos al tipo <code>&amp;T</code> una &#39;referencia&#39;, y en vez de tomar pertenencia sobre el recurso, este la toma prestado. Un enlace a variable que hace un préstamo de algo no libera el recurso cuando sale de ámbito. Esto significa que después de la llamada a <code>foo()</code>, podemos nuevamente hacer uso de los enlaces a variable originales.</p>
+
+<p>Las referencias son inmutables, justo como los enlaces a variable. Esto se traduce a que dentro de <code>foo()</code>, los vectores no pueden ser cambiados:</p>
+<span class='rusttest'>fn main() {
+    fn foo(v: &amp;Vec&lt;i32&gt;) {
+         v.push(5);
+    }
+    
+    let v = vec![];
+    
+    foo(&amp;v);
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>fn</span> <span class='ident'>foo</span>(<span class='ident'>v</span>: <span class='kw-2'>&amp;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>) {
+     <span class='ident'>v</span>.<span class='ident'>push</span>(<span class='number'>5</span>);
+}
+
+<span class='kw'>let</span> <span class='ident'>v</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[];
+
+<span class='ident'>foo</span>(<span class='kw-2'>&amp;</span><span class='ident'>v</span>);</pre>
+
+<p>falla con:</p>
+
+<pre><code class="language-text">error: cannot borrow immutable borrowed content `*v` as mutable
+v.push(5);
+^
+</code></pre>
+
+<p>Insertar un valor causa una mutación en el vector, y no tenemos permitido hacerlo.</p>
+
+<h1 id="referencias-&amp;mut" class='section-header'><a
+                           href="#referencias-&amp;mut">referencias &amp;mut</a></h1>
+<p>Existe un segundo tipo de referencia: <code>&amp;mut T</code>. Una ‘referencia mutable’ que permite mutar el recurso que estas tomando prestado. Por ejemplo:</p>
+<span class='rusttest'>fn main() {
+    let mut x = 5;
+    {
+        let y = &amp;mut x;
+        *y += 1;
+    }
+    println!(&quot;{}&quot;, x);
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+{
+    <span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>x</span>;
+    <span class='op'>*</span><span class='ident'>y</span> <span class='op'>+=</span> <span class='number'>1</span>;
+}
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>x</span>);</pre>
+
+<p>Lo anterior imprimirá <code>6</code>. Hacemos a <code>y</code> una referencia mutable a <code>x</code>, entonces sumamos uno a lo que sea que <code>y</code> apunta. Notaras que <code>x</code> también tuvo que haber sido marcado como <code>mut</code>, de lo contrario, no hubiésemos podido tomar un préstamo mutable a un valor inmutable.</p>
+
+<p>Notaras también que hemos agregado un asterisco (<code>*</code>) al frente de <code>y</code>, tornándolo en <code>*y</code>, esto es debido a que <code>y</code> es una referencia <code>&amp;mut</code>. También necesitaras hacer uso de ellos para acceder a el contenido de una referencia.</p>
+
+<p>De otro modo, las referencias <code>&amp;mut</code> son como las referencias. <em>Existe</em> una gran diferencia entre las dos, y como estas interactuan. Habrás notado que existe algo que no huele muy bien en el ejemplo anterior, puesto que necesitamos ese ámbito extra, con los <code>{</code> y <code>}</code>. Si los removemos, obtenemos un error:</p>
+
+<pre><code class="language-text">error: cannot borrow `x` as immutable because it is also borrowed as mutable
+    println!(&quot;{}&quot;, x);
+                   ^
+note: previous borrow of `x` occurs here; the mutable borrow prevents
+subsequent moves, borrows, or modification of `x` until the borrow ends
+        let y = &amp;mut x;
+                     ^
+note: previous borrow ends here
+fn main() {
+
+}
+^
+</code></pre>
+
+<p>Al parecer, hay reglas.</p>
+
+<h1 id="las-reglas" class='section-header'><a
+                           href="#las-reglas">Las Reglas</a></h1>
+<p>He aqui las reglas acerca del préstamo en Rust:</p>
+
+<p>Primero, cualquier préstamo debe vivir en un ámbito no mayor al de el dueño. Segundo, puedes tener uno u otro de estos tipos de préstamo, pero no los dos al mismo tiempo:</p>
+
+<ul>
+<li>una o mas referencias (<code>&amp;T</code>) a un recurso,</li>
+<li>exactamente una referencia mutable (<code>&amp;mut T</code>).</li>
+</ul>
+
+<p>Posiblemente notes que esto es muy similar, pero no exactamente igual, a la definición de una condición de carrera:</p>
+
+<blockquote>
+<p>Hay una ‘condición de carrera’ cuando dos o mas apuntadores acceden a la misma locación en memoria al mismo tiempo, en donde al menos uno esta escribiendo, y las operaciones no están sincronizadas.</p>
+</blockquote>
+
+<p>Con las referencias, puedes tener cuantas desees, debido a que ninguna de ellas esta escribiendo. Si estas escribiendo, y necesitas dos o mas apuntadores a la misma memoria, puedes tener solo un <code>&amp;mut</code> a la vez. Es así como Rust previene las condiciones de carrera en tiempo de compilación: obtendremos errores si rompemos las reglas.</p>
+
+<p>Con esto en mente, consideremos nuestro ejemplo otra vez.</p>
+
+<h2 id="pensando-en-ámbitos" class='section-header'><a
+                           href="#pensando-en-ámbitos">Pensando en ámbitos</a></h2>
+<p>He aqui el código:</p>
+<span class='rusttest'>fn main() {
+    let mut x = 5;
+    let y = &amp;mut x;
+    
+    *y += 1;
+    
+    println!(&quot;{}&quot;, x);
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+<span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>x</span>;
+
+<span class='op'>*</span><span class='ident'>y</span> <span class='op'>+=</span> <span class='number'>1</span>;
+
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>x</span>);</pre>
+
+<p>El código anterior genera el siguiente error:</p>
+
+<pre><code class="language-text">error: cannot borrow `x` as immutable because it is also borrowed as mutable
+    println!(&quot;{}&quot;, x);
+                   ^
+</code></pre>
+
+<p>Esto es debido a que hemos violado las reglas: tenemos un <code>&amp;mut T</code> apuntando a <code>x</code>, y en consecuencia no tenemos permitido crear ningún <code>&amp;T</code>s. Una cosa u otra. La nota apunta a como pensar acerca de este problema:</p>
+
+<pre><code class="language-text">note: previous borrow ends here
+fn main() {
+
+}
+^
+</code></pre>
+
+<p>En otras palabras, el préstamo mutable es mantenido a lo largo de el resto de nuestro ejemplo. Lo que queremos es que nuestro préstamo mutable termine <em>antes</em> que intentemos llamar a <code>println!</code> y hagamos un préstamo inmutable. En Rust, el préstamo esta asociado al ámbito en el cual el préstamo es valido. Nuestros ámbitos lucen así:</p>
+<span class='rusttest'>fn main() {
+    let mut x = 5;
+    
+    let y = &amp;mut x;    // -+ préstamo &amp;mut de x comienza aqui
+                       //  |
+    *y += 1;           //  |
+                       //  |
+    println!(&quot;{}&quot;, x); // -+ - intento de tomar prestado x aqui
+                       // -+ préstamo &amp;mut de x termina aqui
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+
+<span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>x</span>;    <span class='comment'>// -+ préstamo &amp;mut de x comienza aqui</span>
+                   <span class='comment'>//  |</span>
+<span class='op'>*</span><span class='ident'>y</span> <span class='op'>+=</span> <span class='number'>1</span>;           <span class='comment'>//  |</span>
+                   <span class='comment'>//  |</span>
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>x</span>); <span class='comment'>// -+ - intento de tomar prestado x aqui</span>
+                   <span class='comment'>// -+ préstamo &amp;mut de x termina aqui</span></pre>
+
+<p>Los ámbitos entran en conflicto: no podemos crear un <code>&amp;x</code> mientras <code>y</code> esta en ámbito.</p>
+
+<p>Entonces cuando agregamos llaves:</p>
+<span class='rusttest'>fn main() {
+    let mut x = 5;
+    
+    {
+        let y = &amp;mut x; // -+ préstamo &amp;mut de x comienza aqui
+        *y += 1;        //  |
+    }                   // -+ ... y termina aqui
+    
+    println!(&quot;{}&quot;, x);  // &lt;- intento de tomar prestado x aqui
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+
+{
+    <span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>x</span>; <span class='comment'>// -+ préstamo &amp;mut de x comienza aqui</span>
+    <span class='op'>*</span><span class='ident'>y</span> <span class='op'>+=</span> <span class='number'>1</span>;        <span class='comment'>//  |</span>
+}                   <span class='comment'>// -+ ... y termina aqui</span>
+
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>x</span>);  <span class='comment'>// &lt;- intento de tomar prestado x aqui</span></pre>
+
+<p>No hay problema. Nuestro préstamo mutable sale de ámbito antes de que creemos un préstamo inmutable. El ámbito es clave para ver cuanto dura el préstamo.</p>
+
+<h2 id="problemas-que-el-préstamo-previene" class='section-header'><a
+                           href="#problemas-que-el-préstamo-previene">Problemas que el préstamo previene</a></h2>
+<p>Porque tenemos estas reglas restrictivas? Bueno, como lo notamos, estas reglas previenen condiciones de carrera. Que tipos de problemas causan las condiciones de carrera? Acá unos pocos.</p>
+
+<h3 id="invalidación-de-iteradores" class='section-header'><a
+                           href="#invalidación-de-iteradores">Invalidación de Iteradores</a></h3>
+<p>Un ejemplo es la ‘invalidación de iteradores’, que ocurre cuando tratas de mutar una colección mientras estas iterando sobre ella. El comprobador de prestamos de Rust evita que esto ocurra:</p>
+<span class='rusttest'>fn main() {
+    let mut v = vec![1, 2, 3];
+    
+    for i in &amp;v {
+        println!(&quot;{}&quot;, i);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>v</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>];
+
+<span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='kw-2'>&amp;</span><span class='ident'>v</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>i</span>);
+}</pre>
+
+<p>Lo anterior imprime desde uno hasta tres. A medida que iteramos los vectores, solo se nos proporcionan referencias a sus elementos. <code>v</code> en si mismo es tomado prestado de manera inmutable, lo que se traduce en que no podamos cambiarlo mientras lo iteramos:</p>
+<span class='rusttest'>fn main() {
+    let mut v = vec![1, 2, 3];
+    
+    for i in &amp;v {
+        println!(&quot;{}&quot;, i);
+        v.push(34);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>v</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>];
+
+<span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='kw-2'>&amp;</span><span class='ident'>v</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>i</span>);
+    <span class='ident'>v</span>.<span class='ident'>push</span>(<span class='number'>34</span>);
+}</pre>
+
+<p>He aqui el error:</p>
+
+<pre><code class="language-text">error: cannot borrow `v` as mutable because it is also borrowed as immutable
+    v.push(34);
+    ^
+note: previous borrow of `v` occurs here; the immutable borrow prevents
+subsequent moves or mutable borrows of `v` until the borrow ends
+for i in &amp;v {
+          ^
+note: previous borrow ends here
+for i in &amp;v {
+    println!(“{}”, i);
+    v.push(34);
+}
+^
+</code></pre>
+
+<p>No podemos modificar <code>v</code> debido a que esta tomado prestado por el ciclo.</p>
+
+<h3 id="uso-despues-de-liberacion-(use-after-free)" class='section-header'><a
+                           href="#uso-despues-de-liberacion-(use-after-free)">uso despues de liberacion (use after free)</a></h3>
+<p>Las referencias no deben vivir por mas tiempo que el recurso al cual estas apuntan. Rust chequeara los ámbitos de tus referencias para asegurarse de que esto sea cierto.</p>
+
+<p>Si Rust no verificara esta propiedad, podriamos accidentalmente usar una referencia invalida. Por ejemplo:</p>
+<span class='rusttest'>fn main() {
+    let y: &amp;i32;
+    {
+        let x = 5;
+        y = &amp;x;
+    }
+    
+    println!(&quot;{}&quot;, y);
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>y</span>: <span class='kw-2'>&amp;</span><span class='ident'>i32</span>;
+{
+    <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+    <span class='ident'>y</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='ident'>x</span>;
+}
+
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>y</span>);</pre>
+
+<p>Obtenemos el siguiente error:</p>
+
+<pre><code class="language-text">error: `x` does not live long enough
+    y = &amp;x;
+         ^
+note: reference must be valid for the block suffix following statement 0 at
+2:16...
+let y: &amp;i32;
+{
+    let x = 5;
+    y = &amp;x;
+}
+
+note: ...but borrowed value is only valid for the block suffix following
+statement 0 at 4:18
+    let x = 5;
+    y = &amp;x;
+}
+</code></pre>
+
+<p>En otras palabras, <code>y</code> es valido solo para el ámbito en donde <code>x</code> existe. Tan pronto como <code>x</code> se va, se hace invalido hacerle referencia. Es por ello que el error dice que el préstamo, ‘no vive lo suficiente’ (‘doesn’t live long enough’) ya que no es valido por la cantidad de tiempo correcta.</p>
+
+<p>El mismo problema ocurre cuando la referencia es declarada <em>antes</em> de la variable a la cual hace referencia. Esto es debido a que los recursos dentro del mismo ámbito son liberados en orden opuesto al orden en el que fueron declarados:</p>
+<span class='rusttest'>fn main() {
+    let y: &amp;i32;
+    let x = 5;
+    y = &amp;x;
+    
+    println!(&quot;{}&quot;, y);
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>y</span>: <span class='kw-2'>&amp;</span><span class='ident'>i32</span>;
+<span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
+<span class='ident'>y</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='ident'>x</span>;
+
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>y</span>);</pre>
+
+<p>Obtenemos este error:</p>
+
+<pre><code class="language-text">error: `x` does not live long enough
+y = &amp;x;
+     ^
+note: reference must be valid for the block suffix following statement 0 at
+2:16...
+    let y: &amp;i32;
+    let x = 5;
+    y = &amp;x;
+
+    println!(&quot;{}&quot;, y);
+}
+
+note: ...but borrowed value is only valid for the block suffix following
+statement 1 at 3:14
+    let x = 5;
+    y = &amp;x;
+
+    println!(&quot;{}&quot;, y);
+}
+</code></pre>
+
+<p>En el ejemplo anterior, <code>y</code> es declarada antes que <code>x</code>, significando que <code>y</code> vive mas que <code>x</code>, lo cual no esta permitido.</p>
+
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
