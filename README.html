@@ -185,7 +185,7 @@
 
 
     <h1 class="title">El Lenguaje de Programación Rust</h1>
-    <p>Bienvenido! Este libro te enseñara acerca del <a href="http://rust-lang.org">Lenguaje de Programación Rust</a>.
+    <p>¡Bienvenido! Este libro te enseñará acerca del <a href="http://rust-lang.org">Lenguaje de Programación Rust</a>.
 Rust es un lenguaje de programación de sistemas enfocado en tres objetivos: seguridad, velocidad y concurrencia. Rust logra estos objetivos sin tener un recolector de basura, haciendolo util para un numero de casos de uso para los cuales otros lenguajes no son tan buenos: embeber en otros lenguajes, programas con requerimientos específicos de tiempo y espacio, escritura de código de bajo nivel, como controladores de dispositivo y sistemas operativos. Rust mejora por sobre los lenguajes actuales en este nicho a través de un numero de chequeos en tiempo de compilación que no incurren ninguna penalidad en tiempo de ejecución, eliminando al mismo tiempo las condiciones de carrera. Rust también implementa &#39;abstracciones con cero costo&#39;, abstracciones que se sienten como las de un lenguaje de alto nivel. Aun así, Rust permite control preciso tal y como un lenguaje de bajo nivel lo haria.</p>
 
 <p>“El Lenguaje de Programación Rust” esta dividido en siete secciones. Esta introducción es la primera. Después de esta:</p>
@@ -194,13 +194,13 @@ Rust es un lenguaje de programación de sistemas enfocado en tres objetivos: seg
 <li><a href="getting-started.html">Primeros Pasos</a> - Configura tu maquina para el desarrollo en Rust.</li>
 <li><a href="learn-rust.html">Aprende Rust</a> - Aprende programación en Rust a través de pequeños proyectos.</li>
 <li><a href="effective-rust.html">Rust Efectivo</a> - Conceptos de alto nivel para escribir excelente código Rust.</li>
-<li><a href="syntax-and-semantics.html">Sintaxis y Semantica</a> - Cada pieza de Rust, dividida en pequenos pedazos.</li>
+<li><a href="syntax-and-semantics.html">Sintaxis y Semántica</a> - Cada pieza de Rust, dividida en pequenos pedazos.</li>
 <li><a href="nightly-rust.html">Rust Nocturno</a> - Características todavía no disponibles en builds estables.</li>
 <li><a href="glossary.html">Glosario</a> - Referencia de los términos usados en el libro.</li>
 <li><a href="academic-research.html">Investigación Académica</a> - Literatura que influencio Rust.</li>
 </ul>
 
-<p>Después de leer esta introducción, dependiendo de tu preferencia, querrás leer ‘Aprende Rust’ o ‘Sintaxis y Semantica’: ‘Aprende Rust’ si quieres comenzar con un proyecto o ‘Sintaxis y Semántica’, si prefieres comenzar por lo mas pequeño aprendiendo un único concepto detalladamente antes de moverte al siguiente. Abundantes enlaces cruzados conectan dichas partes.</p>
+<p>Después de leer esta introducción, dependiendo de tu preferencia, querrás leer ‘Aprende Rust’ o ‘Sintaxis y Semántica’: ‘Aprende Rust’ si quieres comenzar con un proyecto o ‘Sintaxis y Semántica’, si prefieres comenzar por lo más pequeño aprendiendo un único concepto detalladamente antes de moverte al siguiente. Abundantes enlaces cruzados conectan dichas partes.</p>
 
 <h3 id="contribuyendo" class='section-header'><a
                            href="#contribuyendo">Contribuyendo</a></h3>
@@ -209,7 +209,7 @@ Rust es un lenguaje de programación de sistemas enfocado en tres objetivos: seg
 
 <h2 id="una-breve-introducción-a-rust" class='section-header'><a
                            href="#una-breve-introducción-a-rust">Una breve introducción a Rust</a></h2>
-<p>Es Rust un lenguaje en el cual estarías interesado? Examinemos unos pequeños ejemplo de código que demuestran algunas de sus fortalezas.</p>
+<p>¿Es Rust un lenguaje en el cual estarías interesado? Examinemos unos pequeños ejemplos de código que demuestran algunas de sus fortalezas.</p>
 
 <p>El concepto principal que hace único a Rust es llamado ‘pertenencia’ (‘ownership’). Considera este pequeño ejemplo:</p>
 <span class='rusttest'>fn main() {
@@ -220,17 +220,17 @@ Rust es un lenguaje de programación de sistemas enfocado en tres objetivos: seg
     <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='string'>&quot;Hola&quot;</span>, <span class='string'>&quot;mundo&quot;</span>];
 }</pre>
 
-<p>Este programa crea un una <a href="variable-bindings.html">variable</a> llamada <code>x</code>.El valor de esta variable es <code>Vec&lt;T&gt;</code>, un ‘vector’, que creamos a través de una <a href="macros.html">macro</a> definida en la biblioteca estandar. Esta macro se llama <code>vec</code>, las macros son invocadas con un <code>!</code>. Todo esto siguiendo un principio general en Rust: hacer las cosas explícitas. Las macros pueden hacer cosas significativamente mas complejas que llamadas a funciones, es por ello que son visualmente distintas. El <code>!</code> also ayuda también al análisis sintáctico, haciendo la escritura de herramientas mas fácil, lo cual es también importante.</p>
+<p>Este programa crea un una <a href="variable-bindings.html">variable</a> llamada <code>x</code>.El valor de esta variable es <code>Vec&lt;T&gt;</code>, un ‘vector’, que creamos a través de una <a href="macros.html">macro</a> definida en la biblioteca estandar. Esta macro se llama <code>vec</code>, las macros son invocadas con un <code>!</code>. Todo esto siguiendo un principio general en Rust: hacer las cosas explícitas. Las macros pueden hacer cosas significativamente más complejas que llamadas a funciones, es por ello que son visualmente distintas. El <code>!</code> ayuda también al análisis sintáctico, haciendo la escritura de herramientas más fácil, lo cual es también importante.</p>
 
-<p>Hemos usado <code>mut</code> para hacer <code>x</code> mutable: En Rust las variable son inmutables por defecto. Mas tarde en este ejemplo estaremos mutando este vector.</p>
+<p>Hemos usado <code>mut</code> para hacer <code>x</code> mutable: En Rust las variables son inmutables por defecto. Más tarde en este ejemplo estaremos mutando este vector.</p>
 
-<p>Es importate mencionar que no necesitamos una anotación de tipos aqui: si bien Rust es estaticamente tipado, no necesitamos anotar el tipo de forma explicita. Rust posee inferencia de tipos para balancear el poder de el tipado estatico con la verbosidad de las anotaciones de tipos.</p>
+<p>Es importate mencionar que no necesitamos una anotación de tipos aquí: si bien Rust es estaticamente tipado, no necesitamos anotar el tipo de forma explicita. Rust posee inferencia de tipos para balancear el poder de el tipado estático con la verbosidad de las anotaciones de tipos.</p>
 
 <p>Rust prefiere asignación de memoria desde la pila que desde el montículo: <code>x</code> es puesto directamente en la pila. Sin embargo, el tipo <code>Vec&lt;T&gt;</code> asigna espacio para los elementos del vector en el montículo. Si no estas familiarizado con esta distinción puedes ignorarla por ahora o echar un vistazo <a href="the-stack-and-the-heap.html">‘La Pila y el Monticulo’</a>. Rust como un lenguaje de programación de sistemas, te da la habilidad de controlar como la memoria es asignada, pero como estamos comenzando no es tan relevante.</p>
 
 <p>Anteriormente mencionamos que la ‘pertenencia’ es nuevo concepto clave en Rust. En terminología Rust, <code>x</code> es el ‘dueño’ del vector. Esto significa que cuando <code>x</code> salga de ámbito, la memoria asignada a el vector sera liberada. Esto es hecho por el compilador de Rust de manera deterministica, sin la necesidad de un mecanismo como un recolector de basura. En otras palabras, en Rust, no haces llamadas a funciones como <code>malloc</code> y <code>free</code> explícitamente: el compilador determina de manera estática cuando se necesita asignar o liberar memoria, e inserta esas llamadas por ti. Errar es de humanos, pero los compiladores nunca olvidan.</p>
 
-<p>Agreguemos otra linea a nuestro ejemplo:</p>
+<p>Agreguemos otra línea a nuestro ejemplo:</p>
 <span class='rusttest'>fn main() {
     let mut x = vec![&quot;Hola&quot;, &quot;mundo&quot;];
 
@@ -245,7 +245,7 @@ Rust es un lenguaje de programación de sistemas enfocado en tres objetivos: seg
 
 <p>Hemos introducido otra variable, <code>y</code>. En este caso, <code>y</code> es una ‘referencia’ a el primer elemento de el vector. Las referencias en Rust son similares a los apuntadores en otros lenguajes, pero con chequeos de seguridad adicionales en tiempo de compilación. Las referencias interactuan con el sistema de pertenencia a través de el <a href="references-and-borrowing.html">‘prestamo’</a> (‘borrowing’), ellas toman prestado a lo que apuntan, en vez de adueñarse de ello. La diferencia es que cuando la referencia salga de ámbito, la memoria subyacente no sera liberada. De ser ese el caso estaríamos liberando la misma memoria dos veces, lo cual es malo.</p>
 
-<p>Agreguemos una tercera linea. Dicha linea luce inocente pero causa un error de compilación:</p>
+<p>Agreguemos una tercera línea. Dicha línea luce inocente pero causa un error de compilación:</p>
 <span class='rusttest'>fn main() {
     let mut x = vec![&quot;Hola&quot;, &quot;mundo&quot;];
 
@@ -278,9 +278,9 @@ fn main() {
 ^
 </code></pre>
 
-<p>Uff! El compilador de Rust algunas veces puede proporcionar errores bien detallados y esta vez una de ellas. Como el error lo explica, mientras hacemos la variable mutable no podemos llamar a <code>push</code>. Esto es porque ya tenemos una referencia a un elemento del vector, <code>y</code>. Mutar algo mientras existe una referencia a ello es peligroso, porque podemos invalidar la referencia. En este caso en especifico, cuando creamos el vector, solo hemos asignado espacio para dos elementos. Agregar un tercero significaría asignar un nuevo segmento de memoria para todos los elementos, copiar todos los valores anteriores y actualizar el apuntador interno a esa memoria. Todo eso esta bien. El problema es que <code>y</code> no seria actualizado, generando un ‘puntero colgante’. Lo cual esta mal. Cualquier uso de <code>y</code> seria un error en este caso, y el compilador nos ha prevenido de ello.</p>
+<p>¡Uff! El compilador de Rust algunas veces puede proporcionar errores bien detallados y esta vez una de ellas. Como el error lo explica, mientras hacemos la variable mutable no podemos llamar a <code>push</code>. Esto es porque ya tenemos una referencia a un elemento del vector, <code>y</code>. Mutar algo mientras existe una referencia a ello es peligroso, porque podemos invalidar la referencia. En este caso en especifico, cuando creamos el vector, solo hemos asignado espacio para dos elementos. Agregar un tercero significaría asignar un nuevo segmento de memoria para todos los elementos, copiar todos los valores anteriores y actualizar el apuntador interno a esa memoria. Todo eso esta bien. El problema es que <code>y</code> no seria actualizado, generando un ‘puntero colgante’. Lo cual esta mal. Cualquier uso de <code>y</code> seria un error en este caso, y el compilador nos ha prevenido de ello.</p>
 
-<p>Entonces, como resolvemos este problema? Hay dos enfoques que podríamos tomar. El primero es hacer una copia en lugar de una referencia:</p>
+<p>Entonces, ¿cómo resolvemos este problema? Hay dos enfoques que podríamos tomar. El primero es hacer una copia en lugar de una referencia:</p>
 <span class='rusttest'>fn main() {
     let mut x = vec![&quot;Hola&quot;, &quot;mundo&quot;];
 
@@ -322,7 +322,7 @@ fn main() {
 
 <p>Con el par adicional de llaves hemos creado un ámbito interno. <code>y</code> saldrá de ámbito antes que llamemos a <code>push()</code>, entonces no hay problema.</p>
 
-<p>Este concepto de pertenencia no es solo bueno para prevenir punteros colgantes, sino un conjunto entero de problemas, como invalidación de iteradores, concurrencia y mas.</p>
+<p>Este concepto de pertenencia no es solo bueno para prevenir punteros colgantes, sino un conjunto entero de problemas, como invalidación de iteradores, concurrencia y más.</p>
 
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
