@@ -185,7 +185,79 @@
 
 
     <h1 class="title">Atributos</h1>
+    <p>Las declaraciones pueden ser anotadas con ‘atributos’ en Rust. Los atributos lucen así:</p>
+<span class='rusttest'>fn main() {
+    #[test]
+    fn foo() {}
     
+}</span><pre class='rust rust-example-rendered'>
+<span class='attribute'>#[<span class='ident'>test</span>]</span></pre>
+
+<p>o de esta manera:</p>
+<span class='rusttest'>fn main() {
+    mod foo {
+    #![test]
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>test</span>]</span></pre>
+
+<p>La diferencia entre los dos es el <code>!</code>, que cambia a que cosa aplica el atributo:</p>
+<span class='rusttest'>fn main() {
+    #[foo]
+    struct Foo;
+    
+    mod bar {
+        #![bar]
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='attribute'>#[<span class='ident'>foo</span>]</span>
+<span class='kw'>struct</span> <span class='ident'>Foo</span>;
+
+<span class='kw'>mod</span> <span class='ident'>bar</span> {
+    <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>bar</span>]</span>
+}</pre>
+
+<p>El atributo <code>#[foo]</code> aplica a el siguiente item, que es la declaración del <code>struct</code>. El atributo <code>#![bar]</code> aplica a el item que lo encierra, la declaración <code>mod</code>. De resto, son lo mismo. Ambos cambian de alguna forma el significado de el item al cual están asociados.</p>
+
+<p>Por ejemplo, considera una función como esta:</p>
+<span class='rusttest'>fn main() {
+    #[test]
+    fn comprobar() {
+        assert_eq!(2, 1 + 1);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='attribute'>#[<span class='ident'>test</span>]</span>
+<span class='kw'>fn</span> <span class='ident'>comprobar</span>() {
+    <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>2</span>, <span class='number'>1</span> <span class='op'>+</span> <span class='number'>1</span>);
+}</pre>
+
+<p>Esta marcado con <code>#[test]</code>. Esto significa que es especial: cuando ejecutes las <a href="testing.html">pruebas</a>, esta función sera ejecutada. Cuando compilas normalmente, no sera incluida ni siquiera. La función es ahora una función de prueba.</p>
+
+<p>Los atributos pueden tener también data adicional:</p>
+<span class='rusttest'>fn main() {
+    #[inline(always)]
+    fn fn_super_rapida() {
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='attribute'>#[<span class='ident'>inline</span>(<span class='ident'>always</span>)]</span>
+<span class='kw'>fn</span> <span class='ident'>fn_super_rapida</span>() {</pre>
+
+<p>O incluso claves y valores:</p>
+<span class='rusttest'>fn main() {
+    #[cfg(target_os = &quot;macos&quot;)]
+    mod solo_macos {
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>target_os</span> <span class='op'>=</span> <span class='string'>&quot;macos&quot;</span>)]</span>
+<span class='kw'>mod</span> <span class='ident'>solo_macos</span> {</pre>
+
+<p>Los atributos son usados para un numero de cosas diferentes en Rust. Hay una lista de atributos completa en la <a href="../reference.html#attributes">referencia</a>. Actualmente, no tienes permitido crear tus propios atributos, el compilador de Rust los define.</p>
+
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
