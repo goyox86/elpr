@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <title>alias `type`</title>
+    <title>Alias `type`</title>
 
     <link rel="stylesheet" type="text/css" href="rust-book.css">
 
@@ -184,8 +184,99 @@
 <div id='page'>
 
 
-    <h1 class="title">alias `type`</h1>
+    <h1 class="title">Alias `type`</h1>
+    <p>La palabra reservada <code>type</code> te permite declarar un alias a otro tipo:</p>
+<span class='rusttest'>fn main() {
+    type Nombre = String;
     
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>type</span> <span class='ident'>Nombre</span> <span class='op'>=</span> <span class='ident'>String</span>;</pre>
+
+<p>Ahora, puedes usar este tipo como si fuera un tipo real:</p>
+<span class='rusttest'>fn main() {
+    type Name = String;
+    
+    let x: Nombre = &quot;Hola&quot;.to_string();
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>type</span> <span class='ident'>Name</span> <span class='op'>=</span> <span class='ident'>String</span>;
+
+<span class='kw'>let</span> <span class='ident'>x</span>: <span class='ident'>Nombre</span> <span class='op'>=</span> <span class='string'>&quot;Hola&quot;</span>.<span class='ident'>to_string</span>();</pre>
+
+<p>Sin embargo, nota, que es un <em>alias</em>, no un nuevo tipo. En otras palabras, debido a que Rust es fuertemente tipificado, podrías esperar que una comparación entre dos tipos diferentes falle:</p>
+<span class='rusttest'>fn main() {
+    let x: i32 = 5;
+    let y: i64 = 5;
+    
+    if x == y {
+       // ...
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>x</span>: <span class='ident'>i32</span> <span class='op'>=</span> <span class='number'>5</span>;
+<span class='kw'>let</span> <span class='ident'>y</span>: <span class='ident'>i64</span> <span class='op'>=</span> <span class='number'>5</span>;
+
+<span class='kw'>if</span> <span class='ident'>x</span> <span class='op'>==</span> <span class='ident'>y</span> {
+   <span class='comment'>// ...</span>
+}</pre>
+
+<p>lo anterior, produce:</p>
+
+<pre><code class="language-text">error: mismatched types:
+ expected `i32`,
+    found `i64`
+(expected i32,
+    found i64) [E0308]
+     if x == y {
+             ^
+</code></pre>
+
+<p>Pero, si tuviéramos un alias:</p>
+<span class='rusttest'>fn main() {
+    type Num = i32;
+    
+    let x: i32 = 5;
+    let y: Num = 5;
+    
+    if x == y {
+       // ...
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>type</span> <span class='ident'>Num</span> <span class='op'>=</span> <span class='ident'>i32</span>;
+
+<span class='kw'>let</span> <span class='ident'>x</span>: <span class='ident'>i32</span> <span class='op'>=</span> <span class='number'>5</span>;
+<span class='kw'>let</span> <span class='ident'>y</span>: <span class='ident'>Num</span> <span class='op'>=</span> <span class='number'>5</span>;
+
+<span class='kw'>if</span> <span class='ident'>x</span> <span class='op'>==</span> <span class='ident'>y</span> {
+   <span class='comment'>// ...</span>
+}</pre>
+
+<p>Compilaría sin errores. Valores de un tipo <code>Num</code> son lo mismo que un valor de tipo <code>i32</code>, en todos los aspectos.</p>
+
+<p>Puedes también hacer uso de alias de tipos en genéricos:</p>
+<span class='rusttest'>fn main() {
+    use std::result;
+    
+    enum ErrorConcreto {
+        Foo,
+        Bar,
+    }
+    
+    type Result&lt;T&gt; = result::Result&lt;T, ErrorConcreto&gt;;
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>result</span>;
+
+<span class='kw'>enum</span> <span class='ident'>ErrorConcreto</span> {
+    <span class='ident'>Foo</span>,
+    <span class='ident'>Bar</span>,
+}
+
+<span class='kw'>type</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>result</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>ErrorConcreto</span><span class='op'>&gt;</span>;</pre>
+
+<p>El código anterior, crea una version especializada de el tipo <code>Result</code>, la cual posee siempre un <code>ErrorConcreto</code> para la parte <code>E</code> de <code>Result&lt;T, E&gt;</code>. Esta practica es usada comúnmente en la biblioteca estándar para la creación de errores personalizados para cada sub-seccion. Por ejemplo, <a href="../std/io/type.Result.html">io::Result</a>.</p>
+
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
