@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <title>Rasgos</title>
+    <title>Traits</title>
 
     <link rel="stylesheet" type="text/css" href="rust-book.css">
 
@@ -56,9 +56,9 @@
 </li>
 <li><a  href='testing.html'><b>4.2.</b> Pruebas</a>
 </li>
-<li><a  href='conditional-compilation.html'><b>4.3.</b> Compilacion Condicional</a>
+<li><a  href='conditional-compilation.html'><b>4.3.</b> Compilación Condicional</a>
 </li>
-<li><a  href='documentation.html'><b>4.4.</b> Documentacion</a>
+<li><a  href='documentation.html'><b>4.4.</b> Documentación</a>
 </li>
 <li><a  href='iterators.html'><b>4.5.</b> Iteradores</a>
 </li>
@@ -76,7 +76,7 @@
 </li>
 <li><a  href='syntax-and-semantics.html'><b>5.</b> Sintaxis y Semantica</a>
 <ul class='section'>
-<li><a  href='variable-bindings.html'><b>5.1.</b> Variables</a>
+<li><a  href='variable-bindings.html'><b>5.1.</b> Enlaces a Variables</a>
 </li>
 <li><a  href='functions.html'><b>5.2.</b> Funciones</a>
 </li>
@@ -86,69 +86,67 @@
 </li>
 <li><a  href='if.html'><b>5.5.</b> if</a>
 </li>
-<li><a  href='for-loops.html'><b>5.6.</b> Ciclos for</a>
+<li><a  href='loops.html'><b>5.6.</b> Ciclos</a>
 </li>
-<li><a  href='while-loops.html'><b>5.7.</b> Ciclos while</a>
+<li><a  href='ownership.html'><b>5.7.</b> Pertenencia</a>
 </li>
-<li><a  href='ownership.html'><b>5.8.</b> Pertenencia</a>
+<li><a  href='references-and-borrowing.html'><b>5.8.</b> Referencias y Prestamo</a>
 </li>
-<li><a  href='references-and-borrowing.html'><b>5.9.</b> Referencias y Prestamo</a>
+<li><a  href='lifetimes.html'><b>5.9.</b> Tiempos de Vida</a>
 </li>
-<li><a  href='lifetimes.html'><b>5.10.</b> Tiempos de Vida</a>
+<li><a  href='mutability.html'><b>5.10.</b> Mutabilidad</a>
 </li>
-<li><a  href='mutability.html'><b>5.11.</b> Mutabilidad</a>
+<li><a  href='structs.html'><b>5.11.</b> Estructuras</a>
 </li>
-<li><a  href='structs.html'><b>5.12.</b> Estructuras</a>
+<li><a  href='enums.html'><b>5.12.</b> Enumeraciones</a>
 </li>
-<li><a  href='enums.html'><b>5.13.</b> Enumeraciones</a>
+<li><a  href='match.html'><b>5.13.</b> Match</a>
 </li>
-<li><a  href='match.html'><b>5.14.</b> Match</a>
+<li><a  href='patterns.html'><b>5.14.</b> Patrones</a>
 </li>
-<li><a  href='patterns.html'><b>5.15.</b> Patrones</a>
+<li><a  href='method-syntax.html'><b>5.15.</b> Sintaxis de Metodos</a>
 </li>
-<li><a  href='method-syntax.html'><b>5.16.</b> Sintaxis de Metodos</a>
+<li><a  href='vectors.html'><b>5.16.</b> Vectores</a>
 </li>
-<li><a  href='vectors.html'><b>5.17.</b> Vectores</a>
+<li><a  href='strings.html'><b>5.17.</b> Cadenas de Caracteres</a>
 </li>
-<li><a  href='strings.html'><b>5.18.</b> Cadenas de Caracteres</a>
+<li><a  href='generics.html'><b>5.18.</b> Genericos</a>
 </li>
-<li><a  href='generics.html'><b>5.19.</b> Genericos</a>
+<li><a class='active' href='traits.html'><b>5.19.</b> Traits</a>
 </li>
-<li><a class='active' href='traits.html'><b>5.20.</b> Rasgos</a>
+<li><a  href='drop.html'><b>5.20.</b> Drop</a>
 </li>
-<li><a  href='drop.html'><b>5.21.</b> Drop</a>
+<li><a  href='if-let.html'><b>5.21.</b> if let</a>
 </li>
-<li><a  href='if-let.html'><b>5.22.</b> if let</a>
+<li><a  href='trait-objects.html'><b>5.22.</b> Objetos Trait</a>
 </li>
-<li><a  href='trait-objects.html'><b>5.23.</b> Objetos de Razgo</a>
+<li><a  href='closures.html'><b>5.23.</b> Closures</a>
 </li>
-<li><a  href='closures.html'><b>5.24.</b> Closures</a>
+<li><a  href='ufcs.html'><b>5.24.</b> Sintaxis Universal  de Llamada a Funciones</a>
 </li>
-<li><a  href='ufcs.html'><b>5.25.</b> Sintaxis de Llamada a Funciones Universal</a>
+<li><a  href='crates-and-modules.html'><b>5.25.</b> Crates y Modulos</a>
 </li>
-<li><a  href='crates-and-modules.html'><b>5.26.</b> Crates y Modulos</a>
+<li><a  href='const-and-static.html'><b>5.26.</b> `const` y `static`</a>
 </li>
-<li><a  href='const-and-static.html'><b>5.27.</b> `const` y `static`</a>
+<li><a  href='attributes.html'><b>5.27.</b> Atributos</a>
 </li>
-<li><a  href='attributes.html'><b>5.28.</b> Atributos</a>
+<li><a  href='type-aliases.html'><b>5.28.</b> Alias `type`</a>
 </li>
-<li><a  href='type-aliases.html'><b>5.29.</b> Alias `type`</a>
+<li><a  href='casting-between-types.html'><b>5.29.</b> Conversion entre Tipos</a>
 </li>
-<li><a  href='casting-between-types.html'><b>5.30.</b> Conversion entre Tipos</a>
+<li><a  href='associated-types.html'><b>5.30.</b> Tipos Asociados</a>
 </li>
-<li><a  href='associated-types.html'><b>5.31.</b> Tipos Asociados</a>
+<li><a  href='unsized-types.html'><b>5.31.</b> Tipos sin Tamano</a>
 </li>
-<li><a  href='unsized-types.html'><b>5.32.</b> Tipos sin Tamano</a>
+<li><a  href='operators-and-overloading.html'><b>5.32.</b> Operadores y Sobrecarga</a>
 </li>
-<li><a  href='operators-and-overloading.html'><b>5.33.</b> Operadores y Sobrecarga</a>
+<li><a  href='deref-coercions.html'><b>5.33.</b> Coerciones Deref</a>
 </li>
-<li><a  href='deref-coercions.html'><b>5.34.</b> Coerciones Deref</a>
+<li><a  href='macros.html'><b>5.34.</b> Macros</a>
 </li>
-<li><a  href='macros.html'><b>5.35.</b> Macros</a>
+<li><a  href='raw-pointers.html'><b>5.35.</b> Apuntadores Planos</a>
 </li>
-<li><a  href='raw-pointers.html'><b>5.36.</b> Apuntadores Planos</a>
-</li>
-<li><a  href='unsafe.html'><b>5.37.</b> `unsafe`</a>
+<li><a  href='unsafe.html'><b>5.36.</b> `unsafe`</a>
 </li>
 </ul>
 </li>
@@ -160,7 +158,7 @@
 </li>
 <li><a  href='no-stdlib.html'><b>6.3.</b> No stdlib</a>
 </li>
-<li><a  href='intrinsics.html'><b>6.4.</b> Intrinsecos</a>
+<li><a  href='intrinsics.html'><b>6.4.</b> Intrínsecos</a>
 </li>
 <li><a  href='lang-items.html'><b>6.5.</b> Items de Lenguaje</a>
 </li>
@@ -186,8 +184,667 @@
 <div id='page'>
 
 
-    <h1 class="title">Rasgos</h1>
+    <h1 class="title">Traits</h1>
+    <p>Un trait es una facilidad del lenguaje que le indica compilador de Rust acerca de la funcionalidad que un tipo debe proveer.</p>
+
+<p>Recuerdas la palabra reservada <code>impl</code>?, usada para llamar a una función con la <a href="method-syntax.html">sintaxis de métodos</a>?</p>
+<span class='rusttest'>fn main() {
+    struct Circulo {
+        x: f64,
+        y: f64,
+        radio: f64,
+    }
     
+    impl Circulo {
+        fn area(&amp;self) -&gt; f64 {
+            std::f64::consts::PI * (self.radio * self.radio)
+        }
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>struct</span> <span class='ident'>Circulo</span> {
+    <span class='ident'>x</span>: <span class='ident'>f64</span>,
+    <span class='ident'>y</span>: <span class='ident'>f64</span>,
+    <span class='ident'>radio</span>: <span class='ident'>f64</span>,
+}
+
+<span class='kw'>impl</span> <span class='ident'>Circulo</span> {
+    <span class='kw'>fn</span> <span class='ident'>area</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span> {
+        <span class='ident'>std</span>::<span class='ident'>f64</span>::<span class='ident'>consts</span>::<span class='ident'>PI</span> <span class='op'>*</span> (<span class='self'>self</span>.<span class='ident'>radio</span> <span class='op'>*</span> <span class='self'>self</span>.<span class='ident'>radio</span>)
+    }
+}</pre>
+
+<p>Los traits son similares, excepto que definimos un trait con solo la firma de método y luego implementamos el trait para la estructura. Así:</p>
+<span class='rusttest'>fn main() {
+    struct Circulo {
+        x: f64,
+        y: f64,
+        radio: f64,
+    }
+    
+    trait TieneArea {
+        fn area(&amp;self) -&gt; f64;
+    }
+    
+    impl TieneArea for Circulo {
+        fn area(&amp;self) -&gt; f64 {
+            std::f64::consts::PI * (self.radio * self.radio)
+        }
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>struct</span> <span class='ident'>Circulo</span> {
+    <span class='ident'>x</span>: <span class='ident'>f64</span>,
+    <span class='ident'>y</span>: <span class='ident'>f64</span>,
+    <span class='ident'>radio</span>: <span class='ident'>f64</span>,
+}
+
+<span class='kw'>trait</span> <span class='ident'>TieneArea</span> {
+    <span class='kw'>fn</span> <span class='ident'>area</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span>;
+}
+
+<span class='kw'>impl</span> <span class='ident'>TieneArea</span> <span class='kw'>for</span> <span class='ident'>Circulo</span> {
+    <span class='kw'>fn</span> <span class='ident'>area</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span> {
+        <span class='ident'>std</span>::<span class='ident'>f64</span>::<span class='ident'>consts</span>::<span class='ident'>PI</span> <span class='op'>*</span> (<span class='self'>self</span>.<span class='ident'>radio</span> <span class='op'>*</span> <span class='self'>self</span>.<span class='ident'>radio</span>)
+    }
+}</pre>
+
+<p>Como puedes ver, el bloque <code>trait</code> luce muy similar a el bloque <code>impl</code>, pero no definimos un bloque, solo la firma de tipos. Cuando implementamos un trait, usamos <code>impl Trait for Item</code>, en vez de solo <code>impl Item</code>.</p>
+
+<h2 id='limites-trait-para-funciones-genéricas' class='section-header'><a href='#limites-trait-para-funciones-genéricas'>Limites trait para funciones genéricas</a></h2>
+<p>Los traits son útiles porque permiten a un tipo hacer ciertas promesas acerca de su comportamiento. La funciones genéricas pueden explotar esto para restringir los tipos que aceptan. Considera esta función, la cual no compila:</p>
+<span class='rusttest'>fn main() {
+    fn imrimir_area&lt;T&gt;(figura: T) {
+        println!(&quot;Esta figura tiene un area de {}&quot;, figura.area());
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>fn</span> <span class='ident'>imrimir_area</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='ident'>figura</span>: <span class='ident'>T</span>) {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Esta figura tiene un area de {}&quot;</span>, <span class='ident'>figura</span>.<span class='ident'>area</span>());
+}</pre>
+
+<p>Rust se queja:</p>
+
+<pre><code class="language-text">error: no method named `area` found for type `T` in the current scope
+</code></pre>
+
+<p>Debido a que <code>T</code> puede ser de cualquier tipo, no podemos estar seguros que implementa el método <code>area</code>. Pero podemos agregar una ‘restricción de trait’ a nuestro <code>T</code> genérico, asegurándonos de que lo implemente:</p>
+<span class='rusttest'>fn main() {
+    trait TieneArea {
+        fn area(&amp;self) -&gt; f64;
+    }
+    fn imrimir_area&lt;T: TieneArea&gt;(shape: T) {
+        println!(&quot;Esta figura tiene un area de {}&quot;, figura.area());
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>fn</span> <span class='ident'>imrimir_area</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>TieneArea</span><span class='op'>&gt;</span>(<span class='ident'>shape</span>: <span class='ident'>T</span>) {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Esta figura tiene un area de {}&quot;</span>, <span class='ident'>figura</span>.<span class='ident'>area</span>());
+}</pre>
+
+<p>La sintaxis <code>&lt;T: TieneArea&gt;</code> se traduce en “cualquier tipo que implemente el trait <code>TieneArea</code>.”. A consecuencia de que los traits definen firmas de tipos de función, podemos estar seguros que cualquier tipo que implemente <code>TieneArea</code> tendrá un método <code>.area()</code>.</p>
+
+<p>He aquí un ejemplo extendido de como esto funciona:</p>
+<span class='rusttest'>trait TieneArea {
+    fn area(&amp;self) -&gt; f64;
+}
+
+struct Circulo {
+    x: f64,
+    y: f64,
+    radio: f64,
+}
+
+impl TieneArea for Circulo {
+    fn area(&amp;self) -&gt; f64 {
+        std::f64::consts::PI * (self.radio * self.radio)
+    }
+}
+
+struct Cuadrado {
+    x: f64,
+    y: f64,
+    lado: f64,
+}
+
+impl TieneArea for Cuadrado {
+    fn area(&amp;self) -&gt; f64 {
+        self.lado * self.lado
+    }
+}
+
+fn imrimir_area&lt;T: TieneArea&gt;(figura: T) {
+    println!(&quot;Esta figura tiene un area de {}&quot;, figura.area());
+}
+
+fn main() {
+    let c = Circulo {
+        x: 0.0f64,
+        y: 0.0f64,
+        radio: 1.0f64,
+    };
+
+    let s = Cuadrado {
+        x: 0.0f64,
+        y: 0.0f64,
+        lado: 1.0f64,
+    };
+
+    imrimir_area(c);
+    imrimir_area(s);
+}
+</span><pre class='rust rust-example-rendered'>
+<span class='kw'>trait</span> <span class='ident'>TieneArea</span> {
+    <span class='kw'>fn</span> <span class='ident'>area</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span>;
+}
+
+<span class='kw'>struct</span> <span class='ident'>Circulo</span> {
+    <span class='ident'>x</span>: <span class='ident'>f64</span>,
+    <span class='ident'>y</span>: <span class='ident'>f64</span>,
+    <span class='ident'>radio</span>: <span class='ident'>f64</span>,
+}
+
+<span class='kw'>impl</span> <span class='ident'>TieneArea</span> <span class='kw'>for</span> <span class='ident'>Circulo</span> {
+    <span class='kw'>fn</span> <span class='ident'>area</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span> {
+        <span class='ident'>std</span>::<span class='ident'>f64</span>::<span class='ident'>consts</span>::<span class='ident'>PI</span> <span class='op'>*</span> (<span class='self'>self</span>.<span class='ident'>radio</span> <span class='op'>*</span> <span class='self'>self</span>.<span class='ident'>radio</span>)
+    }
+}
+
+<span class='kw'>struct</span> <span class='ident'>Cuadrado</span> {
+    <span class='ident'>x</span>: <span class='ident'>f64</span>,
+    <span class='ident'>y</span>: <span class='ident'>f64</span>,
+    <span class='ident'>lado</span>: <span class='ident'>f64</span>,
+}
+
+<span class='kw'>impl</span> <span class='ident'>TieneArea</span> <span class='kw'>for</span> <span class='ident'>Cuadrado</span> {
+    <span class='kw'>fn</span> <span class='ident'>area</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span> {
+        <span class='self'>self</span>.<span class='ident'>lado</span> <span class='op'>*</span> <span class='self'>self</span>.<span class='ident'>lado</span>
+    }
+}
+
+<span class='kw'>fn</span> <span class='ident'>imrimir_area</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>TieneArea</span><span class='op'>&gt;</span>(<span class='ident'>figura</span>: <span class='ident'>T</span>) {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Esta figura tiene un area de {}&quot;</span>, <span class='ident'>figura</span>.<span class='ident'>area</span>());
+}
+
+<span class='kw'>fn</span> <span class='ident'>main</span>() {
+    <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Circulo</span> {
+        <span class='ident'>x</span>: <span class='number'>0.0f64</span>,
+        <span class='ident'>y</span>: <span class='number'>0.0f64</span>,
+        <span class='ident'>radio</span>: <span class='number'>1.0f64</span>,
+    };
+
+    <span class='kw'>let</span> <span class='ident'>s</span> <span class='op'>=</span> <span class='ident'>Cuadrado</span> {
+        <span class='ident'>x</span>: <span class='number'>0.0f64</span>,
+        <span class='ident'>y</span>: <span class='number'>0.0f64</span>,
+        <span class='ident'>lado</span>: <span class='number'>1.0f64</span>,
+    };
+
+    <span class='ident'>imrimir_area</span>(<span class='ident'>c</span>);
+    <span class='ident'>imrimir_area</span>(<span class='ident'>s</span>);
+}</pre>
+
+<p>Este programa produce la salida:</p>
+
+<pre><code class="language-text">Esta figura tiene un area de 3.141593
+Esta figura tiene un area de 1
+</code></pre>
+
+<p>Como puedes ver, <code>imrimir_area</code> ahora es genérica, pero también asegura que hallamos proporcionado los tipos correctos. Si pasamos un tipo incorrecto:</p>
+<span class='rusttest'>fn main() {
+    imrimir_area(5);
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='ident'>imrimir_area</span>(<span class='number'>5</span>);</pre>
+
+<p>Obtenemos un error en tiempo de compilación:</p>
+
+<pre><code class="language-text">error: the trait `TieneArea` is not implemented for the type `_` [E0277]
+</code></pre>
+
+<h2 id='limites-de-trait-para-estructuras-genericas' class='section-header'><a href='#limites-de-trait-para-estructuras-genericas'>Limites de trait para estructuras genericas</a></h2>
+<p>Tus estructuras genéricas pueden beneficiarse también de las restricciones de trait. Todo lo que necesitas es agregar la restricción cuando declaras los parámetros de tipos. A continuación un nuevo tipo <code>Rectangulo&lt;T&gt;</code> y su operación <code>es_cuadrado</code>:</p>
+<span class='rusttest'>struct Rectangulo&lt;T&gt; {
+    x: T,
+    y: T,
+    ancho: T,
+    altura: T,
+}
+
+impl&lt;T: PartialEq&gt; Rectangulo&lt;T&gt; {
+    fn es_cuadrado(&amp;self) -&gt; bool {
+        self.ancho == self.altura
+    }
+}
+
+fn main() {
+    let mut r = Rectangulo {
+        x: 0,
+        y: 0,
+        ancho: 47,
+        altura: 47,
+    };
+
+    assert!(r.es_cuadrado());
+
+    r.altura = 42;
+    assert!(!r.es_cuadrado());
+}
+</span><pre class='rust rust-example-rendered'>
+<span class='kw'>struct</span> <span class='ident'>Rectangulo</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+    <span class='ident'>x</span>: <span class='ident'>T</span>,
+    <span class='ident'>y</span>: <span class='ident'>T</span>,
+    <span class='ident'>ancho</span>: <span class='ident'>T</span>,
+    <span class='ident'>altura</span>: <span class='ident'>T</span>,
+}
+
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>PartialEq</span><span class='op'>&gt;</span> <span class='ident'>Rectangulo</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+    <span class='kw'>fn</span> <span class='ident'>es_cuadrado</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+        <span class='self'>self</span>.<span class='ident'>ancho</span> <span class='op'>==</span> <span class='self'>self</span>.<span class='ident'>altura</span>
+    }
+}
+
+<span class='kw'>fn</span> <span class='ident'>main</span>() {
+    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>Rectangulo</span> {
+        <span class='ident'>x</span>: <span class='number'>0</span>,
+        <span class='ident'>y</span>: <span class='number'>0</span>,
+        <span class='ident'>ancho</span>: <span class='number'>47</span>,
+        <span class='ident'>altura</span>: <span class='number'>47</span>,
+    };
+
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>r</span>.<span class='ident'>es_cuadrado</span>());
+
+    <span class='ident'>r</span>.<span class='ident'>altura</span> <span class='op'>=</span> <span class='number'>42</span>;
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>r</span>.<span class='ident'>es_cuadrado</span>());
+}</pre>
+
+<p><code>es_cuadrado()</code> necesita chequear que los lados son iguales, y para ello los tipos deben ser de un tipo que implemente el trait <a href="../core/cmp/trait.PartialEq.html"><code>core::cmp::PartialEq</code></a>:</p>
+<span class='rusttest'>fn main() {
+    impl&lt;T: PartialEq&gt; Rectangulo&lt;T&gt; { ... }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>PartialEq</span><span class='op'>&gt;</span> <span class='ident'>Rectangulo</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> { ... }</pre>
+
+<p>Ahora, un rectángulo puede ser definido en función de cualquier tipo que pueda ser comparado por igualdad.</p>
+
+<p>Hemos definido una nueva estructura <code>Rectangulo</code> que acepta números de cualquier precision, objetos de cualquier tipo siempre y cuando puedan ser comparados por igualdad. Podríamos hacer lo mismo para nuestras estructuras <code>TieneArea</code>, <code>Cuadrado</code> y <code>Circulo</code>? Si, pero estas necesitan multiplicación, y para trabajar con eso necesitamos saber mas de los <a href="operators-and-overloading.html">traits de operadores</a>.</p>
+
+<h1 id='reglas-para-la-implementación-de-traits' class='section-header'><a href='#reglas-para-la-implementación-de-traits'>Reglas para la implementación de traits</a></h1>
+<p>Hasta ahora, solo hemos agregado implementaciones de traits a estructuras, pero puedes implementar cualquier trait para cualquier tipo. Técnicamente, <em>podriamos</em> implementar <code>TieneArea</code> para <code>i32</code>:</p>
+<span class='rusttest'>fn main() {
+    trait TieneArea {
+        fn area(&amp;self) -&gt; f64;
+    }
+    
+    impl TieneArea for i32 {
+        fn area(&amp;self) -&gt; f64 {
+            println!(&quot;esto es tonto&quot;);
+    
+            *self as f64
+        }
+    }
+    
+    5.area();
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>trait</span> <span class='ident'>TieneArea</span> {
+    <span class='kw'>fn</span> <span class='ident'>area</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span>;
+}
+
+<span class='kw'>impl</span> <span class='ident'>TieneArea</span> <span class='kw'>for</span> <span class='ident'>i32</span> {
+    <span class='kw'>fn</span> <span class='ident'>area</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>f64</span> {
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;esto es tonto&quot;</span>);
+
+        <span class='op'>*</span><span class='self'>self</span> <span class='kw'>as</span> <span class='ident'>f64</span>
+    }
+}
+
+<span class='number'>5</span>.<span class='ident'>area</span>();</pre>
+
+<p>Se considera pobre estilo implementar métodos en esos tipos primitivos, aun cuando es posible.</p>
+
+<p>Esto puede lucir como el viejo oeste, pero hay dos restricciones acerca de la implementación de traits que previenen que las cosas se salgan de control. La primera es que si el trait no esta definido en tu ámbito, no aplica. He aquí un ejemplo: la biblioteca estándar provee un trait <a href="../std/io/trait.Write.html"><code>Write</code></a> que agrega funcionalidad extra a los <code>File</code>s, posibilitando la E/S de archivos. Por defecto, un <code>File</code> no tendría sus métodos:</p>
+<span class='rusttest'>fn main() {
+    let mut f = std::fs::File::open(&quot;foo.txt&quot;).ok().expect(&quot;No se pudo abrir foo.txt&quot;);
+    let buf = b&quot;cualquier cosa&quot;; // literal de cadena de bytes. buf: &amp;[u8; 8]
+    let resultado = f.write(buf);
+    resultado.unwrap(); // ignorar el error
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>f</span> <span class='op'>=</span> <span class='ident'>std</span>::<span class='ident'>fs</span>::<span class='ident'>File</span>::<span class='ident'>open</span>(<span class='string'>&quot;foo.txt&quot;</span>).<span class='ident'>ok</span>().<span class='ident'>expect</span>(<span class='string'>&quot;No se pudo abrir foo.txt&quot;</span>);
+<span class='kw'>let</span> <span class='ident'>buf</span> <span class='op'>=</span> <span class='string'>b&quot;cualquier cosa&quot;</span>; <span class='comment'>// literal de cadena de bytes. buf: &amp;[u8; 8]</span>
+<span class='kw'>let</span> <span class='ident'>resultado</span> <span class='op'>=</span> <span class='ident'>f</span>.<span class='ident'>write</span>(<span class='ident'>buf</span>);</pre>
+
+<p>He aqui el error:</p>
+
+<pre><code class="language-text">error: type `std::fs::File` does not implement any method in scope named `write`
+let resultado = f.write(buf);
+               ^~~~~~~~~~
+</code></pre>
+
+<p>Necesitamos primero hacer <code>use</code> del trait <code>Write</code>:</p>
+<span class='rusttest'>fn main() {
+    use std::io::Write;
+    
+    let mut f = std::fs::File::open(&quot;foo.txt&quot;).ok().expect(&quot;No se pudo abrir foo.txt&quot;);
+    let buf = b&quot;cualquier cosa&quot;;
+    let resultado = f.write(buf);
+    resultado.unwrap(); // ignorar el error
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::<span class='ident'>Write</span>;
+
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>f</span> <span class='op'>=</span> <span class='ident'>std</span>::<span class='ident'>fs</span>::<span class='ident'>File</span>::<span class='ident'>open</span>(<span class='string'>&quot;foo.txt&quot;</span>).<span class='ident'>ok</span>().<span class='ident'>expect</span>(<span class='string'>&quot;No se pudo abrir foo.txt&quot;</span>);
+<span class='kw'>let</span> <span class='ident'>buf</span> <span class='op'>=</span> <span class='string'>b&quot;cualquier cosa&quot;</span>;
+<span class='kw'>let</span> <span class='ident'>resultado</span> <span class='op'>=</span> <span class='ident'>f</span>.<span class='ident'>write</span>(<span class='ident'>buf</span>);</pre>
+
+<p>Lo anterior compilara sin errores.</p>
+
+<p>Esto significa que incluso si alguien hace algo malo como agregar métodos a <code>i32</code>, no te afectara, a menos que hagas <code>use</code> de ese trait.</p>
+
+<p>Hay una restricción mas acerca de la implementación de traits: uno de los dos bien sea el trait o el tipo para el cual estas escribiendo la <code>impl</code>, debe ser definido por ti. Entonces, podríamos implementar el trait <code>TieneArea</code> para el tipo <code>i32</code>, puesto que <code>TieneArea</code> esta en nuestro código. Pero si intentáramos implementar <code>ToString</code>, un trait proporcionado por Rust para <code>i32</code>, no podríamos, debido a que ni el trait o el tipo están en nuestro código.</p>
+
+<p>Una ultima cosa acerca de los traits: las funciones genéricas con un limite de trait usan ‘monomorfizacion’ (‘monomorphization’) (mono: uno, morfos: forma), y por ello son despachadas estáticamente. Que significa esto? Echa un vistazo a el capitulo acerca de <a href="trait-objects.html">objetos trait</a> para mas detalles.</p>
+
+<h1 id='multiples-limites-de-trait' class='section-header'><a href='#multiples-limites-de-trait'>Multiples limites de trait</a></h1>
+<p>Has visto que puedes limitar un parámetro de tipo genérico con un trait:</p>
+<span class='rusttest'>fn main() {
+    fn foo&lt;T: Clone&gt;(x: T) {
+        x.clone();
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>fn</span> <span class='ident'>foo</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>Clone</span><span class='op'>&gt;</span>(<span class='ident'>x</span>: <span class='ident'>T</span>) {
+    <span class='ident'>x</span>.<span class='ident'>clone</span>();
+}</pre>
+
+<p>Si necesitas mas de un limite, puedes hacer uso de <code>+</code>:</p>
+<span class='rusttest'>fn main() {
+    use std::fmt::Debug;
+    
+    fn foo&lt;T: Clone + Debug&gt;(x: T) {
+        x.clone();
+        println!(&quot;{:?}&quot;, x);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Debug</span>;
+
+<span class='kw'>fn</span> <span class='ident'>foo</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>Clone</span> <span class='op'>+</span> <span class='ident'>Debug</span><span class='op'>&gt;</span>(<span class='ident'>x</span>: <span class='ident'>T</span>) {
+    <span class='ident'>x</span>.<span class='ident'>clone</span>();
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>x</span>);
+}</pre>
+
+<p><code>T</code> necesita ahora ser ambos <code>Clone</code> y <code>Debug</code>.</p>
+
+<h1 id='la-clausula-where' class='section-header'><a href='#la-clausula-where'>La clausula where</a></h1>
+<p>Escribir funciones con solo unos pocos tipos genéricos y un pequeño numero de limites de trait no es tan feo, pero a medida que el numero se incrementa, la sintaxis se vuelve un poco extraña:</p>
+<span class='rusttest'>fn main() {
+    use std::fmt::Debug;
+    
+    fn foo&lt;T: Clone, K: Clone + Debug&gt;(x: T, y: K) {
+        x.clone();
+        y.clone();
+        println!(&quot;{:?}&quot;, y);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Debug</span>;
+
+<span class='kw'>fn</span> <span class='ident'>foo</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>Clone</span>, <span class='ident'>K</span>: <span class='ident'>Clone</span> <span class='op'>+</span> <span class='ident'>Debug</span><span class='op'>&gt;</span>(<span class='ident'>x</span>: <span class='ident'>T</span>, <span class='ident'>y</span>: <span class='ident'>K</span>) {
+    <span class='ident'>x</span>.<span class='ident'>clone</span>();
+    <span class='ident'>y</span>.<span class='ident'>clone</span>();
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>y</span>);
+}</pre>
+
+<p>El nombre de la función esta lejos a la izquierda, y la lista de parámetros esta lejos a la derecha. Los limites de trait se interponen en la mitad.</p>
+
+<p>Rust tiene una solución, y se llama ‘clausula <code>where</code>’:</p>
+<span class='rusttest'>use std::fmt::Debug;
+
+fn foo&lt;T: Clone, K: Clone + Debug&gt;(x: T, y: K) {
+    x.clone();
+    y.clone();
+    println!(&quot;{:?}&quot;, y);
+}
+
+fn bar&lt;T, K&gt;(x: T, y: K) where T: Clone, K: Clone + Debug {
+    x.clone();
+    y.clone();
+    println!(&quot;{:?}&quot;, y);
+}
+
+fn main() {
+    foo(&quot;Hola&quot;, &quot;mundo&quot;);
+    bar(&quot;Hola&quot;, &quot;mundo&quot;);
+}
+</span><pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Debug</span>;
+
+<span class='kw'>fn</span> <span class='ident'>foo</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>Clone</span>, <span class='ident'>K</span>: <span class='ident'>Clone</span> <span class='op'>+</span> <span class='ident'>Debug</span><span class='op'>&gt;</span>(<span class='ident'>x</span>: <span class='ident'>T</span>, <span class='ident'>y</span>: <span class='ident'>K</span>) {
+    <span class='ident'>x</span>.<span class='ident'>clone</span>();
+    <span class='ident'>y</span>.<span class='ident'>clone</span>();
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>y</span>);
+}
+
+<span class='kw'>fn</span> <span class='ident'>bar</span><span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>K</span><span class='op'>&gt;</span>(<span class='ident'>x</span>: <span class='ident'>T</span>, <span class='ident'>y</span>: <span class='ident'>K</span>) <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>Clone</span>, <span class='ident'>K</span>: <span class='ident'>Clone</span> <span class='op'>+</span> <span class='ident'>Debug</span> {
+    <span class='ident'>x</span>.<span class='ident'>clone</span>();
+    <span class='ident'>y</span>.<span class='ident'>clone</span>();
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>y</span>);
+}
+
+<span class='kw'>fn</span> <span class='ident'>main</span>() {
+    <span class='ident'>foo</span>(<span class='string'>&quot;Hola&quot;</span>, <span class='string'>&quot;mundo&quot;</span>);
+    <span class='ident'>bar</span>(<span class='string'>&quot;Hola&quot;</span>, <span class='string'>&quot;mundo&quot;</span>);
+}</pre>
+
+<p><code>foo()</code> usa la sintaxis demostrada previamente, y <code>bar()</code> usa una clausula <code>where</code>. Todo lo que necesitas es dejar los limites por fuera cuando definas tus parámetros de tipo y luego agregar un <code>where</code> después de la lista de parámetros. Para listas mas largas, espacios en blanco pueden ser agregados:</p>
+<span class='rusttest'>fn main() {
+    use std::fmt::Debug;
+    
+    fn bar&lt;T, K&gt;(x: T, y: K)
+        where T: Clone,
+              K: Clone + Debug {
+    
+        x.clone();
+        y.clone();
+        println!(&quot;{:?}&quot;, y);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Debug</span>;
+
+<span class='kw'>fn</span> <span class='ident'>bar</span><span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>K</span><span class='op'>&gt;</span>(<span class='ident'>x</span>: <span class='ident'>T</span>, <span class='ident'>y</span>: <span class='ident'>K</span>)
+    <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>Clone</span>,
+          <span class='ident'>K</span>: <span class='ident'>Clone</span> <span class='op'>+</span> <span class='ident'>Debug</span> {
+
+    <span class='ident'>x</span>.<span class='ident'>clone</span>();
+    <span class='ident'>y</span>.<span class='ident'>clone</span>();
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>y</span>);
+}</pre>
+
+<p>Dicha flexibilidad puede agregar claridad en situaciones complejas.</p>
+
+<p>La clausula <code>where</code> es también mas poderosa que la sintaxis mas simple. Por ejemplo:</p>
+<span class='rusttest'>fn main() {
+    trait ConvertirA&lt;Salida&gt; {
+        fn convertir(&amp;self) -&gt; Salida;
+    }
+    
+    impl ConvertirA&lt;i64&gt; for i32 {
+        fn convertir(&amp;self) -&gt; i64 { *self as i64 }
+    }
+    
+    // puede ser llamada con T == i32
+    fn normal&lt;T: ConvertirA&lt;i64&gt;&gt;(x: &amp;T) -&gt; i64 {
+        x.convertir()
+    }
+    
+    // puede ser llamada con T == i64
+    fn inversa&lt;T&gt;() -&gt; T
+            // pesto es user ConvertirA como si fuera &quot;ConvertirA&lt;i64&gt;&quot;
+            where i32: ConvertirA&lt;T&gt; {
+        42.convertir()
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>trait</span> <span class='ident'>ConvertirA</span><span class='op'>&lt;</span><span class='ident'>Salida</span><span class='op'>&gt;</span> {
+    <span class='kw'>fn</span> <span class='ident'>convertir</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Salida</span>;
+}
+
+<span class='kw'>impl</span> <span class='ident'>ConvertirA</span><span class='op'>&lt;</span><span class='ident'>i64</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>i32</span> {
+    <span class='kw'>fn</span> <span class='ident'>convertir</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>i64</span> { <span class='op'>*</span><span class='self'>self</span> <span class='kw'>as</span> <span class='ident'>i64</span> }
+}
+
+<span class='comment'>// puede ser llamada con T == i32</span>
+<span class='kw'>fn</span> <span class='ident'>normal</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>ConvertirA</span><span class='op'>&lt;</span><span class='ident'>i64</span><span class='op'>&gt;&gt;</span>(<span class='ident'>x</span>: <span class='kw-2'>&amp;</span><span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>i64</span> {
+    <span class='ident'>x</span>.<span class='ident'>convertir</span>()
+}
+
+<span class='comment'>// puede ser llamada con T == i64</span>
+<span class='kw'>fn</span> <span class='ident'>inversa</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>() <span class='op'>-&gt;</span> <span class='ident'>T</span>
+        <span class='comment'>// pesto es user ConvertirA como si fuera &quot;ConvertirA&lt;i64&gt;&quot;</span>
+        <span class='kw'>where</span> <span class='ident'>i32</span>: <span class='ident'>ConvertirA</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+    <span class='number'>42</span>.<span class='ident'>convertir</span>()
+}</pre>
+
+<p>Lo anterior demuestra una característica adicional de <code>where</code>: permite limites en los que el lado izquierdo es un tipo arbitrario (<code>i32</code> en este caso), no solo un simple parámetro de tipo (como <code>T</code>).</p>
+
+<h1 id='metodos-por-defecto' class='section-header'><a href='#metodos-por-defecto'>Metodos por defecto</a></h1>
+<p>Si ya sabes como un implementador típico definirá un método, puedes permitir a tu trait proporcionar uno método por defecto:</p>
+<span class='rusttest'>fn main() {
+    trait Foo {
+        fn es_valido(&amp;self) -&gt; bool;
+    
+        fn es_invalido(&amp;self) -&gt; bool { !self.es_valido() }
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>trait</span> <span class='ident'>Foo</span> {
+    <span class='kw'>fn</span> <span class='ident'>es_valido</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span>;
+
+    <span class='kw'>fn</span> <span class='ident'>es_invalido</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> { <span class='op'>!</span><span class='self'>self</span>.<span class='ident'>es_valido</span>() }
+}</pre>
+
+<p>Los implementadores del trait <code>Foo</code> necesitan implementar <code>es_valido()</code>, pero no necesitan implementar <code>es_invalido()</code>. Lo obtendrán por defecto. También pueden sobreescribir la implementación por defecto si lo desean:</p>
+<span class='rusttest'>fn main() {
+    trait Foo {
+        fn es_valido(&amp;self) -&gt; bool;
+    
+        fn es_invalido(&amp;self) -&gt; bool { !self.es_valido() }
+    }
+    struct UsaDefault;
+    
+    impl Foo for UsaDefault {
+        fn es_valido(&amp;self) -&gt; bool {
+            println!(&quot;UsaDefault.es_valid llamada.&quot;);
+            true
+        }
+    }
+    
+    struct SobreescribeDefault;
+    
+    impl Foo for SobreescribeDefault {
+        fn es_valido(&amp;self) -&gt; bool {
+            println!(&quot;SobreescribeDefault.es_valido llamada.&quot;);
+            true
+        }
+    
+        fn es_invalido(&amp;self) -&gt; bool {
+            println!(&quot;SobreescribeDefault.es_invalido llamada!&quot;);
+            true // esta implementacion es una auto-contradiccion!
+        }
+    }
+    
+    let default = UsaDefault;
+    assert!(!default.es_valido()); // imprime &quot;UsaDefault.es_valid llamada.&quot;
+    
+    let sobre = SobreescribeDefault;
+    assert!(sobre.is_invalid()); // prints &quot;SobreescribeDefault.es_invalido llamada!&quot;
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>struct</span> <span class='ident'>UsaDefault</span>;
+
+<span class='kw'>impl</span> <span class='ident'>Foo</span> <span class='kw'>for</span> <span class='ident'>UsaDefault</span> {
+    <span class='kw'>fn</span> <span class='ident'>es_valido</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;UsaDefault.es_valid llamada.&quot;</span>);
+        <span class='boolval'>true</span>
+    }
+}
+
+<span class='kw'>struct</span> <span class='ident'>SobreescribeDefault</span>;
+
+<span class='kw'>impl</span> <span class='ident'>Foo</span> <span class='kw'>for</span> <span class='ident'>SobreescribeDefault</span> {
+    <span class='kw'>fn</span> <span class='ident'>es_valido</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;SobreescribeDefault.es_valido llamada.&quot;</span>);
+        <span class='boolval'>true</span>
+    }
+
+    <span class='kw'>fn</span> <span class='ident'>es_invalido</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;SobreescribeDefault.es_invalido llamada!&quot;</span>);
+        <span class='boolval'>true</span> <span class='comment'>// esta implementacion es una auto-contradiccion!</span>
+    }
+}
+
+<span class='kw'>let</span> <span class='ident'>default</span> <span class='op'>=</span> <span class='ident'>UsaDefault</span>;
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>default</span>.<span class='ident'>es_valido</span>()); <span class='comment'>// imprime &quot;UsaDefault.es_valid llamada.&quot;</span>
+
+<span class='kw'>let</span> <span class='ident'>sobre</span> <span class='op'>=</span> <span class='ident'>SobreescribeDefault</span>;
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>sobre</span>.<span class='ident'>is_invalid</span>()); <span class='comment'>// prints &quot;SobreescribeDefault.es_invalido llamada!&quot;</span></pre>
+
+<h1 id='herencia' class='section-header'><a href='#herencia'>Herencia</a></h1>
+<p>Algunas veces, implementar un trait requiere implementar otro:</p>
+<span class='rusttest'>fn main() {
+    trait Foo {
+        fn foo(&amp;self);
+    }
+    
+    trait FooBar : Foo {
+        fn foobar(&amp;self);
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>trait</span> <span class='ident'>Foo</span> {
+    <span class='kw'>fn</span> <span class='ident'>foo</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>);
+}
+
+<span class='kw'>trait</span> <span class='ident'>FooBar</span> : <span class='ident'>Foo</span> {
+    <span class='kw'>fn</span> <span class='ident'>foobar</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>);
+}</pre>
+
+<p>Los implementadores de <code>FooBar</code> deben también implementar <code>Foo</code>, de esta manera:</p>
+<span class='rusttest'>fn main() {
+    trait Foo {
+        fn foo(&amp;self);
+    }
+    trait FooBar : Foo {
+        fn foobar(&amp;self);
+    }
+    struct Baz;
+    
+    impl Foo for Baz {
+        fn foo(&amp;self) { println!(&quot;foo&quot;); }
+    }
+    
+    impl FooBar for Baz {
+        fn foobar(&amp;self) { println!(&quot;foobar&quot;); }
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>struct</span> <span class='ident'>Baz</span>;
+
+<span class='kw'>impl</span> <span class='ident'>Foo</span> <span class='kw'>for</span> <span class='ident'>Baz</span> {
+    <span class='kw'>fn</span> <span class='ident'>foo</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) { <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;foo&quot;</span>); }
+}
+
+<span class='kw'>impl</span> <span class='ident'>FooBar</span> <span class='kw'>for</span> <span class='ident'>Baz</span> {
+    <span class='kw'>fn</span> <span class='ident'>foobar</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) { <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;foobar&quot;</span>); }
+}</pre>
+
+<p>Si olvidamos implementar <code>Foo</code>, Rust nos lo dira:</p>
+
+<pre><code class="language-text">error: the trait `main::Foo` is not implemented for the type `main::Baz` [E0277]
+</code></pre>
+
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
@@ -238,11 +895,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
       if (i > 0) {
         var prevNode = toc[i-1].cloneNode(true);
         prevNode.className = 'left';
+        prevNode.setAttribute('rel', 'prev');
         nav.appendChild(prevNode);
       }
       if (i < toc.length - 1) {
         var nextNode = toc[i+1].cloneNode(true);
         nextNode.className = 'right';
+        nextNode.setAttribute('rel', 'next');
         nav.appendChild(nextNode);
       }
       document.getElementById('page').appendChild(nav);

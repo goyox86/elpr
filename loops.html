@@ -187,8 +187,7 @@
     <h1 class="title">Ciclos</h1>
     <p>Rust actualmente provee tres enfoques para realizar actividad iterativa. <code>loop</code>, <code>while</code> y <code>for</code>. Cada uno de dichos enfoques tiene sus propios usos.</p>
 
-<h2 id="loop" class='section-header'><a
-                           href="#loop">loop</a></h2>
+<h2 id='loop' class='section-header'><a href='#loop'>loop</a></h2>
 <p>El ciclo infinito <code>loop</code> es el ciclo mas simple disponible en Rust. A traves del uso de la palabra reservada <code>loop</code>, Rust proporciona una forma de iterar indefinidamente hasta que alguna sentencia de terminación sea alcanzada. El <code>loop</code> infinito de Rust luce así:</p>
 <span class='rusttest'>fn main() {
     loop {
@@ -200,8 +199,7 @@
     <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Itera por siempre!&quot;</span>);
 }</pre>
 
-<h2 id="while" class='section-header'><a
-                           href="#while">while</a></h2>
+<h2 id='while' class='section-header'><a href='#while'>while</a></h2>
 <p>Rust también tiene un ciclo <code>while</code>. Luce de esta manera:</p>
 <span class='rusttest'>fn main() {
     let mut x = 5; // mut x: i32
@@ -249,8 +247,7 @@
 
 <p>El análisis de flujo de control de Rust trata esta construcción de manera diferente que a un <code>while true</code>, debido a que sabemos que iteraremos por siempre. En general, mientras mas información le proporcionemos al compilador, este podría desempeñarse mejor en relación a la seguridad y generación de código, es por ello que siempre deberías preferir <code>loop</code> cuando tengas planeado iterar de manera indefinida.</p>
 
-<h2 id="for" class='section-header'><a
-                           href="#for">for</a></h2>
+<h2 id='for' class='section-header'><a href='#for'>for</a></h2>
 <p>El ciclo <code>for</code> es usado para iterar un numero particular de veces. Los ciclos <code>for</code> de Rust, sin embargo, trabajan de manera diferente a los de otros lenguajes de programación de sistemas. El <code>for</code> de Rust no luce como este ciclo <code>for</code> al “estilo C”</p>
 
 <pre><code class="language-c">for (x = 0; x &lt; 10; x++) {
@@ -286,12 +283,10 @@
 
 <p>Rut no posee el ciclo <code>for</code> al estilo de C, a proposito. Controlar manualmente cada elemento del ciclo es complicado y propenso a errores, incluso para programadores C experimentados.</p>
 
-<h3 id="enumerate" class='section-header'><a
-                           href="#enumerate">Enumerate</a></h3>
+<h3 id='enumerate' class='section-header'><a href='#enumerate'>Enumerate</a></h3>
 <p>Cuando necesitas llevar registro de cuantas veces has iterado, puedes usar la función <code>.enumerate()</code>.</p>
 
-<h4 id="en-rangos:" class='section-header'><a
-                           href="#en-rangos:">En rangos:</a></h4><span class='rusttest'>fn main() {
+<h4 id='en-rangos' class='section-header'><a href='#en-rangos'>En rangos:</a></h4><span class='rusttest'>fn main() {
     for (i,j) in (5..10).enumerate() {
         println!(&quot;i = {} y j = {}&quot;, i, j);
     }
@@ -312,8 +307,7 @@ i = 4 y j = 9
 
 <p>No olvides colocar los paréntesis alrededor del rango.</p>
 
-<h4 id="en-iteradores:" class='section-header'><a
-                           href="#en-iteradores:">En iteradores:</a></h4><span class='rusttest'>fn main() {
+<h4 id='en-iteradores' class='section-header'><a href='#en-iteradores'>En iteradores:</a></h4><span class='rusttest'>fn main() {
     let lineas = &quot;hola\nmundo&quot;.lines();
     for (numero_linea, linea) in lineas.enumerate() {
         println!(&quot;{}: {}&quot;, numero_linea, linea);
@@ -332,8 +326,7 @@ i = 4 y j = 9
 3: Contenido de la linea cuatro
 </code></pre>
 
-<h2 id="finalizando-la-iteración-de-manera-temprana" class='section-header'><a
-                           href="#finalizando-la-iteración-de-manera-temprana">Finalizando la iteración de manera temprana</a></h2>
+<h2 id='finalizando-la-iteración-de-manera-temprana' class='section-header'><a href='#finalizando-la-iteración-de-manera-temprana'>Finalizando la iteración de manera temprana</a></h2>
 <p>Echemos un vistazo a ese ciclo <code>while</code> que vimos con anterioridad:</p>
 <span class='rusttest'>fn main() {
     let mut x = 5;
@@ -405,8 +398,7 @@ i = 4 y j = 9
     <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>x</span>);
 }</pre>
 
-<h2 id="etiquetas-loop" class='section-header'><a
-                           href="#etiquetas-loop">Etiquetas loop</a></h2>
+<h2 id='etiquetas-loop' class='section-header'><a href='#etiquetas-loop'>Etiquetas loop</a></h2>
 <p>También podrías encontrar situaciones en las cuales tengas ciclos anidados y necesites especificar a cual de los ciclos pertenecen tus sentencias <code>break</code> o <code>continue</code>. Como en la mayoría de los lenguajes, por defecto un <code>break</code> o <code>continue</code> aplica a el ciclo mas interno. En el caso de que desearas aplicar un <code>break</code> o <code>continue</code> para alguno de los ciclos externos, puedes usar etiquetas para especificar a cual ciclo aplica la sentencia <code>break</code> o <code>continue</code>. Lo siguiente solo imprimirá cuando ambos <code>x</code> y <code>y</code> sean impares:</p>
 <span class='rusttest'>fn main() {
     &#39;exterior: for x in 0..10 {
