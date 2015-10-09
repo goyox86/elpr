@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <title>Sintaxis de Métowdos</title>
+    <title>Sintaxis de Métodos</title>
 
     <link rel="stylesheet" type="text/css" href="rust-book.css">
 
@@ -184,7 +184,7 @@
 <div id='page'>
 
 
-    <h1 class="title">Sintaxis de Métowdos</h1>
+    <h1 class="title">Sintaxis de Métodos</h1>
     <p>Las funciones son geniales, pero si deseas llamar bastantes en alguna data, puede tornarse incomodo. Considera este código:</p>
 <span class='rusttest'>fn main() {
     baz(bar(foo));
@@ -201,7 +201,7 @@
 
 <p>Por suerte, como habrás podido deducir de la pregunta anterior, por supuesto que podemos! Rust provee la habilidad de usar la denominada ‘sintaxis de llamada a métodos’ (‘method call syntax’) a través de la palabra reservada  <code>impl</code>.</p>
 
-<h1 id='llamadas-a-metodos' class='section-header'><a href='#llamadas-a-metodos'>Llamadas a metodos</a></h1>
+<h1 id='llamadas-a-métodos' class='section-header'><a href='#llamadas-a-métodos'>Llamadas a métodos</a></h1>
 <p>Así funcionan:</p>
 <span class='rusttest'>struct Circulo {
     x: f64,
@@ -286,7 +286,7 @@ fn main() {
     }
 }</pre>
 
-<h1 id='llamadas-a-metodo-en-cadena' class='section-header'><a href='#llamadas-a-metodo-en-cadena'>Llamadas a metodo en cadena</a></h1>
+<h1 id='llamadas-a-métodos-en-cadena' class='section-header'><a href='#llamadas-a-métodos-en-cadena'>Llamadas a métodos en cadena</a></h1>
 <p>Entonces, ahora sabemos como llamar a un método, como <code>foo.bar()</code>. Pero que hay acerca de nuestro ejemplo original, <code>foo.bar().baz()</code>? Se denomina ‘encadenamiento de métodos’ (‘method chaining’). Veamos un ejemplo:</p>
 <span class='rusttest'>struct Circulo {
     x: f64,
@@ -392,8 +392,8 @@ fn main() {
 
 <p>Esta ‘función asociada’ construye un nuevo <code>Circulo</code>. Nota que las funciones asociadas son llamadas con la sintaxis <code>Struct::funcion()</code>, en lugar de <code>ref.metodo()</code>. Otros lenguajes llaman a las funciones asociadas ‘métodos estáticos’</p>
 
-<h1 id='el-patron-constructor-builder' class='section-header'><a href='#el-patron-constructor-builder'>El patron Constructor (Builder)</a></h1>
-<p>Digamos que queremos que nuestros usuarios puedan crear <code>Circulo</code>s, pero solo les permitiremos dar valores a las propiedades que sean relevantes para ellos. De lo contrario, los atributos <code>x</code> y <code>y</code> serán <code>0.0</code>, y el radio sera <code>1.0</code>. Rust no posee sobrecarga de métodos, argumentos con nombre o argumentos variables. Se emplea el patron builder en su lugar. Dicho patron luce asi:</p>
+<h1 id='el-patrón-constructor-builder' class='section-header'><a href='#el-patrón-constructor-builder'>El patrón Constructor (Builder)</a></h1>
+<p>Digamos que queremos que nuestros usuarios puedan crear <code>Circulo</code>s, pero solo les permitiremos dar valores a las propiedades que sean relevantes para ellos. De lo contrario, los atributos <code>x</code> y <code>y</code> serán <code>0.0</code>, y el radio sera <code>1.0</code>. Rust no posee sobrecarga de métodos, argumentos con nombre o argumentos variables. Se emplea el patron builder en su lugar. Dicho patron luce así:</p>
 <span class='rusttest'>struct Circulo {
     x: f64,
     y: f64,
