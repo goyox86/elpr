@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <title>Sintaxis de Métodos</title>
+    <title>Sintaxis de Métowdos</title>
 
     <link rel="stylesheet" type="text/css" href="rust-book.css">
 
@@ -184,7 +184,7 @@
 <div id='page'>
 
 
-    <h1 class="title">Sintaxis de Métodos</h1>
+    <h1 class="title">Sintaxis de Métowdos</h1>
     <p>Las funciones son geniales, pero si deseas llamar bastantes en alguna data, puede tornarse incomodo. Considera este código:</p>
 <span class='rusttest'>fn main() {
     baz(bar(foo));
@@ -241,7 +241,7 @@ fn main() {
 
 <p>Hemos construido una <code>struct</code> representando a un circulo. Después escribimos un bloque <code>impl</code> y dentro de el, definimos un método, <code>area</code>.</p>
 
-<p>Los métodos reciben un primer parámetro especial, del cual existen tres variantes: <code>self</code>, <code>&amp;self</code>, and <code>&amp;mut self</code>. Puedes pensar acerca de este primer parámetro como el <code>foo</code> en <code>foo.bar()</code>. Las tres variantes corresponden a los tres tipos de cosas que <code>foo</code> podría ser: <code>self</code> si es solo un valor en la pila, <code>&amp;self</code> si es una referencia y <code>&amp;mut self</code> si es una referencia mutable. Debido a que proporcionamos el parámetro <code>&amp;self</code> a <code>area</code>, podemos usarlo justo como cualquier otro. Como conocemos que es un <code>Circulo</code>, podemos acceder a <code>radio</code> como lo haríamos con cualquier otra <code>struct</code>.</p>
+<p>Los métodos reciben un primer parámetro especial, del cual existen tres variantes: <code>self</code>, <code>&amp;self</code>, y <code>&amp;mut self</code>. Puedes pensar acerca de este primer parámetro como el <code>foo</code> en <code>foo.bar()</code>. Las tres variantes corresponden a los tres tipos de cosas que <code>foo</code> podría ser: <code>self</code> si es solo un valor en la pila, <code>&amp;self</code> si es una referencia y <code>&amp;mut self</code> si es una referencia mutable. Debido a que proporcionamos el parámetro <code>&amp;self</code> a <code>area</code>, podemos usarlo justo como cualquier otro. Como conocemos que es un <code>Circulo</code>, podemos acceder a <code>radio</code> como lo haríamos con cualquier otra <code>struct</code>.</p>
 
 <p>Deberíamos usar por defecto <code>&amp;self</code>, así como preferir también el préstamo por encima de la toma de pertenencia y recibir referencias inmutables en vez de mutables, en lo posible. He aquí un ejemplo de las tres variantes:</p>
 <span class='rusttest'>fn main() {
