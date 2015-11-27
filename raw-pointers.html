@@ -185,15 +185,15 @@
 
 
     <h1 class="title">Apuntadores Planos</h1>
-    <p>Rust posee un numero de tipos apuntadores inteligentes en su biblioteca estándar, pero hay dos tipos que son extra especiales. Gran parte de la seguridad de Rust proviene de sus chequeos en tiempo de compilación, pero los apuntadores planos no poseen dichas garantías, y se consideran <a href="unsafe.html">inseguros (unsafe)</a> de usar.</p>
+    <p>Rust posee un numero de tipos de apuntadores inteligentes en su biblioteca estándar, pero hay dos tipos que son extra-especiales. Gran parte de la seguridad de Rust proviene de sus chequeos en tiempo de compilación, pero los apuntadores planos no poseen dichas garantías, y se consideran <a href="unsafe.html">inseguros (unsafe)</a> de usar.</p>
 
-<p><code>*const T</code> y <code>*mut T</code> son denominados ‘apuntadores planos’ (‘raw pointers’) en Rust. Algunas veces, cuando se escriben cierto tipo de bibliotecas, es necesario saltar las garantías de seguridad de Rust por alguna razón. En este caso, se puede hacer uso de los apuntadores planos para implementar tu biblioteca, exponiendo una interfaz segura a tus usuarios. Por ejemplo, los apuntadores <code>*</code> tienen permitido establecer aliasing (dos o mas apuntadores a la misma data), permitiéndoles ser usados en la escritura de tipos con pertenencia compartida, e incluso tipos thread safe de memoria compartida (Los tipos <code>Rc&lt;T&gt;</code> y <code>Arc&lt;T&gt;</code> están implementados en su totalidad en Rust).</p>
+<p><code>*const T</code> y <code>*mut T</code> son denominados ‘apuntadores planos’ (‘raw pointers’) en Rust. Algunas veces, cuando se escriben cierto tipo de bibliotecas, es necesario saltar las garantías de seguridad de Rust por alguna razón. En este caso, puedes hacer uso de los apuntadores planos para implementar tu biblioteca, exponiendo una interfaz segura a tus usuarios. Por ejemplo, los apuntadores <code>*</code> tienen permitido establecer aliasing (dos o mas apuntadores a la misma data), permitiéndoles ser usados en la escritura de tipos con pertenencia compartida, e incluso tipos thread safe de memoria compartida (Los tipos <code>Rc&lt;T&gt;</code> y <code>Arc&lt;T&gt;</code> están implementados en su totalidad en Rust).</p>
 
 <p>A continuación se listan algunas características a tener presentes acerca de los apuntadores planos las cuales son diferentes de los demás tipos de apuntadores. Ellos:</p>
 
 <ul>
 <li>no garantizan a apuntar a memoria valida y no garantizan ser no-nulos (a diferencia de <code>Box</code> y <code>&amp;</code>);</li>
-<li>no poseen ningún tipo de limpieza automática, a diferencia de <code>Box</code>,por lo que requieren manejo manual de recursos;</li>
+<li>no poseen ningún tipo de limpieza automática, a diferencia de <code>Box</code>, por lo que requieren manejo manual de recursos;</li>
 <li>son data pura, esto es, no mueven pertenencia, otra vez y a diferencia de <code>Box</code>, en consecuencia el compilador de Rust no puede proteger de bugs como uso-despues-de-liberacion (use-after-free);</li>
 <li>carecen de cualquier forma de tiempos de vida, a diferencia de <code>&amp;</code>, y es por ello que el compilador no puede razonar acerca de apuntadores colgantes; y no proveen mas garantías acerca de aliasing o mutabilidad que no sean diferentes a no tener permitido hacerlo a través de un <code>*const T</code>.</li>
 </ul>
@@ -214,7 +214,7 @@
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='number'>10</span>;
 <span class='kw'>let</span> <span class='ident'>plano_mut</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>y</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>i32</span>;</pre>
 
-<p>Sin embargo, dereferenciar uno no lo es. Lo siguiente no funciona:</p>
+<p>Sin embargo, dereferenciar uno, no lo es. Lo siguiente no funciona:</p>
 <span class='rusttest'>fn main() {
     let x = 5;
     let plano = &amp;x as *const i32;
@@ -234,7 +234,7 @@
                                   ^~~~
 </code></pre>
 
-<p>Cuando dereferencias un apuntador plano, asumes la responsabilidad de que este no apunte a ningún lugar incorrecto. Por ello necesitas <code>unsafe</code>:</p>
+<p>Cuando dereferencias un apuntador plano, asumes la responsabilidad de que este no apunte a ningún lugar incorrecto. En efecto, necesitas <code>unsafe</code>:</p>
 <span class='rusttest'>fn main() {
     let x = 5;
     let plano = &amp;x as *const i32;
@@ -257,7 +257,7 @@
 <p>Los apuntadores planos son útiles para efectuar FFI: Los <code>*const T</code> y <code>*mut T</code> de Rust son similares a <code>const T*</code> y <code>T*</code> en C, respectivamente. Para mas información acerca de este uso, consulta el <a href="ffi.html">capitulo de FFI</a>.</p>
 
 <h1 id='referencias-y-apuntadores-planos' class='section-header'><a href='#referencias-y-apuntadores-planos'>Referencias y apuntadores planos</a></h1>
-<p>En tiempo de ejecución, un apuntador plano <code>*</code> y una referencia apuntando a la misma sección de data poseen una representación idéntica. En efecto, una referencia <code>&amp;T</code> hará implícitamente coercion a un apuntador plano <code>*const T</code> en código seguro y de manera similar para las variantes <code>mut</code> (ambas coerciones pueden ser respectivamente llevadas acabo de manera explicita con, <code>valor as *const T</code> and <code>value as *mut T</code>).</p>
+<p>En tiempo de ejecución, un apuntador plano <code>*</code> y una referencia apuntando a la misma sección de data poseen una representación idéntica. En efecto, una referencia <code>&amp;T</code> hará implícitamente coercion a un apuntador plano <code>*const T</code> en código seguro al igual que las variantes <code>mut</code> (ambas coerciones pueden ser respectivamente llevadas acabo de manera explicita con, <code>valor as *const T</code> and <code>value as *mut T</code>).</p>
 
 <p>Ir en sentido opuesto, de una <code>*const</code> a una referencia <code>&amp;</code>, no es seguro. Un <code>&amp;T</code> es siempre valido, entonces, como mínimo, el apuntador plano <code>*const T</code> debe apuntar a una instancia valida de tipo <code>T</code>. Aun mas, el apuntador resultante debe satisfacer las leyes de las referencias acerca de mutabilidad y aliasing . El compilador asume que dichas propiedades son ciertas para cualquier referencia, sin importar como haya sido creada, y en consecuencia cualquier conversión desde un apuntador plano es una aserción de estas se mantienen. El programador <em>debe</em> garantizar lo anterior.</p>
 
