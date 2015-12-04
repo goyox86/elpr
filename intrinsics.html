@@ -185,7 +185,31 @@
 
 
     <h1 class="title">Intrínsecos</h1>
-    
+    <blockquote>
+<p><strong>Nota</strong>: los intrínsecos por siempre tendrán una interfaz inestable, se recomienda
+usar las interfaces estables de libcore en lugar de intrínsecos directamente.</p>
+</blockquote>
+
+<p>Estas son importadas como si fuesen funciones FFI, con el ABI especial <code>rust-intrinsic</code>. Por ejemplo, si uno estuviese en un contexto libre, pero desease poder hacer <code>transmute</code> entre tipos, y llevar a cabo aritmética de apuntadores eficiente, uno importaría dichas funciones via una declaración como:</p>
+<span class='rusttest'>#![feature(intrinsics)]
+fn main() {}
+
+extern &quot;rust-intrinsic&quot; {
+    fn transmute&lt;T, U&gt;(x: T) -&gt; U;
+
+    fn offset&lt;T&gt;(dst: *const T, offset: isize) -&gt; *const T;
+}
+</span><pre class='rust rust-example-rendered'>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>intrinsics</span>)]</span>
+
+<span class='kw'>extern</span> <span class='string'>&quot;rust-intrinsic&quot;</span> {
+    <span class='kw'>fn</span> <span class='ident'>transmute</span><span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>U</span><span class='op'>&gt;</span>(<span class='ident'>x</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>U</span>;
+
+    <span class='kw'>fn</span> <span class='ident'>offset</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='ident'>dst</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>T</span>, <span class='ident'>offset</span>: <span class='ident'>isize</span>) <span class='op'>-&gt;</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>T</span>;
+}</pre>
+
+<p>Al igual que cualquier otra función FFI, estas son siempre <code>unsafe</code> de llamar.</p>
+
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
