@@ -185,7 +185,59 @@
 
 
     <h1 class="title">Rust Nocturno</h1>
-    
+    <p>Rust proporciona tres canales de distribución: nocturno (nightly), beta y estable (stable). Las facilidades inestables están solo disponibles en Rust nocturno. Para mayor detalle acerca de este proceso, véase ‘<a href="http://blog.rust-lang.org/2014/10/30/Stability.html">Estabilidad como un entregable</a>’.</p>
+
+<p>Para instalar Rust nocturno, puedes usar <code>rustup.sh</code>:</p>
+
+<pre><code class="language-bash">$ curl -s https://static.rust-lang.org/rustup.sh | sh -s -- --channel=nightly
+</code></pre>
+
+<p>Si tienes alguna duda acerca de la [inseguridad potencial] del uso de <code>curl | sh</code>, por favor, continua leyendo y encontraras nuestro disclaimer. Siéntete también en libertad de usar una version de dos pasos de la instalación examinando nuestro script:</p>
+
+<pre><code class="language-bash">$ curl -f -L https://static.rust-lang.org/rustup.sh -O
+$ sh rustup.sh --channel=nightly
+</code></pre>
+
+<p>Si estas en Windows, por favor descarga bien sea el <a href="https://static.rust-lang.org/dist/rust-nightly-i686-pc-windows-gnu.msi">instalador de 32 bits</a> o el <a href="https://static.rust-lang.org/dist/rust-nightly-x86_64-pc-windows-gnu.msi">instalador de 64 bits</a> y ejecutalo.</p>
+
+<h2 id='desinstalando' class='section-header'><a href='#desinstalando'>Desinstalando</a></h2>
+<p>Si has decidido que ya no quieres mas a Rust, estaremos un poco triste, pero esta bien. No todos los lenguajes de programación son para todo el mundo. Simplemente ejecuta el script de desinstalación:</p>
+
+<pre><code class="language-bash">$ sudo /usr/local/lib/rustlib/uninstall.sh
+</code></pre>
+
+<p>Si usaste el instalador de Windows, simplemente ejecuta el <code>.msi</code> de nuevo y este te dará la opción de desinstalación.</p>
+
+<p>Algunas personas, y de alguna forma con derecho, se sienten perturbados cuando les decimos que hagan <code>curl | sh</code>. Básicamente, cuando haces esto, estas confiando que la buena gente que mantiene Rust no van a hackear tu computadora y hacer cosas malas. Eso es =buen instinto! Si eres una de esas personas, por favor echa un vistazo a la documentación acerca de la <a href="https://github.com/rust-lang/rust#building-from-source">instalación de Rust desde fuentes</a>. O las <a href="https://www.rust-lang.org/install.html">descargas de los ejecutables oficiales</a>.</p>
+
+<p>Ah, debemos mencionar las plataformas oficialmente soportadas:</p>
+
+<ul>
+<li>Windows (7, 8, Server 2008 R2)</li>
+<li>Linux (2.6.18 o mayor, varias distribuciones), x86 and x86-64</li>
+<li>OSX 10.7 (Lion) o mayor, x86 and x86-64</li>
+</ul>
+
+<p>Nosotros, el equipo de Rust probamos Rust de manera extensiva en esas plataformas, y otras pocas mas, como Android. Pero estas son las mas propensas en funcionar correctamente, debido a que son las que poseen mas pruebas.</p>
+
+<p>Finalmente, un comentario acerca de Windows. Rust considera a Windows como una plataforma de primera clase en lo que se refiere al release, pero si somos honestos, la experiencia en Windows no esta tan integrada como las experiencias en Linux y OS X. Estamos trabajando en ello! Si algo no funciona, es un bug. Por favor haznos saber si eso pasa. Cada commmit es probado en Windows justo como cualquier otra plataforma.</p>
+
+<p>Si has instalado Rust, puedes abrir una terminal, y escribir:</p>
+
+<pre><code class="language-bash">$ rustc --version
+</code></pre>
+
+<p>Deberías ver el numero de version, el hash de commit, fecha del commit y fecha de compilación:</p>
+
+<pre><code class="language-bash">rustc 1.0.0-nightly (f11f3e7ba 2015-01-04) (built 2015-01-06)
+</code></pre>
+
+<p>Si lo ves, Rust ha sido instalado satisfactoriamente! Felicidades!</p>
+
+<p>Este instalador también instala una copia local de la documentación, de manera que puedas leerla offline. En sistemas UNIX, la locación es <code>/usr/local/share/doc/rust</code>. En windows, se ubica en el directorio <code>share/doc</code>, en donde sea que hayas instalado Rust.</p>
+
+<p>Si no, hay una variedad de lugares en los que puedes solicitar ayuda. El mas fácil es <a href="irc://irc.mozilla.org/#rust">el canal #rust en irc.mozilla.org</a>, el cual puedes acceder via <a href="http://chat.mibbit.com/?server=irc.mozilla.org&amp;channel=%23rust">Mibbit</a>. Cliquea ese enlace, y estarás chateando con Rutaceos (un tonto apodo con el que nos referimos a nosotros), y podremos ayudarte. Otros muy buenos recursos incluyen <a href="https://users.rust-lang.org/">el foro de usuarios</a>, y <a href="http://stackoverflow.com/questions/tagged/rust">Stack Overflow</a>.</p>
+
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
