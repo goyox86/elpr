@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <title>`unsafe`</title>
+    <title>Unsafe</title>
 
     <link rel="stylesheet" type="text/css" href="rust-book.css">
 
@@ -34,9 +34,9 @@
 <ul class='section'>
 <li><a  href='installing-rust.html'><b>2.1.</b> Instalando Rust</a>
 </li>
-<li><a  href='hello-world.html'><b>2.2.</b> Hola, mundo!</a>
+<li><a  href='hello-world.html'><b>2.2.</b> ¡Hola, mundo!</a>
 </li>
-<li><a  href='hello-cargo.html'><b>2.3.</b> Hola, Cargo!</a>
+<li><a  href='hello-cargo.html'><b>2.3.</b> ¡Hola, Cargo!</a>
 </li>
 </ul>
 </li>
@@ -52,13 +52,13 @@
 </li>
 <li><a  href='effective-rust.html'><b>4.</b> Rust Efectivo</a>
 <ul class='section'>
-<li><a  href='the-stack-and-the-heap.html'><b>4.1.</b> La Pila y el Monticulo</a>
+<li><a  href='the-stack-and-the-heap.html'><b>4.1.</b> La Pila y el Montículo</a>
 </li>
 <li><a  href='testing.html'><b>4.2.</b> Pruebas</a>
 </li>
-<li><a  href='conditional-compilation.html'><b>4.3.</b> Compilacion Condicional</a>
+<li><a  href='conditional-compilation.html'><b>4.3.</b> Compilación Condicional</a>
 </li>
-<li><a  href='documentation.html'><b>4.4.</b> Documentacion</a>
+<li><a  href='documentation.html'><b>4.4.</b> Documentación</a>
 </li>
 <li><a  href='iterators.html'><b>4.5.</b> Iteradores</a>
 </li>
@@ -70,13 +70,13 @@
 </li>
 <li><a  href='borrow-and-asref.html'><b>4.9.</b> Borrow y AsRef</a>
 </li>
-<li><a  href='release-channels.html'><b>4.10.</b> Canales de Distribucion</a>
+<li><a  href='release-channels.html'><b>4.10.</b> Canales de Distribución</a>
 </li>
 </ul>
 </li>
 <li><a  href='syntax-and-semantics.html'><b>5.</b> Sintaxis y Semantica</a>
 <ul class='section'>
-<li><a  href='variable-bindings.html'><b>5.1.</b> Variables</a>
+<li><a  href='variable-bindings.html'><b>5.1.</b> Enlaces a Variables</a>
 </li>
 <li><a  href='functions.html'><b>5.2.</b> Funciones</a>
 </li>
@@ -86,69 +86,67 @@
 </li>
 <li><a  href='if.html'><b>5.5.</b> if</a>
 </li>
-<li><a  href='for-loops.html'><b>5.6.</b> Ciclos for</a>
+<li><a  href='loops.html'><b>5.6.</b> Ciclos</a>
 </li>
-<li><a  href='while-loops.html'><b>5.7.</b> Ciclos while</a>
+<li><a  href='ownership.html'><b>5.7.</b> Pertenencia</a>
 </li>
-<li><a  href='ownership.html'><b>5.8.</b> Pertenencia</a>
+<li><a  href='references-and-borrowing.html'><b>5.8.</b> Referencias y Préstamo</a>
 </li>
-<li><a  href='references-and-borrowing.html'><b>5.9.</b> Referencias y Prestamo</a>
+<li><a  href='lifetimes.html'><b>5.9.</b> Tiempos de Vida</a>
 </li>
-<li><a  href='lifetimes.html'><b>5.10.</b> Tiempos de Vida</a>
+<li><a  href='mutability.html'><b>5.10.</b> Mutabilidad</a>
 </li>
-<li><a  href='mutability.html'><b>5.11.</b> Mutabilidad</a>
+<li><a  href='structs.html'><b>5.11.</b> Estructuras</a>
 </li>
-<li><a  href='structs.html'><b>5.12.</b> Estructuras</a>
+<li><a  href='enums.html'><b>5.12.</b> Enumeraciones</a>
 </li>
-<li><a  href='enums.html'><b>5.13.</b> Enumeraciones</a>
+<li><a  href='match.html'><b>5.13.</b> Match</a>
 </li>
-<li><a  href='match.html'><b>5.14.</b> Match</a>
+<li><a  href='patterns.html'><b>5.14.</b> Patrones</a>
 </li>
-<li><a  href='patterns.html'><b>5.15.</b> Patrones</a>
+<li><a  href='method-syntax.html'><b>5.15.</b> Sintaxis de Métodos</a>
 </li>
-<li><a  href='method-syntax.html'><b>5.16.</b> Sintaxis de Metodos</a>
+<li><a  href='vectors.html'><b>5.16.</b> Vectores</a>
 </li>
-<li><a  href='vectors.html'><b>5.17.</b> Vectores</a>
+<li><a  href='strings.html'><b>5.17.</b> Cadenas de Caracteres</a>
 </li>
-<li><a  href='strings.html'><b>5.18.</b> Cadenas de Caracteres</a>
+<li><a  href='generics.html'><b>5.18.</b> Genéricos</a>
 </li>
-<li><a  href='generics.html'><b>5.19.</b> Genericos</a>
+<li><a  href='traits.html'><b>5.19.</b> Traits</a>
 </li>
-<li><a  href='traits.html'><b>5.20.</b> Rasgos</a>
+<li><a  href='drop.html'><b>5.20.</b> Drop</a>
 </li>
-<li><a  href='drop.html'><b>5.21.</b> Drop</a>
+<li><a  href='if-let.html'><b>5.21.</b> if let</a>
 </li>
-<li><a  href='if-let.html'><b>5.22.</b> if let</a>
+<li><a  href='trait-objects.html'><b>5.22.</b> Objetos Trait</a>
 </li>
-<li><a  href='trait-objects.html'><b>5.23.</b> Objetos de Razgo</a>
+<li><a  href='closures.html'><b>5.23.</b> Closures</a>
 </li>
-<li><a  href='closures.html'><b>5.24.</b> Closures</a>
+<li><a  href='ufcs.html'><b>5.24.</b> Sintaxis Universal  de Llamada a Funciones</a>
 </li>
-<li><a  href='ufcs.html'><b>5.25.</b> Sintaxis de Llamada a Funciones Universal</a>
+<li><a  href='crates-and-modules.html'><b>5.25.</b> Crates y Módulos</a>
 </li>
-<li><a  href='crates-and-modules.html'><b>5.26.</b> Crates y Modulos</a>
+<li><a  href='const-and-static.html'><b>5.26.</b> `const` y `static`</a>
 </li>
-<li><a  href='const-and-static.html'><b>5.27.</b> `const` y `static`</a>
+<li><a  href='attributes.html'><b>5.27.</b> Atributos</a>
 </li>
-<li><a  href='attributes.html'><b>5.28.</b> Atributos</a>
+<li><a  href='type-aliases.html'><b>5.28.</b> Alias `type`</a>
 </li>
-<li><a  href='type-aliases.html'><b>5.29.</b> Alias `type`</a>
+<li><a  href='casting-between-types.html'><b>5.29.</b> Conversión entre Tipos</a>
 </li>
-<li><a  href='casting-between-types.html'><b>5.30.</b> Conversion entre Tipos</a>
+<li><a  href='associated-types.html'><b>5.30.</b> Tipos Asociados</a>
 </li>
-<li><a  href='associated-types.html'><b>5.31.</b> Tipos Asociados</a>
+<li><a  href='unsized-types.html'><b>5.31.</b> Tipos sin Tamaño</a>
 </li>
-<li><a  href='unsized-types.html'><b>5.32.</b> Tipos sin Tamano</a>
+<li><a  href='operators-and-overloading.html'><b>5.32.</b> Operadores y Sobrecarga</a>
 </li>
-<li><a  href='operators-and-overloading.html'><b>5.33.</b> Operadores y Sobrecarga</a>
+<li><a  href='deref-coercions.html'><b>5.33.</b> Coerciones Deref</a>
 </li>
-<li><a  href='deref-coercions.html'><b>5.34.</b> Coerciones Deref</a>
+<li><a  href='macros.html'><b>5.34.</b> Macros</a>
 </li>
-<li><a  href='macros.html'><b>5.35.</b> Macros</a>
+<li><a  href='raw-pointers.html'><b>5.35.</b> Apuntadores Planos</a>
 </li>
-<li><a  href='raw-pointers.html'><b>5.36.</b> Apuntadores Planos</a>
-</li>
-<li><a class='active' href='unsafe.html'><b>5.37.</b> `unsafe`</a>
+<li><a class='active' href='unsafe.html'><b>5.36.</b> `unsafe`</a>
 </li>
 </ul>
 </li>
@@ -156,15 +154,15 @@
 <ul class='section'>
 <li><a  href='compiler-plugins.html'><b>6.1.</b> Plugins del Compilador</a>
 </li>
-<li><a  href='inline-assembly.html'><b>6.2.</b> Ensamblador Inline</a>
+<li><a  href='inline-assembly.html'><b>6.2.</b> Ensamblador en Linea</a>
 </li>
 <li><a  href='no-stdlib.html'><b>6.3.</b> No stdlib</a>
 </li>
-<li><a  href='intrinsics.html'><b>6.4.</b> Intrinsecos</a>
+<li><a  href='intrinsics.html'><b>6.4.</b> Intrínsecos</a>
 </li>
 <li><a  href='lang-items.html'><b>6.5.</b> Items de Lenguaje</a>
 </li>
-<li><a  href='link-args.html'><b>6.6.</b> Argumentos de Enlace</a>
+<li><a  href='advanced-linking.html'><b>6.6.</b> Enlace Avanzado</a>
 </li>
 <li><a  href='benchmark-tests.html'><b>6.7.</b> Pruebas de Rendimiento</a>
 </li>
@@ -178,7 +176,7 @@
 </li>
 <li><a  href='glossary.html'><b>7.</b> Glosario</a>
 </li>
-<li><a  href='academic-research.html'><b>8.</b> Inverstigacion Academica</a>
+<li><a  href='academic-research.html'><b>8.</b> Investigación Académica</a>
 </li>
 </ul>
 </div>
@@ -186,8 +184,115 @@
 <div id='page'>
 
 
-    <h1 class="title">`unsafe`</h1>
+    <h1 class="title">Unsafe</h1>
+    <p>La principal atracción de Rust son sus poderosas garantías estáticas acerca de comportamiento. Pero los chequeos de seguridad son conservadores por naturaleza: existen programas que son en efecto seguros, pero el compilador no es capaz de de verificar que esto sea cierto. Para escribir ese tipo de programas, debemos decirle al compilador que relaje un poco sus restricciones. Para ello, Rust posee una palabra reservada, <code>unsafe</code>. El código que hace uso de <code>unsafe</code> posee menos restricciones que el código normal.</p>
+
+<p>Repasemos la sintaxis, y luego hablaremos de la semántica. <code>unsafe</code> es usado en cuatro contextos. El primero es para marcar una función como insegura:</p>
+<span class='rusttest'>fn main() {
+    unsafe fn peligro_will_robinson() {
+        // cosas peligrosas
+    }
     
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>peligro_will_robinson</span>() {
+    <span class='comment'>// cosas peligrosas</span>
+}</pre>
+
+<p>Todas las funciones llamadas desde <a href="ffi.html">FFI</a> deben ser marcadas como <code>unsafe</code>, por ejemplo. El segundo uso de <code>unsafe</code> es un bloque unsafe:</p>
+<span class='rusttest'>fn main() {
+    unsafe {
+        // osas peligrosas
+    }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>unsafe</span> {
+    <span class='comment'>// osas peligrosas</span>
+}</pre>
+
+<p>El tercero es para traits unsafe:</p>
+<span class='rusttest'>fn main() {
+    unsafe trait Peligroso { }
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>unsafe</span> <span class='kw'>trait</span> <span class='ident'>Peligroso</span> { }</pre>
+
+<p>Y la cuarta es para la <code>impl</code>ementación de uno de dichos traits:</p>
+<span class='rusttest'>fn main() {
+    unsafe trait Peligroso { }
+    unsafe impl Peligroso for i32 {}
+    
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>unsafe</span> <span class='kw'>impl</span> <span class='ident'>Peligroso</span> <span class='kw'>for</span> <span class='ident'>i32</span> {}</pre>
+
+<p>Es importante poder tener la capacidad de delinear código que podría posiblemente contener bugs que originen problemas graves. Si un programa Rust termina de manera abrupta (un segfault), puedes tener por seguro que es en algún lugar de las secciones marcadas como <code>unsafe</code>.</p>
+
+<h1 id='que-significa-seguro' class='section-header'><a href='#que-significa-seguro'>Que significa ‘seguro’?</a></h1>
+<p>Seguro, en el contexto de Rust, significa ‘no hacer nada inseguro’. Es importante saber que hay ciertos comportamientos que son probablemente indeseables en tu código, pero son expresamente <em>no</em> inseguros:</p>
+
+<ul>
+<li>Deadlocks.</li>
+<li>Perdida de memoria u otros recursos.</li>
+<li>Salida sin llamada a los destructores.</li>
+<li>Desbordamiento de enteros.</li>
+</ul>
+
+<p>Rust no puede prevenir todos los tipos de problemas de software. Las cosas de la lista anterior no son buenas, pero tampoco califican como <code>unsafe</code> específicamente.</p>
+
+<p>En adición, los siguientes son todos comportamiento indefinido en Rust, y deben ser evitadas, incluso cuando se escribe código <code>unsafe</code>:</p>
+
+<ul>
+<li>Condiciones de carrera.</li>
+<li>Deereferenciar un apuntador nulo/colgante.</li>
+<li>Lectura de memoria <a href="http://llvm.org/docs/LangRef.html#undefined-values">undef</a> (memoria no inicializada)</li>
+<li>Violación de las <a href="http://llvm.org/docs/LangRef.html#pointer-aliasing-rules">reglas de aliasing de apuntadores</a> a través de apuntadores planos.</li>
+<li><code>&amp;mut T</code> y <code>&amp;T</code> siguen el modelo <a href="http://llvm.org/docs/LangRef.html#noalias">noalias</a> de LLVM, excepto cuando el <code>&amp;T</code> contiene un <code>UnsafeCell&lt;U&gt;</code>. El código unsafe no debe violar esas garantías de aliasing.</li>
+<li>Mutar un valor/referencia inmutable sin un <code>UnsafeCell&lt;U&gt;</code>.</li>
+<li>Invocar comportamiento indefinido a través de intrínsecos del compilador:
+
+<ul>
+<li>Indexar por fuera de los limites de un objeto con <code>std::ptr::offset</code> (intrínseco <code>offset</code>), con la excepción de un solo byte después del final lo cual es permitido.</li>
+<li>Usar <code>std::ptr::copy_nonoverlapping_memory</code> (intrínsecos <code>memcpy32</code>/<code>memcpy64</code>) en buffers que se solapen.</li>
+</ul></li>
+<li>Valores inválidos en tipos primitivos, incluso en campos/variables locales privadas:
+
+<ul>
+<li>Referencias null, referencias colgantes o boxes.</li>
+<li>Un valor distinto que <code>false</code> (0) o <code>true</code> (1) en un <code>bool</code>.</li>
+<li>Un discriminante en un <code>enum</code> que no este incluido en su definición de tipo.</li>
+<li>Un valor en un <code>char</code> el cual es un sustituto o por encima de <code>char::MAX</code>.</li>
+<li>Una secuencia de bytes no-UTF en un <code>str</code>.</li>
+</ul></li>
+<li>Unwinding en Rust desde código foraneo o unwinding desde Rust a código foraneo.</li>
+</ul>
+
+<h1 id='superpoderes-unsafe' class='section-header'><a href='#superpoderes-unsafe'>Superpoderes Unsafe</a></h1>
+<p>En ambos funciones y bloques unsafe, Rust te permitirá hacer tres cosas que normalmente no podrías hacer. Solo tres. Y son:</p>
+
+<ol>
+<li>Acceder o actualizar una <a href="const-and-static.html#static">variable mutable estética</a>.</li>
+<li>Dereferenciar un apuntador plano.</li>
+<li>Llamar a funciones <code>unsafe</code>. Esta es la habilidad mas importante.</li>
+</ol>
+
+<p>Eso es todo. Es importante destacar que <code>unsafe</code>, por ejemplo, no ‘apaga el comprobador de prestamos’. Agregar de manera aleatoria <code>unsafe</code> a algún código no cambia su semántica, no comenzara a aceptar algo. Pero te permitirá escribir cosas que <em>si rompen</em> algunas de las reglas.</p>
+
+<p>También encontraras la palabra reservada <code>unsafe</code> cuando escribas bindings a interfaces foráneas (no-Rust). Lo mas recomendable es escribir una segura interfaz nativa en Rust alrededor de los métodos proporcionados por la librería.</p>
+
+<p>Echemos un vistazo a las tres habilidades listadas, en orden.</p>
+
+<h2 id='acceder-o-actualizar-una-static-mut' class='section-header'><a href='#acceder-o-actualizar-una-static-mut'>Acceder o actualizar una <code>static mut</code></a></h2>
+<p>Rust posee una facilidad denominada ‘<code>static mut</code>’ que te permite hacer estado global mutable. Hacerlo puede causar una condición de carrera, y en consecuencia es inherentemente inseguro. Para mayor detalle, dirígete a la sección <a href="const-and-static.html#static">static</a> del libro.</p>
+
+<h2 id='dereferenciar-un-apuntador-plano' class='section-header'><a href='#dereferenciar-un-apuntador-plano'>Dereferenciar un apuntador plano</a></h2>
+<p>Los apuntadores planos te permiten llevar a cabo aritmética de punteros arbitraria, y pueden causar un numero de problemas de seguridad. En algunos sentidos, la habilidad de dereferenciar un apuntador arbitrario es una de las cosas mas peligrosas que puedes hacer, mas información en <a href="raw-pointers.html">su sección en el libro</a>.</p>
+
+<h2 id='llamar-funciones-unsafe' class='section-header'><a href='#llamar-funciones-unsafe'>Llamar funciones unsafe</a></h2>
+<p>Esta ultima habilidad funciona con ambos aspectos de <code>unsafe</code>: puedes solo llamar a funciones marcadas como <code>unsafe</code> desde dentro de un bloque unsafe.</p>
+
+<p>Esta habilidad es poderosa y variada. Rust expone algunos <a href="intrinsics.html">intrínsecos del compilador</a> como funciones unsafe, y algunas funciones unsafe hacen bypass de algunos chequeos de seguridad, intercambiando seguridad por velocidad.</p>
+
+<p>Lo repetiré de nuevo: aun y cuando <em>puedes</em> hacer cosas arbitrarias en bloques unsafe y funciones no significa que debas hacerlo. El compilador actuara como si tu eres el responsable estuvieses de mantener arriba todas las invariantes, así que debes ser cuidadoso!</p>
+
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
@@ -238,11 +343,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
       if (i > 0) {
         var prevNode = toc[i-1].cloneNode(true);
         prevNode.className = 'left';
+        prevNode.setAttribute('rel', 'prev');
         nav.appendChild(prevNode);
       }
       if (i < toc.length - 1) {
         var nextNode = toc[i+1].cloneNode(true);
         nextNode.className = 'right';
+        nextNode.setAttribute('rel', 'next');
         nav.appendChild(nextNode);
       }
       document.getElementById('page').appendChild(nav);
