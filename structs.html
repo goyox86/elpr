@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <title>Estructuras (Structs)</title>
+    <title>Estructuras</title>
 
     <link rel="stylesheet" type="text/css" href="rust-book.css">
 
@@ -34,9 +34,9 @@
 <ul class='section'>
 <li><a  href='installing-rust.html'><b>2.1.</b> Instalando Rust</a>
 </li>
-<li><a  href='hello-world.html'><b>2.2.</b> ¡Hola, mundo!</a>
+<li><a  href='hello-world.html'><b>2.2.</b> Hola, mundo!</a>
 </li>
-<li><a  href='hello-cargo.html'><b>2.3.</b> ¡Hola, Cargo!</a>
+<li><a  href='hello-cargo.html'><b>2.3.</b> Hola, Cargo!</a>
 </li>
 </ul>
 </li>
@@ -52,13 +52,13 @@
 </li>
 <li><a  href='effective-rust.html'><b>4.</b> Rust Efectivo</a>
 <ul class='section'>
-<li><a  href='the-stack-and-the-heap.html'><b>4.1.</b> La Pila y el Montículo</a>
+<li><a  href='the-stack-and-the-heap.html'><b>4.1.</b> La Pila y el Monticulo</a>
 </li>
 <li><a  href='testing.html'><b>4.2.</b> Pruebas</a>
 </li>
-<li><a  href='conditional-compilation.html'><b>4.3.</b> Compilación Condicional</a>
+<li><a  href='conditional-compilation.html'><b>4.3.</b> Compilacion Condicional</a>
 </li>
-<li><a  href='documentation.html'><b>4.4.</b> Documentación</a>
+<li><a  href='documentation.html'><b>4.4.</b> Documentacion</a>
 </li>
 <li><a  href='iterators.html'><b>4.5.</b> Iteradores</a>
 </li>
@@ -70,13 +70,13 @@
 </li>
 <li><a  href='borrow-and-asref.html'><b>4.9.</b> Borrow y AsRef</a>
 </li>
-<li><a  href='release-channels.html'><b>4.10.</b> Canales de Distribución</a>
+<li><a  href='release-channels.html'><b>4.10.</b> Canales de Distribucion</a>
 </li>
 </ul>
 </li>
 <li><a  href='syntax-and-semantics.html'><b>5.</b> Sintaxis y Semantica</a>
 <ul class='section'>
-<li><a  href='variable-bindings.html'><b>5.1.</b> Enlaces a Variables</a>
+<li><a  href='variable-bindings.html'><b>5.1.</b> Variables</a>
 </li>
 <li><a  href='functions.html'><b>5.2.</b> Funciones</a>
 </li>
@@ -86,67 +86,69 @@
 </li>
 <li><a  href='if.html'><b>5.5.</b> if</a>
 </li>
-<li><a  href='loops.html'><b>5.6.</b> Ciclos</a>
+<li><a  href='for-loops.html'><b>5.6.</b> Ciclos for</a>
 </li>
-<li><a  href='ownership.html'><b>5.7.</b> Pertenencia</a>
+<li><a  href='while-loops.html'><b>5.7.</b> Ciclos while</a>
 </li>
-<li><a  href='references-and-borrowing.html'><b>5.8.</b> Referencias y Préstamo</a>
+<li><a  href='ownership.html'><b>5.8.</b> Pertenencia</a>
 </li>
-<li><a  href='lifetimes.html'><b>5.9.</b> Tiempos de Vida</a>
+<li><a  href='references-and-borrowing.html'><b>5.9.</b> Referencias y Prestamo</a>
 </li>
-<li><a  href='mutability.html'><b>5.10.</b> Mutabilidad</a>
+<li><a  href='lifetimes.html'><b>5.10.</b> Tiempos de Vida</a>
 </li>
-<li><a class='active' href='structs.html'><b>5.11.</b> Estructuras</a>
+<li><a  href='mutability.html'><b>5.11.</b> Mutabilidad</a>
 </li>
-<li><a  href='enums.html'><b>5.12.</b> Enumeraciones</a>
+<li><a class='active' href='structs.html'><b>5.12.</b> Estructuras</a>
 </li>
-<li><a  href='match.html'><b>5.13.</b> Match</a>
+<li><a  href='enums.html'><b>5.13.</b> Enumeraciones</a>
 </li>
-<li><a  href='patterns.html'><b>5.14.</b> Patrones</a>
+<li><a  href='match.html'><b>5.14.</b> Match</a>
 </li>
-<li><a  href='method-syntax.html'><b>5.15.</b> Sintaxis de Métodos</a>
+<li><a  href='patterns.html'><b>5.15.</b> Patrones</a>
 </li>
-<li><a  href='vectors.html'><b>5.16.</b> Vectores</a>
+<li><a  href='method-syntax.html'><b>5.16.</b> Sintaxis de Metodos</a>
 </li>
-<li><a  href='strings.html'><b>5.17.</b> Cadenas de Caracteres</a>
+<li><a  href='vectors.html'><b>5.17.</b> Vectores</a>
 </li>
-<li><a  href='generics.html'><b>5.18.</b> Genéricos</a>
+<li><a  href='strings.html'><b>5.18.</b> Cadenas de Caracteres</a>
 </li>
-<li><a  href='traits.html'><b>5.19.</b> Traits</a>
+<li><a  href='generics.html'><b>5.19.</b> Genericos</a>
 </li>
-<li><a  href='drop.html'><b>5.20.</b> Drop</a>
+<li><a  href='traits.html'><b>5.20.</b> Rasgos</a>
 </li>
-<li><a  href='if-let.html'><b>5.21.</b> if let</a>
+<li><a  href='drop.html'><b>5.21.</b> Drop</a>
 </li>
-<li><a  href='trait-objects.html'><b>5.22.</b> Objetos Trait</a>
+<li><a  href='if-let.html'><b>5.22.</b> if let</a>
 </li>
-<li><a  href='closures.html'><b>5.23.</b> Closures</a>
+<li><a  href='trait-objects.html'><b>5.23.</b> Objetos de Razgo</a>
 </li>
-<li><a  href='ufcs.html'><b>5.24.</b> Sintaxis Universal  de Llamada a Funciones</a>
+<li><a  href='closures.html'><b>5.24.</b> Closures</a>
 </li>
-<li><a  href='crates-and-modules.html'><b>5.25.</b> Crates y Módulos</a>
+<li><a  href='ufcs.html'><b>5.25.</b> Sintaxis de Llamada a Funciones Universal</a>
 </li>
-<li><a  href='const-and-static.html'><b>5.26.</b> `const` y `static`</a>
+<li><a  href='crates-and-modules.html'><b>5.26.</b> Crates y Modulos</a>
 </li>
-<li><a  href='attributes.html'><b>5.27.</b> Atributos</a>
+<li><a  href='const-and-static.html'><b>5.27.</b> `const` y `static`</a>
 </li>
-<li><a  href='type-aliases.html'><b>5.28.</b> Alias `type`</a>
+<li><a  href='attributes.html'><b>5.28.</b> Atributos</a>
 </li>
-<li><a  href='casting-between-types.html'><b>5.29.</b> Conversión entre Tipos</a>
+<li><a  href='type-aliases.html'><b>5.29.</b> Alias `type`</a>
 </li>
-<li><a  href='associated-types.html'><b>5.30.</b> Tipos Asociados</a>
+<li><a  href='casting-between-types.html'><b>5.30.</b> Conversion entre Tipos</a>
 </li>
-<li><a  href='unsized-types.html'><b>5.31.</b> Tipos sin Tamaño</a>
+<li><a  href='associated-types.html'><b>5.31.</b> Tipos Asociados</a>
 </li>
-<li><a  href='operators-and-overloading.html'><b>5.32.</b> Operadores y Sobrecarga</a>
+<li><a  href='unsized-types.html'><b>5.32.</b> Tipos sin Tamano</a>
 </li>
-<li><a  href='deref-coercions.html'><b>5.33.</b> Coerciones Deref</a>
+<li><a  href='operators-and-overloading.html'><b>5.33.</b> Operadores y Sobrecarga</a>
 </li>
-<li><a  href='macros.html'><b>5.34.</b> Macros</a>
+<li><a  href='deref-coercions.html'><b>5.34.</b> Coerciones Deref</a>
 </li>
-<li><a  href='raw-pointers.html'><b>5.35.</b> Apuntadores Planos</a>
+<li><a  href='macros.html'><b>5.35.</b> Macros</a>
 </li>
-<li><a  href='unsafe.html'><b>5.36.</b> `unsafe`</a>
+<li><a  href='raw-pointers.html'><b>5.36.</b> Apuntadores Planos</a>
+</li>
+<li><a  href='unsafe.html'><b>5.37.</b> `unsafe`</a>
 </li>
 </ul>
 </li>
@@ -154,15 +156,15 @@
 <ul class='section'>
 <li><a  href='compiler-plugins.html'><b>6.1.</b> Plugins del Compilador</a>
 </li>
-<li><a  href='inline-assembly.html'><b>6.2.</b> Ensamblador en Linea</a>
+<li><a  href='inline-assembly.html'><b>6.2.</b> Ensamblador Inline</a>
 </li>
 <li><a  href='no-stdlib.html'><b>6.3.</b> No stdlib</a>
 </li>
-<li><a  href='intrinsics.html'><b>6.4.</b> Intrínsecos</a>
+<li><a  href='intrinsics.html'><b>6.4.</b> Intrinsecos</a>
 </li>
 <li><a  href='lang-items.html'><b>6.5.</b> Items de Lenguaje</a>
 </li>
-<li><a  href='advanced-linking.html'><b>6.6.</b> Enlace Avanzado</a>
+<li><a  href='link-args.html'><b>6.6.</b> Argumentos de Enlace</a>
 </li>
 <li><a  href='benchmark-tests.html'><b>6.7.</b> Pruebas de Rendimiento</a>
 </li>
@@ -176,7 +178,7 @@
 </li>
 <li><a  href='glossary.html'><b>7.</b> Glosario</a>
 </li>
-<li><a  href='academic-research.html'><b>8.</b> Investigación Académica</a>
+<li><a  href='academic-research.html'><b>8.</b> Inverstigacion Academica</a>
 </li>
 </ul>
 </div>
@@ -184,235 +186,8 @@
 <div id='page'>
 
 
-    <h1 class="title">Estructuras (Structs)</h1>
-    <p>Las estructuras (<code>struct</code>s) son una forma de crear tipos de datos mas complejos. Por ejemplo, si estuviéramos haciendo cálculos que involucraran coordenadas en un espacio 2D, necesitaríamos ambos, un valor <code>x</code> y un valor <code>y</code>:</p>
-<span class='rusttest'>fn main() {
-    let origen_x = 0;
-    let origen_y = 0;
+    <h1 class="title">Estructuras</h1>
     
-}</span><pre class='rust rust-example-rendered'>
-<span class='kw'>let</span> <span class='ident'>origen_x</span> <span class='op'>=</span> <span class='number'>0</span>;
-<span class='kw'>let</span> <span class='ident'>origen_y</span> <span class='op'>=</span> <span class='number'>0</span>;</pre>
-
-<p>una <code>struct</code> nos permite combinar ambos en un único tipo de datos unificado:</p>
-<span class='rusttest'>struct Punto {
-    x: i32,
-    y: i32,
-}
-
-fn main() {
-    let origen = Punto { x: 0, y: 0 }; // origin: Punto
-
-    println!(&quot;El origen esta en ({}, {})&quot;, origen.x, origen.y);
-}
-</span><pre class='rust rust-example-rendered'>
-<span class='kw'>struct</span> <span class='ident'>Punto</span> {
-    <span class='ident'>x</span>: <span class='ident'>i32</span>,
-    <span class='ident'>y</span>: <span class='ident'>i32</span>,
-}
-
-<span class='kw'>fn</span> <span class='ident'>main</span>() {
-    <span class='kw'>let</span> <span class='ident'>origen</span> <span class='op'>=</span> <span class='ident'>Punto</span> { <span class='ident'>x</span>: <span class='number'>0</span>, <span class='ident'>y</span>: <span class='number'>0</span> }; <span class='comment'>// origin: Punto</span>
-
-    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;El origen esta en ({}, {})&quot;</span>, <span class='ident'>origen</span>.<span class='ident'>x</span>, <span class='ident'>origen</span>.<span class='ident'>y</span>);
-}</pre>
-
-<p>Hay muchas cosas pasando acá, así que analicémoslo por partes. Declaramos una estructura con la palabra reservada <code>struct</code>, seguida de un nombre. Por convención, los <code>struct</code>s comienzan con una letra mayúscula y son camel cased: <code>PuntoEnElEspacio</code>, no <code>Punto_En_El_Espacio</code>.</p>
-
-<p>Podemos crear una instancia de nuestra <code>struct</code> via <code>let</code>, como es usual, pero usamos una sintaxis estilo <code>clave: valor</code> para asignar cada campo. El order no necesita ser el mismo que en la declaración original.</p>
-
-<p>Finalmente, debido a que tenemos nombres de campos, podemos acceder a ellos a través de la notación de puntos: <code>origen.x</code>.</p>
-
-<p>Los valores en <code>struct</code>s son inmutables por defecto, justo como los demás enlaces a variables en Rust. Usa <code>mut</code> para hacerlos mutables:</p>
-<span class='rusttest'>struct Punto {
-    x: i32,
-    y: i32,
-}
-
-fn main() {
-    let mut punto = Punto { x: 0, y: 0 };
-
-    punto.x = 5;
-
-    println!(&quot;El origen esta en ({}, {})&quot;, punto.x, punto.y);
-}
-</span><pre class='rust rust-example-rendered'>
-<span class='kw'>struct</span> <span class='ident'>Punto</span> {
-    <span class='ident'>x</span>: <span class='ident'>i32</span>,
-    <span class='ident'>y</span>: <span class='ident'>i32</span>,
-}
-
-<span class='kw'>fn</span> <span class='ident'>main</span>() {
-    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>punto</span> <span class='op'>=</span> <span class='ident'>Punto</span> { <span class='ident'>x</span>: <span class='number'>0</span>, <span class='ident'>y</span>: <span class='number'>0</span> };
-
-    <span class='ident'>punto</span>.<span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
-
-    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;El origen esta en ({}, {})&quot;</span>, <span class='ident'>punto</span>.<span class='ident'>x</span>, <span class='ident'>punto</span>.<span class='ident'>y</span>);
-}</pre>
-
-<p>Esto imprimirá <code>El origen esta en (5, 0)</code>.</p>
-
-<p>Rust no soporta mutabilidad de campos a nivel de lenguaje, es por ello que no puedes escribir algo como esto:</p>
-<span class='rusttest'>fn main() {
-    struct Punto {
-        mut x: i32,
-        y: i32,
-    }
-    
-}</span><pre class='rust rust-example-rendered'>
-<span class='kw'>struct</span> <span class='ident'>Punto</span> {
-    <span class='kw-2'>mut</span> <span class='ident'>x</span>: <span class='ident'>i32</span>,
-    <span class='ident'>y</span>: <span class='ident'>i32</span>,
-}</pre>
-
-<p>La mutabilidad es una propiedad del enlace a variable, no de la estructura en si misma. Si estas acostumbrado a la mutabilidad a nivel de campos, esto puede parecer un poco extraño al principio, pero simplifica las cosas de manera significativa. Incluso te permite hacer a las cosas mutables solo por un periodo corto de tiempo:</p>
-<span class='rusttest'>struct Punto {
-    x: i32,
-    y: i32,
-}
-
-fn main() {
-    let mut punto = Punto { x: 0, y: 0 };
-
-    punto.x = 5;
-
-    let punto = punto; // ahora, este nuevo enlace a variable no puede ser cambiado
-
-    punto.y = 6; // esto causa un error
-}
-</span><pre class='rust rust-example-rendered'>
-<span class='kw'>struct</span> <span class='ident'>Punto</span> {
-    <span class='ident'>x</span>: <span class='ident'>i32</span>,
-    <span class='ident'>y</span>: <span class='ident'>i32</span>,
-}
-
-<span class='kw'>fn</span> <span class='ident'>main</span>() {
-    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>punto</span> <span class='op'>=</span> <span class='ident'>Punto</span> { <span class='ident'>x</span>: <span class='number'>0</span>, <span class='ident'>y</span>: <span class='number'>0</span> };
-
-    <span class='ident'>punto</span>.<span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
-
-    <span class='kw'>let</span> <span class='ident'>punto</span> <span class='op'>=</span> <span class='ident'>punto</span>; <span class='comment'>// ahora, este nuevo enlace a variable no puede ser cambiado</span>
-
-    <span class='ident'>punto</span>.<span class='ident'>y</span> <span class='op'>=</span> <span class='number'>6</span>; <span class='comment'>// esto causa un error</span>
-}</pre>
-
-<h1 id='sintaxis-de-actualización' class='section-header'><a href='#sintaxis-de-actualización'>Sintaxis de actualización</a></h1>
-<p>Una <code>struct</code> puede incluir <code>..</code> para indicar que deseas usar una copia de algún otro <code>struct</code> para algunos de los valores. Por ejemplo:</p>
-<span class='rusttest'>fn main() {
-    struct Punto3d {
-        x: i32,
-        y: i32,
-        z: i32,
-    }
-    
-    let mut punto = Punto3d { x: 0, y: 0, z: 0 };
-    punto = Punto3d { y: 1, .. punto };
-    
-}</span><pre class='rust rust-example-rendered'>
-<span class='kw'>struct</span> <span class='ident'>Punto3d</span> {
-    <span class='ident'>x</span>: <span class='ident'>i32</span>,
-    <span class='ident'>y</span>: <span class='ident'>i32</span>,
-    <span class='ident'>z</span>: <span class='ident'>i32</span>,
-}
-
-<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>punto</span> <span class='op'>=</span> <span class='ident'>Punto3d</span> { <span class='ident'>x</span>: <span class='number'>0</span>, <span class='ident'>y</span>: <span class='number'>0</span>, <span class='ident'>z</span>: <span class='number'>0</span> };
-<span class='ident'>punto</span> <span class='op'>=</span> <span class='ident'>Punto3d</span> { <span class='ident'>y</span>: <span class='number'>1</span>, .. <span class='ident'>punto</span> };</pre>
-
-<p>Lo anterior, asigna a <code>punto</code> un nuevo <code>y</code>, pero mantiene los antiguos valores de <code>x</code> y <code>z</code>. Tampoco tiene que ser la misma estructura, puedes hacer uso de esta sintaxis cuando creas nuevas, y esta copiara los valores que no especifiques:</p>
-<span class='rusttest'>fn main() {
-    struct Punto3d {
-        x: i32,
-        y: i32,
-        z: i32,
-    }
-    let origen = Punto3d { x: 0, y: 0, z: 0 };
-    let punto = Punto3d { z: 1, x: 2, .. origen };
-    
-}</span><pre class='rust rust-example-rendered'>
-<span class='kw'>let</span> <span class='ident'>origen</span> <span class='op'>=</span> <span class='ident'>Punto3d</span> { <span class='ident'>x</span>: <span class='number'>0</span>, <span class='ident'>y</span>: <span class='number'>0</span>, <span class='ident'>z</span>: <span class='number'>0</span> };
-<span class='kw'>let</span> <span class='ident'>punto</span> <span class='op'>=</span> <span class='ident'>Punto3d</span> { <span class='ident'>z</span>: <span class='number'>1</span>, <span class='ident'>x</span>: <span class='number'>2</span>, .. <span class='ident'>origen</span> };</pre>
-
-<h1 id='tupla-estructuras-tuple-structs' class='section-header'><a href='#tupla-estructuras-tuple-structs'>Tupla estructuras (Tuple structs)</a></h1>
-<p>Rust posee otro tipo de datos que es como un híbrido entre una <a href="primitive-types.html#tuples">tupla</a> y una <code>struct</code>, llamado <code>tulla estructura</code> (<code>tuple struct</code>). Las tupla estructuras poseen un nombre, pero sus campos no:</p>
-<span class='rusttest'>fn main() {
-    struct Color(i32, i32, i32);
-    struct Punto(i32, i32, i32);
-    
-}</span><pre class='rust rust-example-rendered'>
-<span class='kw'>struct</span> <span class='ident'>Color</span>(<span class='ident'>i32</span>, <span class='ident'>i32</span>, <span class='ident'>i32</span>);
-<span class='kw'>struct</span> <span class='ident'>Punto</span>(<span class='ident'>i32</span>, <span class='ident'>i32</span>, <span class='ident'>i32</span>);</pre>
-
-<p>Las dos anteriores no serán iguales, incluso si poseen los mismos valores:</p>
-<span class='rusttest'>fn main() {
-    struct Color(i32, i32, i32);
-    struct Punto(i32, i32, i32);
-    let negro = Color(0, 0, 0);
-    let origen = Punto(0, 0, 0);
-    
-}</span><pre class='rust rust-example-rendered'>
-<span class='kw'>let</span> <span class='ident'>negro</span> <span class='op'>=</span> <span class='ident'>Color</span>(<span class='number'>0</span>, <span class='number'>0</span>, <span class='number'>0</span>);
-<span class='kw'>let</span> <span class='ident'>origen</span> <span class='op'>=</span> <span class='ident'>Punto</span>(<span class='number'>0</span>, <span class='number'>0</span>, <span class='number'>0</span>);</pre>
-
-<p>Casi siempre es mejor usar una <code>struct</code> que una <code>tuple struct</code>. En su lugar, podríamos escribir <code>Color</code> and <code>Punto</code> así:</p>
-<span class='rusttest'>fn main() {
-    struct Color {
-        rojo: i32,
-        azul: i32,
-        verde: i32,
-    }
-    
-    struct Punto {
-        x: i32,
-        y: i32,
-        z: i32,
-    }
-    
-}</span><pre class='rust rust-example-rendered'>
-<span class='kw'>struct</span> <span class='ident'>Color</span> {
-    <span class='ident'>rojo</span>: <span class='ident'>i32</span>,
-    <span class='ident'>azul</span>: <span class='ident'>i32</span>,
-    <span class='ident'>verde</span>: <span class='ident'>i32</span>,
-}
-
-<span class='kw'>struct</span> <span class='ident'>Punto</span> {
-    <span class='ident'>x</span>: <span class='ident'>i32</span>,
-    <span class='ident'>y</span>: <span class='ident'>i32</span>,
-    <span class='ident'>z</span>: <span class='ident'>i32</span>,
-}</pre>
-
-<p>Ahora, tenemos nombres, en lugar de posiciones. Los buenos nombres son importantes, y con una <code>struct</code>, tenemos nombres.</p>
-
-<p><em>Hay</em> un caso en el cual una tupla estructura es muy útil, y es una tupla estructura con un solo elemento. Se denomina patrón <code>nuevotipo</code> (<code>newtype</code>), puesto a que crear un nuevo tipo, distinto a el valor que contiene, expresando su propia semántica:</p>
-<span class='rusttest'>fn main() {
-    struct Pulgadas(i32);
-    
-    let longitud = Pulgadas(10);
-    
-    let Pulgadas(longitud_enteros) = longitud;
-    println!(&quot;la longitud es {} pulgadas&quot;, longitud_enteros);
-    
-}</span><pre class='rust rust-example-rendered'>
-<span class='kw'>struct</span> <span class='ident'>Pulgadas</span>(<span class='ident'>i32</span>);
-
-<span class='kw'>let</span> <span class='ident'>longitud</span> <span class='op'>=</span> <span class='ident'>Pulgadas</span>(<span class='number'>10</span>);
-
-<span class='kw'>let</span> <span class='ident'>Pulgadas</span>(<span class='ident'>longitud_enteros</span>) <span class='op'>=</span> <span class='ident'>longitud</span>;
-<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;la longitud es {} pulgadas&quot;</span>, <span class='ident'>longitud_enteros</span>);</pre>
-
-<p>Como notaras, puedes extraer el entero contenido con un <code>let</code> de destructuración, justo como en las tuplas regulares. En este caso, el <code>let Pulgadas(longitud_enteros)</code> asigna <code>10</code> a <code>longitud_enteros</code>.</p>
-
-<h1 id='estructuras-tipo-unitario-unit-like-structs' class='section-header'><a href='#estructuras-tipo-unitario-unit-like-structs'>Estructuras tipo-unitario (unit-like structs)</a></h1>
-<p>Puedes definir una <code>struct</code> sin ningún miembro:</p>
-<span class='rusttest'>fn main() {
-    struct Electron;
-    
-}</span><pre class='rust rust-example-rendered'>
-<span class='kw'>struct</span> <span class='ident'>Electron</span>;</pre>
-
-<p>Dicha <code>struct</code> es denominada <code>tipo-unitario</code> (<code>unit-like</code>) por su semejanza a la tupla vacía, <code>()</code>, algunas veces llamada <code>unidad</code> (<code>unit</code>). Como una tupla estructura, define un nuevo tipo.</p>
-
-<p>Lo anterior es raramente util en si mismo (aunque algunas veces puede servir como un tipo marcador), pero en combinación con otras características, puede tornarse útil. Por ejemplo, una librería puede requerir crear una estructura que implementa cierto <a href="traits.html">trait</a> para manejar eventos. De no poseer ninguna data para guardar en la estructura, simplemente puedes crear una <code>struct</code> tipo-unitario.</p>
-
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
@@ -463,13 +238,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
       if (i > 0) {
         var prevNode = toc[i-1].cloneNode(true);
         prevNode.className = 'left';
-        prevNode.setAttribute('rel', 'prev');
         nav.appendChild(prevNode);
       }
       if (i < toc.length - 1) {
         var nextNode = toc[i+1].cloneNode(true);
         nextNode.className = 'right';
-        nextNode.setAttribute('rel', 'next');
         nav.appendChild(nextNode);
       }
       document.getElementById('page').appendChild(nav);
