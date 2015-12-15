@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <title>Sintaxis de Cajas y Patrones</title>
+    <title>Sintaxis Box y Patrones</title>
 
     <link rel="stylesheet" type="text/css" href="rust-book.css">
 
@@ -166,7 +166,7 @@
 </li>
 <li><a  href='benchmark-tests.html'><b>6.7.</b> Pruebas de Rendimiento</a>
 </li>
-<li><a class='active' href='box-syntax-and-patterns.html'><b>6.8.</b> Sintaxis Box y Patones</a>
+<li><a class='active' href='box-syntax-and-patterns.html'><b>6.8.</b> Sintaxis Box y Patrones</a>
 </li>
 <li><a  href='slice-patterns.html'><b>6.9.</b> Patrones Slice</a>
 </li>
@@ -184,8 +184,145 @@
 <div id='page'>
 
 
-    <h1 class="title">Sintaxis de Cajas y Patrones</h1>
-    
+    <h1 class="title">Sintaxis Box y Patrones</h1>
+    <p>Actualmente la única forma estable de crear un <code>Box</code> es a través del método <code>Box::new</code>. Tampoco es posible destructurar un <code>Box</code> en un patron match. La palabra reservada inestable <code>box</code> puede ser usada para ambos, crear y destructurar un <code>Box</code>. Un ejemplo de su uso seria:</p>
+<span class='rusttest'>#![feature(box_syntax, box_patterns)]
+
+fn main() {
+    let b = Some(box 5);
+    match b {
+        Some(box n) if n &lt; 0 =&gt; {
+            println!(&quot;El Box contiene un numero negativo {}&quot;, n);
+        },
+        Some(box n) if n &gt;= 0 =&gt; {
+            println!(&quot;El Box contiene un numero no negativo {}&quot;, n);
+        },
+        None =&gt; {
+            println!(&quot;No box&quot;);
+        },
+        _ =&gt; unreachable!()
+    }
+}
+</span><pre class='rust rust-example-rendered'>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>box_syntax</span>, <span class='ident'>box_patterns</span>)]</span>
+
+<span class='kw'>fn</span> <span class='ident'>main</span>() {
+    <span class='kw'>let</span> <span class='ident'>b</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='kw'>box</span> <span class='number'>5</span>);
+    <span class='kw'>match</span> <span class='ident'>b</span> {
+        <span class='prelude-val'>Some</span>(<span class='kw'>box</span> <span class='ident'>n</span>) <span class='kw'>if</span> <span class='ident'>n</span> <span class='op'>&lt;</span> <span class='number'>0</span> <span class='op'>=&gt;</span> {
+            <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;El Box contiene un numero negativo {}&quot;</span>, <span class='ident'>n</span>);
+        },
+        <span class='prelude-val'>Some</span>(<span class='kw'>box</span> <span class='ident'>n</span>) <span class='kw'>if</span> <span class='ident'>n</span> <span class='op'>&gt;=</span> <span class='number'>0</span> <span class='op'>=&gt;</span> {
+            <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;El Box contiene un numero no negativo {}&quot;</span>, <span class='ident'>n</span>);
+        },
+        <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+            <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;No box&quot;</span>);
+        },
+        _ <span class='op'>=&gt;</span> <span class='macro'>unreachable</span><span class='macro'>!</span>()
+    }
+}</pre>
+
+<p>Nota que estas facilidades están actualmente escondidas detrás de los feature gates <code>box_syntax</code> (creación de boxes) y <code>box_patterns</code> (destructuracion y coincidencia de patrones) debido a que la sintaxis podría cambiar en el futuro.</p>
+
+<h1 id='retornando-apuntadores' class='section-header'><a href='#retornando-apuntadores'>Retornando apuntadores</a></h1>
+<p>En muchos lenguajes con apuntadores, podrías retornar un apuntador desde una función con el objetivo de evitar la copia de una estructura de datos grande. Por ejemplo:</p>
+<span class='rusttest'>struct GranStruct {
+    uno: i32,
+    dos: i32,
+    // etc
+    cien: i32,
+}
+
+fn foo(x: Box&lt;GranStruct&gt;) -&gt; Box&lt;GranStruct&gt; {
+    Box::new(*x)
+}
+
+fn main() {
+    let x = Box::new(GranStruct {
+        uno: 1,
+        dos: 2,
+        cien: 100,
+    });
+
+    let y = foo(x);
+}
+</span><pre class='rust rust-example-rendered'>
+<span class='kw'>struct</span> <span class='ident'>GranStruct</span> {
+    <span class='ident'>uno</span>: <span class='ident'>i32</span>,
+    <span class='ident'>dos</span>: <span class='ident'>i32</span>,
+    <span class='comment'>// etc</span>
+    <span class='ident'>cien</span>: <span class='ident'>i32</span>,
+}
+
+<span class='kw'>fn</span> <span class='ident'>foo</span>(<span class='ident'>x</span>: <span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>GranStruct</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>GranStruct</span><span class='op'>&gt;</span> {
+    <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='op'>*</span><span class='ident'>x</span>)
+}
+
+<span class='kw'>fn</span> <span class='ident'>main</span>() {
+    <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>GranStruct</span> {
+        <span class='ident'>uno</span>: <span class='number'>1</span>,
+        <span class='ident'>dos</span>: <span class='number'>2</span>,
+        <span class='ident'>cien</span>: <span class='number'>100</span>,
+    });
+
+    <span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='ident'>foo</span>(<span class='ident'>x</span>);
+}</pre>
+
+<p>La idea es que al pasar un box, solo estas copiando un apuntador, en lugar de los cien <code>i32</code> que conforman a <code>GranStruct</code>.</p>
+
+<p>Lo anterior es un anti patron en Rust. En su lugar, escribe esto:</p>
+<span class='rusttest'>#![feature(box_syntax)]
+
+struct GranStruct {
+    uno: i32,
+    dos: i32,
+    // etc
+    cien: i32,
+}
+
+fn foo(x: Box&lt;GranStruct&gt;) -&gt; GranStruct {
+    *x
+}
+
+fn main() {
+    let x = Box::new(GranStruct {
+        uno: 1,
+        dos: 2,
+        cien: 100,
+    });
+
+    let y: Box&lt;GranStruct&gt; = box foo(x);
+}
+</span><pre class='rust rust-example-rendered'>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>box_syntax</span>)]</span>
+
+<span class='kw'>struct</span> <span class='ident'>GranStruct</span> {
+    <span class='ident'>uno</span>: <span class='ident'>i32</span>,
+    <span class='ident'>dos</span>: <span class='ident'>i32</span>,
+    <span class='comment'>// etc</span>
+    <span class='ident'>cien</span>: <span class='ident'>i32</span>,
+}
+
+<span class='kw'>fn</span> <span class='ident'>foo</span>(<span class='ident'>x</span>: <span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>GranStruct</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>GranStruct</span> {
+    <span class='op'>*</span><span class='ident'>x</span>
+}
+
+<span class='kw'>fn</span> <span class='ident'>main</span>() {
+    <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>GranStruct</span> {
+        <span class='ident'>uno</span>: <span class='number'>1</span>,
+        <span class='ident'>dos</span>: <span class='number'>2</span>,
+        <span class='ident'>cien</span>: <span class='number'>100</span>,
+    });
+
+    <span class='kw'>let</span> <span class='ident'>y</span>: <span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>GranStruct</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='kw'>box</span> <span class='ident'>foo</span>(<span class='ident'>x</span>);
+}</pre>
+
+<p>Esta forma te dota de flexibilidad sin sacrificar desempeno.</p>
+
+<p>Podrías pensar que lo anterior resulta en un desempeño terrible: retornar un valor e inmediatamente ponerlo en un box?! No es este patron lo peor de ambos mundos? Rust es mucho mas inteligente que eso. En efecto, no hay copiado en este código. <code>main</code> asigna suficiente espacio para el <code>box</code>, pasa un apuntador a esa memoria en <code>foo</code> como <code>x</code>, y luego <code>foo</code> escribe el valor de manera directa dentro del <code>Box&lt;T&gt;</code>.</p>
+
+<p>Esto es lo suficientemente importante que se merece una repetición: los apuntadores no son para optimizar valores de retorno en tu código. Permite a el llamador decidir como usar tu salida.</p>
+
     <script type="text/javascript">
         window.playgroundUrl = "http://play.rust-lang.org";
     </script>
