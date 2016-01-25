@@ -6,7 +6,7 @@
     <meta name="generator" content="rustdoc">
     <title>Juego de Adivinanzas</title>
 
-    <link rel="stylesheet" type="text/css" href="rust-book.css">
+    <link rel="stylesheet" type="text/css" href="rustbook.css">
 
     
 </head>
@@ -18,14 +18,15 @@
     </div>
     <![endif]-->
 
-    <div id="nav">
-                <button id="toggle-nav">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                </button>
-              </div>
+    
+                <div id="nav">
+                    <button id="toggle-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
 <div id='toc' class='mobile-hidden'>
 <ul class='chapter'>
 <li><a  href='README.html'><b>1.</b> Introduction</a>
@@ -178,7 +179,7 @@
 </li>
 <li><a  href='glossary.html'><b>7.</b> Glosario</a>
 </li>
-<li><a  href='academic-research.html'><b>8.</b> Investigación Académica</a>
+<li><a  href='bibliography.html'><b>8.</b> Bibliografia</a>
 </li>
 </ul>
 </div>
@@ -274,7 +275,6 @@ fn main() {
 <p>Hay un monton aqui! Tratemos de ir a traves de ello, pieza por pieza.</p>
 <span class='rusttest'>fn main() {
     use std::io;
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;</pre>
 
@@ -288,7 +288,6 @@ fn main() {
         println!(&quot;Adivina el numero!&quot;);
     
         println!(&quot;Por favor introduce tu corazonada.&quot;);
-    
 }</span><pre class='rust rust-example-rendered'>
     <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Adivina el numero!&quot;</span>);
 
@@ -297,14 +296,12 @@ fn main() {
 <p>Anteriormente aprendimos que <code>println!()</code> es una <a href="macros.html">macro</a> que imprime una <a href="strings.html">cadena de caracteres</a> a la pantalla.</p>
 <span class='rusttest'>fn main() {
         let mut corazonada = String::new();
-    
 }</span><pre class='rust rust-example-rendered'>
     <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>corazonada</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();</pre>
 
 <p>Ahora nos estamos poniendo interesantes! Hay un montón de cosas pasando en esta pequeña linea. La primera cosas a notar es que es una <a href="variable-bindings.html">sentencia let</a>, usada para crear variables. Tiene la forma:</p>
 <span class='rusttest'>fn main() {
     let foo = bar;
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>foo</span> <span class='op'>=</span> <span class='ident'>bar</span>;</pre>
 
@@ -314,7 +311,6 @@ fn main() {
 <span class='rusttest'>fn main() {
     let foo = 5; // inmutable.
     let mut bar = 5; // mutable
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>foo</span> <span class='op'>=</span> <span class='number'>5</span>; <span class='comment'>// inmutable.</span>
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>bar</span> <span class='op'>=</span> <span class='number'>5</span>; <span class='comment'>// mutable</span></pre>
@@ -334,7 +330,6 @@ fn main() {
         io::stdin().read_line(&amp;mut corazonada)
             .ok()
             .expect(&quot;Fallo lectura de linea&quot;);
-    
 }</span><pre class='rust rust-example-rendered'>
     <span class='ident'>io</span>::<span class='ident'>stdin</span>().<span class='ident'>read_line</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>corazonada</span>)
         .<span class='ident'>ok</span>()
@@ -343,7 +338,6 @@ fn main() {
 <p>Otro monton! Vallamos pieza por pieza. La primera linea tiene dos partes. He aqui la primera:</p>
 <span class='rusttest'>fn main() {
     io::stdin()
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='ident'>io</span>::<span class='ident'>stdin</span>()</pre>
 
@@ -354,7 +348,6 @@ fn main() {
 <p>La siguiente parte usara dicho handle para obtener entrada del usuario:</p>
 <span class='rusttest'>fn main() {
     .read_line(&amp;mut corazonada)
-    
 }</span><pre class='rust rust-example-rendered'>
 .<span class='ident'>read_line</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>corazonada</span>)</pre>
 
@@ -368,7 +361,6 @@ fn main() {
 <span class='rusttest'>fn main() {
             .ok()
             .expect(&quot;Fallo lectura de linea&quot;);
-    
 }</span><pre class='rust rust-example-rendered'>
         .<span class='ident'>ok</span>()
         .<span class='ident'>expect</span>(<span class='string'>&quot;Fallo lectura de linea&quot;</span>);</pre>
@@ -376,7 +368,6 @@ fn main() {
 <p>Cuando llamas a un metodo con la sintaxis <code>.foo()</code> puedes introducir un salto de linea y otro espacio. Esto te ayuda a dividir lineas largas. Pudimos haber escrito:</p>
 <span class='rusttest'>fn main() {
         io::stdin().read_line(&amp;mut corazonada).ok().expect(&quot;Fallo lectura de linea&quot;);
-    
 }</span><pre class='rust rust-example-rendered'>
     <span class='ident'>io</span>::<span class='ident'>stdin</span>().<span class='ident'>read_line</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>corazonada</span>).<span class='ident'>ok</span>().<span class='ident'>expect</span>(<span class='string'>&quot;Fallo lectura de linea&quot;</span>);</pre>
 
@@ -399,7 +390,6 @@ src/main.rs:10     io::stdin().read_line(&amp;mut corazonada);
 <span class='rusttest'>fn main() {
         println!(&quot;Tu corazonada fue: {}&quot;, corazonada);
     }
-    
 }</span><pre class='rust rust-example-rendered'>
     <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Tu corazonada fue: {}&quot;</span>, <span class='ident'>corazonada</span>);
 }</pre>
@@ -410,7 +400,6 @@ src/main.rs:10     io::stdin().read_line(&amp;mut corazonada);
     let y = 10;
     
     println!(&quot;x y y: {} y {}&quot;, x, y);
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
 <span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='number'>10</span>;
@@ -537,7 +526,6 @@ fn main() {
         let numero_secreto = rand::thread_rng().gen_range(1, 101);
     
         println!(&quot;El numero secreto es: {}&quot;, numero_secreto);
-    
 }</span><pre class='rust rust-example-rendered'>
     <span class='kw'>let</span> <span class='ident'>numero_secreto</span> <span class='op'>=</span> <span class='ident'>rand</span>::<span class='ident'>thread_rng</span>().<span class='ident'>gen_range</span>(<span class='number'>1</span>, <span class='number'>101</span>);
 
@@ -637,7 +625,6 @@ fn main() {
         Ordering::Greater =&gt; println!(&quot;Muy grande!&quot;),
         Ordering::Equal   =&gt; println!(&quot;Haz ganado!&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>match</span> <span class='ident'>corazonada</span>.<span class='ident'>cmp</span>(<span class='kw-2'>&amp;</span><span class='ident'>numero_secreto</span>) {
     <span class='ident'>Ordering</span>::<span class='ident'>Less</span>    <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Muy pequeño!&quot;</span>),
@@ -651,7 +638,6 @@ fn main() {
         Bar,
         Baz,
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>enum</span> <span class='ident'>Foo</span> {
     <span class='ident'>Bar</span>,
@@ -668,7 +654,6 @@ and <code>Greater</code> (menor, igual y mayor respectivamente). La sentencia <c
         Ordering::Greater =&gt; println!(&quot;Muy grande!&quot;),
         Ordering::Equal   =&gt; println!(&quot;Haz ganado!&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>match</span> <span class='ident'>guess</span>.<span class='ident'>cmp</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret_number</span>) {
     <span class='ident'>Ordering</span>::<span class='ident'>Less</span>    <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Muy pequeño!&quot;</span>),
@@ -768,7 +753,6 @@ fn main() {
         let corazonada: u32 = corazonada.trim().parse()
             .ok()
             .expect(&quot;Por favor introduce un numero!&quot;);
-    
 }</span><pre class='rust rust-example-rendered'>
     <span class='kw'>let</span> <span class='ident'>corazonada</span>: <span class='ident'>u32</span> <span class='op'>=</span> <span class='ident'>corazonada</span>.<span class='ident'>trim</span>().<span class='ident'>parse</span>()
         .<span class='ident'>ok</span>()
@@ -781,7 +765,6 @@ Esto es usado con frecuencia en esta misma situación, en donde <code>corazonada
 <p>Estamos asociando <code>corazonada</code> a una expresión que luce como algo que escribimos anteriormente:</p>
 <span class='rusttest'>fn main() {
     guess.trim().parse()
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='ident'>guess</span>.<span class='ident'>trim</span>().<span class='ident'>parse</span>()</pre>
 
@@ -1077,7 +1060,6 @@ fn main() {
         Ok(num) =&gt; num,
         Err(_) =&gt; continue,
     };
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>corazonada</span>: <span class='ident'>u32</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>corazonada</span>.<span class='ident'>trim</span>().<span class='ident'>parse</span>() {
     <span class='prelude-val'>Ok</span>(<span class='ident'>num</span>) <span class='op'>=&gt;</span> <span class='ident'>num</span>,
@@ -1192,72 +1174,10 @@ fn main() {
 <p>Este primer proyecto te enseno un montón: <code>let</code>, <code>match</code>, metodos, funciones asociadas, usar crates externos, y mas. Nuestro siguiente proyecto demostrara aun mas.</p>
 
     <script type="text/javascript">
-        window.playgroundUrl = "http://play.rust-lang.org";
+        window.playgroundUrl = "https://play.rust-lang.org";
     </script>
-    
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById("toggle-nav").onclick = toggleNav;
-  function toggleNav() {
-    var toc = document.getElementById("toc");
-    var pagewrapper = document.getElementById("page-wrapper");
-    toggleClass(toc, "mobile-hidden");
-    toggleClass(pagewrapper, "mobile-hidden");
-  };
-
-  function toggleClass(el, className) {
-     // from http://youmightnotneedjquery.com/
-     if (el.classList) {
-       el.classList.toggle(className);
-     } else {
-       var classes = el.className.split(' ');
-       var existingIndex = classes.indexOf(className);
-
-       if (existingIndex >= 0) {
-         classes.splice(existingIndex, 1);
-       } else {
-         classes.push(className);
-       }
-
-       el.className = classes.join(' ');
-     }
-  }
-
-  // The below code is used to add prev and next navigation links to the bottom
-  // of each of the sections.
-  // It works by extracting the current page based on the url and iterates over
-  // the menu links until it finds the menu item for the current page. We then
-  // create a copy of the preceding and following menu links and add the
-  // correct css class and insert them into the bottom of the page.
-  var toc = document.getElementById('toc').getElementsByTagName('a');
-  var href = document.location.pathname.split('/').pop();
-  if (href === 'index.html' || href === '') {
-    href = 'README.html';
-  }
-
-  for (var i = 0; i < toc.length; i++) {
-    if (toc[i].attributes['href'].value.split('/').pop() === href) {
-      var nav = document.createElement('p');
-      if (i > 0) {
-        var prevNode = toc[i-1].cloneNode(true);
-        prevNode.className = 'left';
-        prevNode.setAttribute('rel', 'prev');
-        nav.appendChild(prevNode);
-      }
-      if (i < toc.length - 1) {
-        var nextNode = toc[i+1].cloneNode(true);
-        nextNode.className = 'right';
-        nextNode.setAttribute('rel', 'next');
-        nav.appendChild(nextNode);
-      }
-      document.getElementById('page').appendChild(nav);
-      break;
-    }
-  }
-
-});
-</script>
-<script type="text/javascript" src="playpen.js"></script>
+    <script src='rustbook.js'></script>
+<script src='playpen.js'></script>
 </div></div>
 
 

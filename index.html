@@ -6,7 +6,7 @@
     <meta name="generator" content="rustdoc">
     <title>El Lenguaje de Programación Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="./rust-book.css">
+    <link rel="stylesheet" type="text/css" href="rustbook.css">
 
     
 </head>
@@ -18,167 +18,168 @@
     </div>
     <![endif]-->
 
-    <div id="nav">
-                <button id="toggle-nav">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                </button>
-              </div>
+    
+                <div id="nav">
+                    <button id="toggle-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
 <div id='toc' class='mobile-hidden'>
 <ul class='chapter'>
-<li><a class='active' href='./README.html'><b>1.</b> Introduction</a>
+<li><a class='active' href='README.html'><b>1.</b> Introduction</a>
 </li>
-<li><a  href='./getting-started.html'><b>2.</b> Primeros Pasos</a>
+<li><a  href='getting-started.html'><b>2.</b> Primeros Pasos</a>
 <ul class='section'>
-<li><a  href='./installing-rust.html'><b>2.1.</b> Instalando Rust</a>
+<li><a  href='installing-rust.html'><b>2.1.</b> Instalando Rust</a>
 </li>
-<li><a  href='./hello-world.html'><b>2.2.</b> ¡Hola, mundo!</a>
+<li><a  href='hello-world.html'><b>2.2.</b> ¡Hola, mundo!</a>
 </li>
-<li><a  href='./hello-cargo.html'><b>2.3.</b> ¡Hola, Cargo!</a>
+<li><a  href='hello-cargo.html'><b>2.3.</b> ¡Hola, Cargo!</a>
 </li>
 </ul>
 </li>
-<li><a  href='./learn-rust.html'><b>3.</b> Aprende Rust</a>
+<li><a  href='learn-rust.html'><b>3.</b> Aprende Rust</a>
 <ul class='section'>
-<li><a  href='./guessing-game.html'><b>3.1.</b> El Juego de las Adivinanzas</a>
+<li><a  href='guessing-game.html'><b>3.1.</b> El Juego de las Adivinanzas</a>
 </li>
-<li><a  href='./dining-philosophers.html'><b>3.2.</b> La Cena de los Filósofos</a>
+<li><a  href='dining-philosophers.html'><b>3.2.</b> La Cena de los Filósofos</a>
 </li>
-<li><a  href='./rust-inside-other-languages.html'><b>3.3.</b> Rust dentro de otros Lenguajes</a>
+<li><a  href='rust-inside-other-languages.html'><b>3.3.</b> Rust dentro de otros Lenguajes</a>
 </li>
 </ul>
 </li>
-<li><a  href='./effective-rust.html'><b>4.</b> Rust Efectivo</a>
+<li><a  href='effective-rust.html'><b>4.</b> Rust Efectivo</a>
 <ul class='section'>
-<li><a  href='./the-stack-and-the-heap.html'><b>4.1.</b> La Pila y el Montículo</a>
+<li><a  href='the-stack-and-the-heap.html'><b>4.1.</b> La Pila y el Montículo</a>
 </li>
-<li><a  href='./testing.html'><b>4.2.</b> Pruebas</a>
+<li><a  href='testing.html'><b>4.2.</b> Pruebas</a>
 </li>
-<li><a  href='./conditional-compilation.html'><b>4.3.</b> Compilación Condicional</a>
+<li><a  href='conditional-compilation.html'><b>4.3.</b> Compilación Condicional</a>
 </li>
-<li><a  href='./documentation.html'><b>4.4.</b> Documentación</a>
+<li><a  href='documentation.html'><b>4.4.</b> Documentación</a>
 </li>
-<li><a  href='./iterators.html'><b>4.5.</b> Iteradores</a>
+<li><a  href='iterators.html'><b>4.5.</b> Iteradores</a>
 </li>
-<li><a  href='./concurrency.html'><b>4.6.</b> Concurrencia</a>
+<li><a  href='concurrency.html'><b>4.6.</b> Concurrencia</a>
 </li>
-<li><a  href='./error-handling.html'><b>4.7.</b> Manejo de Errores</a>
+<li><a  href='error-handling.html'><b>4.7.</b> Manejo de Errores</a>
 </li>
-<li><a  href='./ffi.html'><b>4.8.</b> FFI</a>
+<li><a  href='ffi.html'><b>4.8.</b> FFI</a>
 </li>
-<li><a  href='./borrow-and-asref.html'><b>4.9.</b> Borrow y AsRef</a>
+<li><a  href='borrow-and-asref.html'><b>4.9.</b> Borrow y AsRef</a>
 </li>
-<li><a  href='./release-channels.html'><b>4.10.</b> Canales de Distribución</a>
+<li><a  href='release-channels.html'><b>4.10.</b> Canales de Distribución</a>
 </li>
 </ul>
 </li>
-<li><a  href='./syntax-and-semantics.html'><b>5.</b> Sintaxis y Semantica</a>
+<li><a  href='syntax-and-semantics.html'><b>5.</b> Sintaxis y Semantica</a>
 <ul class='section'>
-<li><a  href='./variable-bindings.html'><b>5.1.</b> Enlaces a Variables</a>
+<li><a  href='variable-bindings.html'><b>5.1.</b> Enlaces a Variables</a>
 </li>
-<li><a  href='./functions.html'><b>5.2.</b> Funciones</a>
+<li><a  href='functions.html'><b>5.2.</b> Funciones</a>
 </li>
-<li><a  href='./primitive-types.html'><b>5.3.</b> Tipos Primitivos</a>
+<li><a  href='primitive-types.html'><b>5.3.</b> Tipos Primitivos</a>
 </li>
-<li><a  href='./comments.html'><b>5.4.</b> Comentarios</a>
+<li><a  href='comments.html'><b>5.4.</b> Comentarios</a>
 </li>
-<li><a  href='./if.html'><b>5.5.</b> if</a>
+<li><a  href='if.html'><b>5.5.</b> if</a>
 </li>
-<li><a  href='./loops.html'><b>5.6.</b> Ciclos</a>
+<li><a  href='loops.html'><b>5.6.</b> Ciclos</a>
 </li>
-<li><a  href='./ownership.html'><b>5.7.</b> Pertenencia</a>
+<li><a  href='ownership.html'><b>5.7.</b> Pertenencia</a>
 </li>
-<li><a  href='./references-and-borrowing.html'><b>5.8.</b> Referencias y Préstamo</a>
+<li><a  href='references-and-borrowing.html'><b>5.8.</b> Referencias y Préstamo</a>
 </li>
-<li><a  href='./lifetimes.html'><b>5.9.</b> Tiempos de Vida</a>
+<li><a  href='lifetimes.html'><b>5.9.</b> Tiempos de Vida</a>
 </li>
-<li><a  href='./mutability.html'><b>5.10.</b> Mutabilidad</a>
+<li><a  href='mutability.html'><b>5.10.</b> Mutabilidad</a>
 </li>
-<li><a  href='./structs.html'><b>5.11.</b> Estructuras</a>
+<li><a  href='structs.html'><b>5.11.</b> Estructuras</a>
 </li>
-<li><a  href='./enums.html'><b>5.12.</b> Enumeraciones</a>
+<li><a  href='enums.html'><b>5.12.</b> Enumeraciones</a>
 </li>
-<li><a  href='./match.html'><b>5.13.</b> Match</a>
+<li><a  href='match.html'><b>5.13.</b> Match</a>
 </li>
-<li><a  href='./patterns.html'><b>5.14.</b> Patrones</a>
+<li><a  href='patterns.html'><b>5.14.</b> Patrones</a>
 </li>
-<li><a  href='./method-syntax.html'><b>5.15.</b> Sintaxis de Métodos</a>
+<li><a  href='method-syntax.html'><b>5.15.</b> Sintaxis de Métodos</a>
 </li>
-<li><a  href='./vectors.html'><b>5.16.</b> Vectores</a>
+<li><a  href='vectors.html'><b>5.16.</b> Vectores</a>
 </li>
-<li><a  href='./strings.html'><b>5.17.</b> Cadenas de Caracteres</a>
+<li><a  href='strings.html'><b>5.17.</b> Cadenas de Caracteres</a>
 </li>
-<li><a  href='./generics.html'><b>5.18.</b> Genéricos</a>
+<li><a  href='generics.html'><b>5.18.</b> Genéricos</a>
 </li>
-<li><a  href='./traits.html'><b>5.19.</b> Traits</a>
+<li><a  href='traits.html'><b>5.19.</b> Traits</a>
 </li>
-<li><a  href='./drop.html'><b>5.20.</b> Drop</a>
+<li><a  href='drop.html'><b>5.20.</b> Drop</a>
 </li>
-<li><a  href='./if-let.html'><b>5.21.</b> if let</a>
+<li><a  href='if-let.html'><b>5.21.</b> if let</a>
 </li>
-<li><a  href='./trait-objects.html'><b>5.22.</b> Objetos Trait</a>
+<li><a  href='trait-objects.html'><b>5.22.</b> Objetos Trait</a>
 </li>
-<li><a  href='./closures.html'><b>5.23.</b> Closures</a>
+<li><a  href='closures.html'><b>5.23.</b> Closures</a>
 </li>
-<li><a  href='./ufcs.html'><b>5.24.</b> Sintaxis Universal  de Llamada a Funciones</a>
+<li><a  href='ufcs.html'><b>5.24.</b> Sintaxis Universal  de Llamada a Funciones</a>
 </li>
-<li><a  href='./crates-and-modules.html'><b>5.25.</b> Crates y Módulos</a>
+<li><a  href='crates-and-modules.html'><b>5.25.</b> Crates y Módulos</a>
 </li>
-<li><a  href='./const-and-static.html'><b>5.26.</b> `const` y `static`</a>
+<li><a  href='const-and-static.html'><b>5.26.</b> `const` y `static`</a>
 </li>
-<li><a  href='./attributes.html'><b>5.27.</b> Atributos</a>
+<li><a  href='attributes.html'><b>5.27.</b> Atributos</a>
 </li>
-<li><a  href='./type-aliases.html'><b>5.28.</b> Alias `type`</a>
+<li><a  href='type-aliases.html'><b>5.28.</b> Alias `type`</a>
 </li>
-<li><a  href='./casting-between-types.html'><b>5.29.</b> Conversión entre Tipos</a>
+<li><a  href='casting-between-types.html'><b>5.29.</b> Conversión entre Tipos</a>
 </li>
-<li><a  href='./associated-types.html'><b>5.30.</b> Tipos Asociados</a>
+<li><a  href='associated-types.html'><b>5.30.</b> Tipos Asociados</a>
 </li>
-<li><a  href='./unsized-types.html'><b>5.31.</b> Tipos sin Tamaño</a>
+<li><a  href='unsized-types.html'><b>5.31.</b> Tipos sin Tamaño</a>
 </li>
-<li><a  href='./operators-and-overloading.html'><b>5.32.</b> Operadores y Sobrecarga</a>
+<li><a  href='operators-and-overloading.html'><b>5.32.</b> Operadores y Sobrecarga</a>
 </li>
-<li><a  href='./deref-coercions.html'><b>5.33.</b> Coerciones Deref</a>
+<li><a  href='deref-coercions.html'><b>5.33.</b> Coerciones Deref</a>
 </li>
-<li><a  href='./macros.html'><b>5.34.</b> Macros</a>
+<li><a  href='macros.html'><b>5.34.</b> Macros</a>
 </li>
-<li><a  href='./raw-pointers.html'><b>5.35.</b> Apuntadores Planos</a>
+<li><a  href='raw-pointers.html'><b>5.35.</b> Apuntadores Planos</a>
 </li>
-<li><a  href='./unsafe.html'><b>5.36.</b> `unsafe`</a>
+<li><a  href='unsafe.html'><b>5.36.</b> `unsafe`</a>
 </li>
 </ul>
 </li>
-<li><a  href='./nightly-rust.html'><b>6.</b> Rust Nocturno</a>
+<li><a  href='nightly-rust.html'><b>6.</b> Rust Nocturno</a>
 <ul class='section'>
-<li><a  href='./compiler-plugins.html'><b>6.1.</b> Plugins del Compilador</a>
+<li><a  href='compiler-plugins.html'><b>6.1.</b> Plugins del Compilador</a>
 </li>
-<li><a  href='./inline-assembly.html'><b>6.2.</b> Ensamblador en Linea</a>
+<li><a  href='inline-assembly.html'><b>6.2.</b> Ensamblador en Linea</a>
 </li>
-<li><a  href='./no-stdlib.html'><b>6.3.</b> No stdlib</a>
+<li><a  href='no-stdlib.html'><b>6.3.</b> No stdlib</a>
 </li>
-<li><a  href='./intrinsics.html'><b>6.4.</b> Intrínsecos</a>
+<li><a  href='intrinsics.html'><b>6.4.</b> Intrínsecos</a>
 </li>
-<li><a  href='./lang-items.html'><b>6.5.</b> Items de Lenguaje</a>
+<li><a  href='lang-items.html'><b>6.5.</b> Items de Lenguaje</a>
 </li>
-<li><a  href='./advanced-linking.html'><b>6.6.</b> Enlace Avanzado</a>
+<li><a  href='advanced-linking.html'><b>6.6.</b> Enlace Avanzado</a>
 </li>
-<li><a  href='./benchmark-tests.html'><b>6.7.</b> Pruebas de Rendimiento</a>
+<li><a  href='benchmark-tests.html'><b>6.7.</b> Pruebas de Rendimiento</a>
 </li>
-<li><a  href='./box-syntax-and-patterns.html'><b>6.8.</b> Sintaxis Box y Patrones</a>
+<li><a  href='box-syntax-and-patterns.html'><b>6.8.</b> Sintaxis Box y Patrones</a>
 </li>
-<li><a  href='./slice-patterns.html'><b>6.9.</b> Patrones Slice</a>
+<li><a  href='slice-patterns.html'><b>6.9.</b> Patrones Slice</a>
 </li>
-<li><a  href='./associated-constants.html'><b>6.10.</b> Constantes Asociadas</a>
+<li><a  href='associated-constants.html'><b>6.10.</b> Constantes Asociadas</a>
 </li>
-<li><a  href='./custom-allocators.html'><b>6.11.</b> Asignadores de Memoria Personalizados</a>
+<li><a  href='custom-allocators.html'><b>6.11.</b> Asignadores de Memoria Personalizados</a>
 </li>
 </ul>
 </li>
-<li><a  href='./glossary.html'><b>7.</b> Glosario</a>
+<li><a  href='glossary.html'><b>7.</b> Glosario</a>
 </li>
-<li><a  href='./academic-research.html'><b>8.</b> Investigación Académica</a>
+<li><a  href='bibliography.html'><b>8.</b> Bibliografia</a>
 </li>
 </ul>
 </div>
@@ -325,72 +326,10 @@ fn main() {
 <p>Este concepto de pertenencia no es solo bueno para prevenir punteros colgantes, sino un conjunto entero de problemas, como invalidación de iteradores, concurrencia y más.</p>
 
     <script type="text/javascript">
-        window.playgroundUrl = "http://play.rust-lang.org";
+        window.playgroundUrl = "https://play.rust-lang.org";
     </script>
-    
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById("toggle-nav").onclick = toggleNav;
-  function toggleNav() {
-    var toc = document.getElementById("toc");
-    var pagewrapper = document.getElementById("page-wrapper");
-    toggleClass(toc, "mobile-hidden");
-    toggleClass(pagewrapper, "mobile-hidden");
-  };
-
-  function toggleClass(el, className) {
-     // from http://youmightnotneedjquery.com/
-     if (el.classList) {
-       el.classList.toggle(className);
-     } else {
-       var classes = el.className.split(' ');
-       var existingIndex = classes.indexOf(className);
-
-       if (existingIndex >= 0) {
-         classes.splice(existingIndex, 1);
-       } else {
-         classes.push(className);
-       }
-
-       el.className = classes.join(' ');
-     }
-  }
-
-  // The below code is used to add prev and next navigation links to the bottom
-  // of each of the sections.
-  // It works by extracting the current page based on the url and iterates over
-  // the menu links until it finds the menu item for the current page. We then
-  // create a copy of the preceding and following menu links and add the
-  // correct css class and insert them into the bottom of the page.
-  var toc = document.getElementById('toc').getElementsByTagName('a');
-  var href = document.location.pathname.split('/').pop();
-  if (href === 'index.html' || href === '') {
-    href = 'README.html';
-  }
-
-  for (var i = 0; i < toc.length; i++) {
-    if (toc[i].attributes['href'].value.split('/').pop() === href) {
-      var nav = document.createElement('p');
-      if (i > 0) {
-        var prevNode = toc[i-1].cloneNode(true);
-        prevNode.className = 'left';
-        prevNode.setAttribute('rel', 'prev');
-        nav.appendChild(prevNode);
-      }
-      if (i < toc.length - 1) {
-        var nextNode = toc[i+1].cloneNode(true);
-        nextNode.className = 'right';
-        nextNode.setAttribute('rel', 'next');
-        nav.appendChild(nextNode);
-      }
-      document.getElementById('page').appendChild(nav);
-      break;
-    }
-  }
-
-});
-</script>
-<script type="text/javascript" src="playpen.js"></script>
+    <script src='rustbook.js'></script>
+<script src='playpen.js'></script>
 </div></div>
 
 

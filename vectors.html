@@ -6,7 +6,7 @@
     <meta name="generator" content="rustdoc">
     <title>Vectores</title>
 
-    <link rel="stylesheet" type="text/css" href="rust-book.css">
+    <link rel="stylesheet" type="text/css" href="rustbook.css">
 
     
 </head>
@@ -18,14 +18,15 @@
     </div>
     <![endif]-->
 
-    <div id="nav">
-                <button id="toggle-nav">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                </button>
-              </div>
+    
+                <div id="nav">
+                    <button id="toggle-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
 <div id='toc' class='mobile-hidden'>
 <ul class='chapter'>
 <li><a  href='README.html'><b>1.</b> Introduction</a>
@@ -178,7 +179,7 @@
 </li>
 <li><a  href='glossary.html'><b>7.</b> Glosario</a>
 </li>
-<li><a  href='academic-research.html'><b>8.</b> Investigación Académica</a>
+<li><a  href='bibliography.html'><b>8.</b> Bibliografia</a>
 </li>
 </ul>
 </div>
@@ -190,7 +191,6 @@
     <p>Un ‘vector’ es un arreglo dinámico, implementado como el tipo de la biblioteca estándar <a href="../std/vec/index.html"><code>Vec&lt;T&gt;</code></a>. La <code>T</code> significa que podemos tener vectores de cualquier tipo (echa un vistazo al capitulo de [genéricos][generics] para mas información). Los vectores siempre alojan sus datos en el montículo. Puedes crear vectores con la macro <code>vec!</code>:</p>
 <span class='rusttest'>fn main() {
     let v = vec![1, 2, 3, 4, 5]; // v: Vec&lt;i32&gt;
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>v</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>, <span class='number'>4</span>, <span class='number'>5</span>]; <span class='comment'>// v: Vec&lt;i32&gt;</span></pre>
 
@@ -199,7 +199,6 @@
 <p>Existe una forma alternativa de <code>vec!</code> para repetir un valor inicial:</p>
 <span class='rusttest'>fn main() {
     let v = vec![0; 10]; // diez ceros
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>v</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>0</span>; <span class='number'>10</span>]; <span class='comment'>// diez ceros</span></pre>
 
@@ -209,7 +208,6 @@
     let v = vec![1, 2, 3, 4, 5];
     
     println!(&quot;El tercer elemento de v es {}&quot;, v[2]);
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>v</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>, <span class='number'>4</span>, <span class='number'>5</span>];
 
@@ -233,7 +231,6 @@
     for i in v {
         println!(&quot;Tomando pertenencia del vector y su elemento {}&quot;, i);
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>v</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[<span class='number'>1</span>, <span class='number'>2</span>, <span class='number'>3</span>, <span class='number'>4</span>, <span class='number'>5</span>];
 
@@ -252,72 +249,10 @@
 <p>Los vectores poseen muchos otros métodos útiles, acerca de los cuales puedes leer en su <a href="../std/vec/index.html">documentation</a></p>
 
     <script type="text/javascript">
-        window.playgroundUrl = "http://play.rust-lang.org";
+        window.playgroundUrl = "https://play.rust-lang.org";
     </script>
-    
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById("toggle-nav").onclick = toggleNav;
-  function toggleNav() {
-    var toc = document.getElementById("toc");
-    var pagewrapper = document.getElementById("page-wrapper");
-    toggleClass(toc, "mobile-hidden");
-    toggleClass(pagewrapper, "mobile-hidden");
-  };
-
-  function toggleClass(el, className) {
-     // from http://youmightnotneedjquery.com/
-     if (el.classList) {
-       el.classList.toggle(className);
-     } else {
-       var classes = el.className.split(' ');
-       var existingIndex = classes.indexOf(className);
-
-       if (existingIndex >= 0) {
-         classes.splice(existingIndex, 1);
-       } else {
-         classes.push(className);
-       }
-
-       el.className = classes.join(' ');
-     }
-  }
-
-  // The below code is used to add prev and next navigation links to the bottom
-  // of each of the sections.
-  // It works by extracting the current page based on the url and iterates over
-  // the menu links until it finds the menu item for the current page. We then
-  // create a copy of the preceding and following menu links and add the
-  // correct css class and insert them into the bottom of the page.
-  var toc = document.getElementById('toc').getElementsByTagName('a');
-  var href = document.location.pathname.split('/').pop();
-  if (href === 'index.html' || href === '') {
-    href = 'README.html';
-  }
-
-  for (var i = 0; i < toc.length; i++) {
-    if (toc[i].attributes['href'].value.split('/').pop() === href) {
-      var nav = document.createElement('p');
-      if (i > 0) {
-        var prevNode = toc[i-1].cloneNode(true);
-        prevNode.className = 'left';
-        prevNode.setAttribute('rel', 'prev');
-        nav.appendChild(prevNode);
-      }
-      if (i < toc.length - 1) {
-        var nextNode = toc[i+1].cloneNode(true);
-        nextNode.className = 'right';
-        nextNode.setAttribute('rel', 'next');
-        nav.appendChild(nextNode);
-      }
-      document.getElementById('page').appendChild(nav);
-      break;
-    }
-  }
-
-});
-</script>
-<script type="text/javascript" src="playpen.js"></script>
+    <script src='rustbook.js'></script>
+<script src='playpen.js'></script>
 </div></div>
 
 

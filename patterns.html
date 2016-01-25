@@ -6,7 +6,7 @@
     <meta name="generator" content="rustdoc">
     <title>Patrones</title>
 
-    <link rel="stylesheet" type="text/css" href="rust-book.css">
+    <link rel="stylesheet" type="text/css" href="rustbook.css">
 
     
 </head>
@@ -18,14 +18,15 @@
     </div>
     <![endif]-->
 
-    <div id="nav">
-                <button id="toggle-nav">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                </button>
-              </div>
+    
+                <div id="nav">
+                    <button id="toggle-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
 <div id='toc' class='mobile-hidden'>
 <ul class='chapter'>
 <li><a  href='README.html'><b>1.</b> Introduction</a>
@@ -178,7 +179,7 @@
 </li>
 <li><a  href='glossary.html'><b>7.</b> Glosario</a>
 </li>
-<li><a  href='academic-research.html'><b>8.</b> Investigación Académica</a>
+<li><a  href='bibliography.html'><b>8.</b> Bibliografia</a>
 </li>
 </ul>
 </div>
@@ -199,7 +200,6 @@
         3 =&gt; println!(&quot;tres&quot;),
         _ =&gt; println!(&quot;cualquiera&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>1</span>;
 
@@ -222,7 +222,6 @@
         3 =&gt; println!(&quot;tres&quot;),
         _ =&gt; println!(&quot;cualquiera&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>1</span>;
 
@@ -247,7 +246,6 @@
     match origen {
         Punto { x, y } =&gt; println!(&quot;({},{})&quot;, x, y),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>struct</span> <span class='ident'>Punto</span> {
     <span class='ident'>x</span>: <span class='ident'>i32</span>,
@@ -272,7 +270,6 @@
     match origen {
         Punto { x: x1, y: y1 } =&gt; println!(&quot;({},{})&quot;, x1, y1),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>struct</span> <span class='ident'>Punto</span> {
     <span class='ident'>x</span>: <span class='ident'>i32</span>,
@@ -297,7 +294,6 @@
     match origen {
         Punto { x, .. } =&gt; println!(&quot;x es {}&quot;, x),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>struct</span> <span class='ident'>Punto</span> {
     <span class='ident'>x</span>: <span class='ident'>i32</span>,
@@ -324,7 +320,6 @@
     match origen {
         Punto { y, .. } =&gt; println!(&quot;y es {}&quot;, y),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>struct</span> <span class='ident'>Punto</span> {
     <span class='ident'>x</span>: <span class='ident'>i32</span>,
@@ -351,7 +346,6 @@
         Ok(valor) =&gt; println!(&quot;valor obtenido: {}&quot;, valor),
         Err(_) =&gt; println!(&quot;ha ocurrido un error&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>match</span> <span class='ident'>algun_valor</span> {
     <span class='prelude-val'>Ok</span>(<span class='ident'>valor</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;valor obtenido: {}&quot;</span>, <span class='ident'>valor</span>),
@@ -368,7 +362,6 @@
     }
     
     let (x, _, z) = coordenada();
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>fn</span> <span class='ident'>coordenada</span>() <span class='op'>-&gt;</span> (<span class='ident'>i32</span>, <span class='ident'>i32</span>, <span class='ident'>i32</span>) {
     <span class='comment'>// generar y retornar algún tipo de tupla de tres elementos</span>
@@ -391,7 +384,6 @@
         TuplaOpcional::Valor(..) =&gt; println!(&quot;Tupla obtenida!&quot;),
         TuplaOpcional::Faltante =&gt; println!(&quot;Sin suerte.&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>enum</span> <span class='ident'>TuplaOpcional</span> {
     <span class='ident'>Valor</span>(<span class='ident'>i32</span>, <span class='ident'>i32</span>, <span class='ident'>i32</span>),
@@ -415,7 +407,6 @@
     match x {
         ref r =&gt; println!(&quot;Referencia a {} obtenida&quot;, r),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
 
@@ -432,7 +423,6 @@
     match x {
         ref mut rm =&gt; println!(&quot;Referencia mutable a {} obtenida&quot;, rm),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
 
@@ -449,7 +439,6 @@
         1 ... 5 =&gt; println!(&quot;uno al cinco&quot;),
         _ =&gt; println!(&quot;cualquier cosa&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>1</span>;
 
@@ -469,7 +458,6 @@
         &#39;k&#39; ... &#39;z&#39; =&gt; println!(&quot;letra tardia&quot;),
         _ =&gt; println!(&quot;algo mas&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='string'>&#39;💅&#39;</span>;
 
@@ -490,7 +478,6 @@
         e @ 1 ... 5 =&gt; println!(&quot;valor de rango {} obtenido&quot;, e),
         _ =&gt; println!(&quot;lo que sea&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>1</span>;
 
@@ -512,7 +499,6 @@
         Some(Persona { nombre: ref a @ Some(_), .. }) =&gt; println!(&quot;{:?}&quot;, a),
         _ =&gt; {}
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>struct</span> <span class='ident'>Persona</span> {
@@ -536,7 +522,6 @@
         e @ 1 ... 5 | e @ 8 ... 10 =&gt; println!(&quot;valor de rango {} obtenido&quot;, e),
         _ =&gt; println!(&quot;lo que sea&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>5</span>;
 
@@ -560,7 +545,6 @@
         EnteroOpcional::Valor(..) =&gt; println!(&quot;Entero obtenido!&quot;),
         EnteroOpcional::Faltante =&gt; println!(&quot;Sin suerte.&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>enum</span> <span class='ident'>EnteroOpcional</span> {
     <span class='ident'>Valor</span>(<span class='ident'>i32</span>),
@@ -586,7 +570,6 @@
         4 | 5 if y =&gt; println!(&quot;si&quot;),
         _ =&gt; println!(&quot;no&quot;),
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> <span class='number'>4</span>;
 <span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> <span class='boolval'>false</span>;
@@ -612,7 +595,6 @@
     match x {
         Foo { x: Some(ref nombre), y: None } =&gt; ...
     }
-    
 }</span><pre class='rust rust-example-rendered'>
 <span class='kw'>match</span> <span class='ident'>x</span> {
     <span class='ident'>Foo</span> { <span class='ident'>x</span>: <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='ident'>nombre</span>), <span class='ident'>y</span>: <span class='prelude-val'>None</span> } <span class='op'>=&gt;</span> ...
@@ -621,72 +603,10 @@
 <p>Los patrones son muy poderosos. Haz buen uso de ellos.</p>
 
     <script type="text/javascript">
-        window.playgroundUrl = "http://play.rust-lang.org";
+        window.playgroundUrl = "https://play.rust-lang.org";
     </script>
-    
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById("toggle-nav").onclick = toggleNav;
-  function toggleNav() {
-    var toc = document.getElementById("toc");
-    var pagewrapper = document.getElementById("page-wrapper");
-    toggleClass(toc, "mobile-hidden");
-    toggleClass(pagewrapper, "mobile-hidden");
-  };
-
-  function toggleClass(el, className) {
-     // from http://youmightnotneedjquery.com/
-     if (el.classList) {
-       el.classList.toggle(className);
-     } else {
-       var classes = el.className.split(' ');
-       var existingIndex = classes.indexOf(className);
-
-       if (existingIndex >= 0) {
-         classes.splice(existingIndex, 1);
-       } else {
-         classes.push(className);
-       }
-
-       el.className = classes.join(' ');
-     }
-  }
-
-  // The below code is used to add prev and next navigation links to the bottom
-  // of each of the sections.
-  // It works by extracting the current page based on the url and iterates over
-  // the menu links until it finds the menu item for the current page. We then
-  // create a copy of the preceding and following menu links and add the
-  // correct css class and insert them into the bottom of the page.
-  var toc = document.getElementById('toc').getElementsByTagName('a');
-  var href = document.location.pathname.split('/').pop();
-  if (href === 'index.html' || href === '') {
-    href = 'README.html';
-  }
-
-  for (var i = 0; i < toc.length; i++) {
-    if (toc[i].attributes['href'].value.split('/').pop() === href) {
-      var nav = document.createElement('p');
-      if (i > 0) {
-        var prevNode = toc[i-1].cloneNode(true);
-        prevNode.className = 'left';
-        prevNode.setAttribute('rel', 'prev');
-        nav.appendChild(prevNode);
-      }
-      if (i < toc.length - 1) {
-        var nextNode = toc[i+1].cloneNode(true);
-        nextNode.className = 'right';
-        nextNode.setAttribute('rel', 'next');
-        nav.appendChild(nextNode);
-      }
-      document.getElementById('page').appendChild(nav);
-      break;
-    }
-  }
-
-});
-</script>
-<script type="text/javascript" src="playpen.js"></script>
+    <script src='rustbook.js'></script>
+<script src='playpen.js'></script>
 </div></div>
 
 
