@@ -188,7 +188,53 @@
 
 
     <h1 class="title">Glosario</h1>
-    
+    <p>No todos los rustaceos poseen una base en programación de sistemas, o en ciencias de la computación, es por ello que hemos agregado explicaciones para algunos términos que podrían no ser familiares.</p>
+
+<h3 id='arbol-abstracto-de-sintaxis' class='section-header'><a href='#arbol-abstracto-de-sintaxis'>Arbol Abstracto de Sintaxis</a></h3>
+<p>Cuando un compilador traduce tu programa, lleva a cabo un numero de cosas diferentes. Una de ellas es transformar el texto de tu programa en un ‘árbol abstracto de sintaxis’, o ‘AST’ (por sus siglas en ingles). Dicho árbol es una representación de la estructura de tu programa. Por ejemplo, <code>2 + 3</code> puede ser convertido a:</p>
+
+<pre><code class="language-text">  +
+ / \
+2   3
+</code></pre>
+
+<p>Y <code>2 + (3 * 4)</code> luciría así:</p>
+
+<pre><code class="language-text">  +
+ / \
+2   *
+   / \
+  3   4
+</code></pre>
+
+<h3 id='aridad' class='section-header'><a href='#aridad'>Aridad</a></h3>
+<p>La aridad se refiere a el numero de argumentos que recibe una función u operación.</p>
+<span class='rusttest'>fn main() {
+    let x = (2, 3);
+    let y = (4, 6);
+    let z = (8, 2, 6);
+}</span><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>x</span> <span class='op'>=</span> (<span class='number'>2</span>, <span class='number'>3</span>);
+<span class='kw'>let</span> <span class='ident'>y</span> <span class='op'>=</span> (<span class='number'>4</span>, <span class='number'>6</span>);
+<span class='kw'>let</span> <span class='ident'>z</span> <span class='op'>=</span> (<span class='number'>8</span>, <span class='number'>2</span>, <span class='number'>6</span>);</pre>
+
+<p>En el ejemplo anterior <code>x</code> y <code>y</code> poseen una aridad de 2. <code>z</code> tiene una aridad de 3.</p>
+
+<h3 id='limites-bounds' class='section-header'><a href='#limites-bounds'>Limites (Bounds)</a></h3>
+<p>Los limites son restricciones en un tipo o <a href="traits.html">trait</a>. Por ejemplo, si un limite es colocado en un argumento a una función, los tipos proporcionados a dicha función deben cumplir con las restricciones impuestas por el limite.</p>
+
+<h3 id='tipos-de-tamaño-dinámico-ttd-dynamically-sized-type' class='section-header'><a href='#tipos-de-tamaño-dinámico-ttd-dynamically-sized-type'>Tipos de Tamaño Dinámico TTD (Dynamically Sized Type)</a></h3>
+<p>Un tipo sin un tamaño o alineación conocidos de manera estática. (<a href="../nomicon/exotic-sizes.html#dynamically-sized-types-dsts">mas informacion</a>)</p>
+
+<h3 id='expresión' class='section-header'><a href='#expresión'>Expresión</a></h3>
+<p>En ciencias de la computación, una expresión es una combinación de valores, constantes, variables, operadores y funciones que evalúan a un único valor. Por ejemplo, <code>2 + (3 * 4)</code> es una expresión que retorna el valor 14. Es importante mencionar que las expresiones pueden tener efectos secundarios. Por ejemplo, una función incluida en una expresión podría llevar a cabo otras acciones ademas de el simple retorno de un valor.</p>
+
+<h3 id='lenguaje-de-programación-orientado-a-expresiones' class='section-header'><a href='#lenguaje-de-programación-orientado-a-expresiones'>Lenguaje de Programación Orientado a Expresiones</a></h3>
+<p>En los primeros lenguajes de programación, las <a href="glossary.html#expression">expresiones</a> y <a href="glossary.html#statement">sentencias</a> eran dos categorías sintácticas diferentes: las expresiones poseían un valor de retorno y las sentencias llevaban a cabo acciones. Sin embargo, los lenguajes mas modernos hicieron a esta distinción un poco borrosa, permitiendo a las expresiones llevar a cabo acciones y a las sentencias tener un valor. En un lenguaje de programación orientado a expresiones, (casi) toda sentencia es una expresión y por lo tanto, retorna un valor. Consecuentemente, dicho sentencias expresión pueden en si mismas formar parte de expresiones mas grandes.</p>
+
+<h3 id='sentencia' class='section-header'><a href='#sentencia'>Sentencia</a></h3>
+<p>En ciencias de la computación, una sentencia es el elemento libre mas pequeño en un lenguaje de programación que comanda a una computadora a llevar a cabo una acción.</p>
+
     <script type="text/javascript">
         window.playgroundUrl = "https://play.rust-lang.org";
     </script>
